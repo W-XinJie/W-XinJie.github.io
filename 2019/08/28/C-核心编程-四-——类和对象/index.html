@@ -6,21 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>草稿文章 | Hexo</title>
+  <title>C++核心编程(四)——类和对象 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一级标题二级标题三级标题">
-<meta property="og:type" content="website">
-<meta property="og:title" content="草稿文章">
-<meta property="og:url" content="http://yoursite.com/third-post.html">
+  <meta name="description" content="C++面向对象三大特征：封装、继承、多态。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++核心编程(四)——类和对象">
+<meta property="og:url" content="http://yoursite.com/2019/08/28/C-核心编程-四-——类和对象/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="一级标题二级标题三级标题">
+<meta property="og:description" content="C++面向对象三大特征：封装、继承、多态。">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://yoursite.com/1.jpg">
-<meta property="og:updated_time" content="2019-08-26T09:43:16.227Z">
+<meta property="og:image" content="http://yoursite.com/2019/08/28/C-核心编程-四-——类和对象/1.jpg">
+<meta property="og:updated_time" content="2019-08-28T12:38:32.448Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="草稿文章">
-<meta name="twitter:description" content="一级标题二级标题三级标题">
-<meta name="twitter:image" content="http://yoursite.com/1.jpg">
+<meta name="twitter:title" content="C++核心编程(四)——类和对象">
+<meta name="twitter:description" content="C++面向对象三大特征：封装、继承、多态。">
+<meta name="twitter:image" content="http://yoursite.com/2019/08/28/C-核心编程-四-——类和对象/1.jpg">
   
   
     <link rel="icon" href="/favicon.png">
@@ -154,45 +154,62 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="page-" class="article article-type-page " itemscope itemprop="blogPost">
+            <article id="post-C-核心编程-四-——类和对象" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      草稿文章
+      C++核心编程(四)——类和对象
     </h1>
   
 
         
-        <a href="/third-post.html" class="archive-article-date">
-  	<time datetime="2019-08-19T08:24:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-19</time>
+        <a href="/2019/08/28/C-核心编程-四-——类和对象/" class="archive-article-date">
+  	<time datetime="2019-08-28T08:47:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-28</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><a id="more"></a>
+        <p>　　C++面向对象三大特征：封装、继承、多态。</p>
+<a id="more"></a>
+<h1 id="1-1-封装"><a href="#1-1-封装" class="headerlink" title="1.1 封装"></a>1.1 封装</h1><p>　　意义：在设计类的时候，属性和 行为写在一起，表现事物。<br>　　语法：class 类名{ 访问权限： 属性 / 行为 };<br>　　示例：设计圆求周长</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">using namespace std;</span><br><span class="line">const double PI = 3.14;</span><br><span class="line"></span><br><span class="line">class circular</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	circular();</span><br><span class="line">	virtual ~circular();</span><br><span class="line"></span><br><span class="line">	double calzc();</span><br><span class="line">	void setR(double r);</span><br><span class="line"></span><br><span class="line">private:</span><br><span class="line">	double R;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">double circular::calzc()</span><br><span class="line">&#123;</span><br><span class="line">	return 2 * PI * R;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void circular::setR(double r)</span><br><span class="line">&#123;</span><br><span class="line">	R = r;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	circular cel1;</span><br><span class="line">	cel1.setR(1.0);		//通过公有成员函数改变私有成员变量</span><br><span class="line">	cout &lt;&lt; &quot;周长：&quot;&lt;&lt;cel1.calzc()&lt;&lt;endl;</span><br><span class="line">	system(&quot;pause&quot;);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><em>斜线字体测试</em><br><strong>粗字体测试</strong></p>
-<p><code>int a;    //单行代码块测试</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//多行代码块测试</span><br><span class="line">#include &quot;stdio.h&quot;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="以下符号为分页符"><a href="#以下符号为分页符" class="headerlink" title="以下符号为分页符"></a>以下符号为分页符</h2><blockquote>
-<p>引用内容测试</p>
-</blockquote>
-<ul>
-<li>列表1<br>  列表1正文</li>
-<li>列表2<br>  列表2正文</li>
-<li>列表3<br>  列表3正文<a href="https://www.baidu.com/" target="_blank" rel="noopener">导航</a>    </li>
+<hr>
+<h1 id="1-2-属性和行为的权限"><a href="#1-2-属性和行为的权限" class="headerlink" title="1.2 属性和行为的权限"></a>1.2 属性和行为的权限</h1><ul>
+<li>　1、public:类内可以访问，类外可以访问。</li>
+<li>　2、protected:类内可以访问，类外不可以访问，基类可访问。</li>
+<li>　3、private:类内可以访问，类外不可以访问 。</li>
 </ul>
+<hr>
+<h1 id="1-3-struct和class的区别"><a href="#1-3-struct和class的区别" class="headerlink" title="1.3 struct和class的区别"></a>1.3 struct和class的区别</h1><p>　　区别：</p>
+<ul>
+<li>　struct 默认属性和行为为公有</li>
+<li>　class  默认属性和行为为私有<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">class c1</span><br><span class="line">&#123;</span><br><span class="line">	int a;  //默认为私有</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">struct c2</span><br><span class="line">&#123;</span><br><span class="line">	int a;	//默认为公有</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<hr>
+<h1 id="1-4-练习"><a href="#1-4-练习" class="headerlink" title="1.4 练习"></a>1.4 练习</h1><p>　　要求：设计立方体类，求出面积和体积，用成员函数判断两个立方体是否相等。<br>　　代码实现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br></pre></td><td class="code"><pre><span class="line">class cube</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	cube();</span><br><span class="line">	virtual ~cube();</span><br><span class="line"></span><br><span class="line">	void setL(int);</span><br><span class="line">	int getL();</span><br><span class="line"></span><br><span class="line">	void setW(int);</span><br><span class="line">	int getW();</span><br><span class="line"></span><br><span class="line">	void setH(int);</span><br><span class="line">	int getH();</span><br><span class="line"></span><br><span class="line">	int getarea();</span><br><span class="line">	int getval();</span><br><span class="line"></span><br><span class="line">	bool compear(cube &amp;);</span><br><span class="line"></span><br><span class="line">private:</span><br><span class="line">	int L;</span><br><span class="line">	int W;</span><br><span class="line">	int H;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">void cube::setL(int xl)</span><br><span class="line">&#123;</span><br><span class="line">	L = xl;</span><br><span class="line">&#125;</span><br><span class="line">int cube::getL()</span><br><span class="line">&#123;</span><br><span class="line">	return L;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void cube::setH(int xh)</span><br><span class="line">&#123;</span><br><span class="line">	H = xh;</span><br><span class="line">&#125;</span><br><span class="line">int cube::getH()</span><br><span class="line">&#123;</span><br><span class="line">	return H;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void cube::setW(int xw)</span><br><span class="line">&#123;</span><br><span class="line">	W = xw;</span><br><span class="line">&#125;</span><br><span class="line">int cube::getW()</span><br><span class="line">&#123;</span><br><span class="line">	return W;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int cube::getarea()</span><br><span class="line">&#123;</span><br><span class="line">	return W*H * 2 + W*L * 2 + H*L * 2;</span><br><span class="line">&#125;</span><br><span class="line">int cube::getval()</span><br><span class="line">&#123;</span><br><span class="line">	return W*H*L;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bool cube::compear(cube&amp; x)</span><br><span class="line">&#123;</span><br><span class="line">	if (W == x.W &amp;&amp; H == x.H &amp;&amp; L == x.H)</span><br><span class="line">	&#123;</span><br><span class="line">		return true;</span><br><span class="line">	&#125;</span><br><span class="line">	else</span><br><span class="line">	&#123;</span><br><span class="line">		return false;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	cube X1;</span><br><span class="line">	cube X2;</span><br><span class="line">	X1.setH(10);</span><br><span class="line">	X1.setL(10);</span><br><span class="line">	X1.setW(10);</span><br><span class="line">	</span><br><span class="line">	X2.setH(10);</span><br><span class="line">	X2.setL(10);</span><br><span class="line">	X2.setW(10);</span><br><span class="line"></span><br><span class="line">	cout &lt;&lt; &quot;X1面积:&quot; &lt;&lt; X1.getarea() &lt;&lt;endl;</span><br><span class="line">	cout &lt;&lt; &quot;X2面积:&quot; &lt;&lt; X2.getarea() &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">	cout &lt;&lt; &quot;X1体积:&quot; &lt;&lt; X1.getval() &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; &quot;X2体积:&quot; &lt;&lt; X2.getval() &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">	if (X1.compear(X2))</span><br><span class="line">	&#123;</span><br><span class="line">		cout &lt;&lt; &quot;is equ&quot; &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line">	else</span><br><span class="line">	&#123;</span><br><span class="line">		cout &lt;&lt; &quot;not equ&quot; &lt;&lt; endl;</span><br><span class="line">	&#125;	</span><br><span class="line">	system(&quot;pause&quot;);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="1-5-构造函数的分类及调用"><a href="#1-5-构造函数的分类及调用" class="headerlink" title="1.5 构造函数的分类及调用"></a>1.5 构造函数的分类及调用</h1><ul>
+<li>　分类<br>　　按参数分：有参调用与无参调用<br>　　按类型分：普通构造与拷贝构造 </li>
+<li>　调用方式<br>　　括号法<br>　　显示法<br>　　隐式转换法</li>
+<li>　注意：当其他类对象作为本类的成员，构造时先构造类的对象，再构造自身，析构的顺序相反。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">person (int a )  //普通有参构造函数</span><br><span class="line">&#123;</span><br><span class="line">	age = a;     </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">person (const person &amp;p )//拷贝构造函数</span><br><span class="line">&#123;</span><br><span class="line">	age = p.a;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void test()</span><br><span class="line">&#123;</span><br><span class="line">	//括号法</span><br><span class="line">	person p1;//默认构造函数调用</span><br><span class="line">	pesron p2(int 10);//有参调用</span><br><span class="line">	person p3(p2);//拷贝构造</span><br><span class="line">	</span><br><span class="line">	//显示法</span><br><span class="line">	person p1;</span><br><span class="line">	person p2 = person(10);//右边默认申请了一个匿名对象 ，程序结束后系统自动回收。</span><br><span class="line">	person p3 = person(p2);</span><br><span class="line">	</span><br><span class="line">	//隐式转换法</span><br><span class="line">	person p4 = 10;//相当于 person p4 = person(10);</span><br><span class="line">	person p5 = p4;//拷贝构造</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>　　深拷贝与浅拷贝：<br>　　浅拷贝：简单幅值拷贝操作。<br>　　深拷贝：在堆区申请空间，进行拷贝。主要解决浅拷贝带来的多次释放内存造成系统出错问题。<br>　　示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">person(const person &amp;p)//深拷贝构造函数，</span><br><span class="line">&#123;</span><br><span class="line">	m_age = p.m_age;  //浅拷贝</span><br><span class="line">	</span><br><span class="line">	m_height = new int (*p.m_height);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
 <p><img src="1.jpg" alt></p>
-<ul>
-<li>表格语句的上一行必须是空行</li>
-</ul>
-<p>/左对齐标题 / 右对齐标题 / 居中对齐标题 /<br>/ :——/ ——: / :——: /<br>/ 短文本 / 中等文本 / 稍微长一点的文本 /<br>/ 稍微长一点的文本 / 短文本 / 中等文本 /</p>
 
       
 
@@ -272,7 +289,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/third-post.html" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/08/28/C-核心编程-四-——类和对象/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -284,6 +301,16 @@
 </article>
 
   
+<nav id="article-nav">
+  
+  
+    <a href="/2019/08/28/C-核心编程—（-二-——函数/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">C++核心编程(三)——函数</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -305,7 +332,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一级标题"><span class="toc-number">1.</span> <span class="toc-text">一级标题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#二级标题"><span class="toc-number">1.1.</span> <span class="toc-text">二级标题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#三级标题"><span class="toc-number">1.1.1.</span> <span class="toc-text">三级标题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#以下符号为分页符"><span class="toc-number">1.2.</span> <span class="toc-text">以下符号为分页符</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-1-封装"><span class="toc-number">1.</span> <span class="toc-text">1.1 封装</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-2-属性和行为的权限"><span class="toc-number">2.</span> <span class="toc-text">1.2 属性和行为的权限</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-3-struct和class的区别"><span class="toc-number">3.</span> <span class="toc-text">1.3 struct和class的区别</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-4-练习"><span class="toc-number">4.</span> <span class="toc-text">1.4 练习</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-5-构造函数的分类及调用"><span class="toc-number">5.</span> <span class="toc-text">1.5 构造函数的分类及调用</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -352,7 +379,7 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
