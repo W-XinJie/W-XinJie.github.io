@@ -6,15 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2019 | Hexo</title>
+  <title>C++核心编程(五)——对象模型和this指针 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/2019/index.html">
+  <meta name="description" content="在C++中，成员变量和成员函数是分开存储的；this指针指向被调用的成员函数所属的对象。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++核心编程(五)——对象模型和this指针">
+<meta property="og:url" content="http://yoursite.com/2019/08/30/C-核心编程-五-——对象模型和this指针/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="在C++中，成员变量和成员函数是分开存储的；this指针指向被调用的成员函数所属的对象。">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-08-30T09:23:39.027Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="C++核心编程(五)——对象模型和this指针">
+<meta name="twitter:description" content="在C++中，成员变量和成员函数是分开存储的；this指针指向被调用的成员函数所属的对象。">
   
   
     <link rel="icon" href="/favicon.png">
@@ -148,277 +152,200 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-C-核心编程-五-——对象模型和this指针" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      C++核心编程(五)——对象模型和this指针
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/30/C-核心编程-五-——对象模型和this指针/" class="archive-article-date">
+
+        
+        <a href="/2019/08/30/C-核心编程-五-——对象模型和this指针/" class="archive-article-date">
   	<time datetime="2019-08-30T09:23:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-30</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/30/C-核心编程-五-——对象模型和this指针/">C++核心编程(五)——对象模型和this指针</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>　在C++中，成员变量和成员函数是分开存储的；this指针指向被调用的成员函数所属的对象。</p>
+<a id="more"></a>
+<p>#1.1 成员变量和成员函数分分开存储<br>　　在C++中，成员变量和成员函数是分开存储，只有非静态成员变量才和类的对象存在一个空间。<br>　　注意：空对象占用内存为一个字节，主要是为了区分空对象所占内存的位置<br>　　示例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class person</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	person()&#123;</span><br><span class="line">		m_a= 0;</span><br><span class="line">		&#125;</span><br><span class="line">	int m_a;//非静态成员变量，属于类的对象上</span><br><span class="line">	static int m_b;//静态成员变量，不属于类的对象上</span><br><span class="line">	void func&#123;</span><br><span class="line">	cout &lt;&lt; this -&gt;ma &lt;&lt;endl;</span><br><span class="line">	&#125;//非静态成员函数，不属于类的对象上。所有函数共享一个函数实例，通过this指针区分</span><br><span class="line">	static void func1&#123;&#125;//静态成员函数，不属于类的对象上</span><br><span class="line">&#125;</span><br><span class="line">int person::m_b = 0;//静态成员变量类内声明，类外初始化</span><br></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
-          
-          
+<hr>
+<h1 id="1-2-this指针"><a href="#1-2-this指针" class="headerlink" title="1.2 this指针"></a>1.2 this指针</h1><p>　　多个类型的对象，对于非静态成员函数共用一块代码。为了不同对象这块代码做区分，产生了this指针。<br>　　说明：<strong>this指针指向被调用的成员函数所属的对象</strong><br>　　注意：this指针是隐含在每一个非静态成员函数内的一种指针。<br>　　用途：</p>
+<ul>
+<li>　当形参和成员变量同名时，用this指针区分。</li>
+<li>　在类的非静态成员函数中返回对象本身，可使用 tetuen *this;<br>　　示例：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">class person</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	person(int age)   //区分形参和成员变量</span><br><span class="line">	&#123;</span><br><span class="line">		this-&gt;age = age;</span><br><span class="line">	&#125;</span><br><span class="line">	person&amp; personaddage(person &amp;p)</span><br><span class="line">	&#123;</span><br><span class="line">		this-&gt;age += p.age;</span><br><span class="line">		return *this;//thi指向对象指针，*this为对象本体。</span><br><span class="line">	//以值的方式返回会创建一个新的对象（从而进入构造函数进行再次初始化），而不是对象本身。</span><br><span class="line">	//p2.personaddage(p1)对象中age == 10;  </span><br><span class="line">	//以引用的方式返回不会创建新的对象。从而一直返回对象本身。</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	int age;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void test()</span><br><span class="line">&#123;</span><br><span class="line">	person p1(10);</span><br><span class="line">	person p2(10);</span><br><span class="line">	</span><br><span class="line">	//链式编程思想 p2.age == 40;</span><br><span class="line">	p2.personaddage(p1).personaddage(p1).personaddage(p1);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">```	</span><br><span class="line">---</span><br><span class="line"># 1.3 const修饰成员函数</span><br><span class="line">　　常函数：</span><br><span class="line">- 　成员函数后加const后称为常函数。</span><br><span class="line">- 　常函数内不可以修改成员属性。</span><br><span class="line">- 　成员属性加关键字mutable后，在常函数中依然可以修改。</span><br><span class="line">　　常对象：</span><br><span class="line">- 　声明对象前const称为常对象</span><br><span class="line">- 　常对象只能调用常函数</span><br><span class="line">　　示例：</span><br></pre></td></tr></table></figure>
 
+</li>
+</ul>
+<p>class person<br>{<br>public:<br>    int m_age;<br>    mutable int m_b; //特殊变量 ，即使在常函数中也能修改这个值</p>
+<pre><code>//this指针的本质为常指针： person * const this  
+//常函数本质,修饰的是this的指向，让指针指向的值不能修改：const person * const this  
+void showperson() const //常函数
+{
+    this -&gt;m_age = 10; //非法操作，常函数不能修改成员属性
+    this -&gt;m_b = 20;//合法操作，成员变量经过mutable修饰
+}</code></pre><p>}</p>
+<p>void test()<br>{<br>    const person p;<br>    //p.m_age = 100;非法操作<br>    p.m_b = 100;    //特殊成员变量的合法操作<br>    p.showperson();常对象调用常函数<br>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line"># 1.4 友元</span><br><span class="line">　　为了让类中的私有成员被外部全局函数、外部类、其他类中的成员函数访问的技术。</span><br><span class="line">　　友元关键字：friend</span><br></pre></td></tr></table></figure>
+
+<p>class building<br>{<br>    //不需要加限制属性<br>    friend void goodfriend( building &amp;b1);//全局函数做友元<br>    friend class name;                    //类做友元<br>    friend void name::getname();     //其他类的成员函数做友元<br>}</p>
+<p>void goodfriend( building &amp;b1);  //外部全局函数</p>
+<pre><code>---
+![](1.jpg)</code></pre>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/08/30/C-核心编程-五-——对象模型和this指针/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/28/C-核心编程-四-——类和对象/" class="archive-article-date">
-  	<time datetime="2019-08-28T08:47:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-28</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/08/28/C-核心编程-四-——类和对象/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">C++核心编程(四)——类和对象</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/28/C-核心编程-四-——类和对象/">C++核心编程(四)——类和对象</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-2-this指针"><span class="toc-number">1.</span> <span class="toc-text">1.2 this指针</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/28/C-核心编程—（-二-——函数/" class="archive-article-date">
-  	<time datetime="2019-08-28T08:15:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-28</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/28/C-核心编程—（-二-——函数/">C++核心编程(三)——函数</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/25/C-核心编程——引用-二/" class="archive-article-date">
-  	<time datetime="2019-08-25T13:42:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/25/C-核心编程——引用-二/">C++核心编程(二)——引用</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/25/C-核心编程————内存分区模型/" class="archive-article-date">
-  	<time datetime="2019-08-25T12:40:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/25/C-核心编程————内存分区模型/">C++核心编程(一)——内存分区模型</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/25/工作要求/" class="archive-article-date">
-  	<time datetime="2019-08-25T06:26:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/25/工作要求/">工作要求</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">生活</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/24/研二总体规划/" class="archive-article-date">
-  	<time datetime="2019-08-24T09:09:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/24/研二总体规划/">研二总体规划</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">生活</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -441,8 +368,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

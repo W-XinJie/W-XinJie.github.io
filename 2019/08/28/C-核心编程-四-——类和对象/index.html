@@ -9,6 +9,7 @@
   <title>C++核心编程(四)——类和对象 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="C++面向对象三大特征：封装、继承、多态。">
+<meta name="keywords" content="C++">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C++核心编程(四)——类和对象">
 <meta property="og:url" content="http://yoursite.com/2019/08/28/C-核心编程-四-——类和对象/index.html">
@@ -16,7 +17,7 @@
 <meta property="og:description" content="C++面向对象三大特征：封装、继承、多态。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://yoursite.com/2019/08/28/C-核心编程-四-——类和对象/1.jpg">
-<meta property="og:updated_time" content="2019-08-28T12:38:32.448Z">
+<meta property="og:updated_time" content="2019-08-29T12:31:36.167Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++核心编程(四)——类和对象">
 <meta name="twitter:description" content="C++面向对象三大特征：封装、继承、多态。">
@@ -176,20 +177,19 @@
       
         <p>　　C++面向对象三大特征：封装、继承、多态。</p>
 <a id="more"></a>
-<h1 id="1-1-封装"><a href="#1-1-封装" class="headerlink" title="1.1 封装"></a>1.1 封装</h1><p>　　意义：在设计类的时候，属性和 行为写在一起，表现事物。<br>　　语法：class 类名{ 访问权限： 属性 / 行为 };<br>　　示例：设计圆求周长</p>
+<h1 id="1-1-封装"><a href="#1-1-封装" class="headerlink" title="1.1 封装"></a>1.1 封装</h1><p>　　意义：在设计类的时候，属性和 行为写在一起，表现事物。<br>　　语法：class 类名{ 访问权限： 属性 / 行为 };<br>　　示例：设计圆求周长。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">using namespace std;</span><br><span class="line">const double PI = 3.14;</span><br><span class="line"></span><br><span class="line">class circular</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	circular();</span><br><span class="line">	virtual ~circular();</span><br><span class="line"></span><br><span class="line">	double calzc();</span><br><span class="line">	void setR(double r);</span><br><span class="line"></span><br><span class="line">private:</span><br><span class="line">	double R;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">double circular::calzc()</span><br><span class="line">&#123;</span><br><span class="line">	return 2 * PI * R;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void circular::setR(double r)</span><br><span class="line">&#123;</span><br><span class="line">	R = r;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	circular cel1;</span><br><span class="line">	cel1.setR(1.0);		//通过公有成员函数改变私有成员变量</span><br><span class="line">	cout &lt;&lt; &quot;周长：&quot;&lt;&lt;cel1.calzc()&lt;&lt;endl;</span><br><span class="line">	system(&quot;pause&quot;);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <hr>
 <h1 id="1-2-属性和行为的权限"><a href="#1-2-属性和行为的权限" class="headerlink" title="1.2 属性和行为的权限"></a>1.2 属性和行为的权限</h1><ul>
 <li>　1、public:类内可以访问，类外可以访问。</li>
 <li>　2、protected:类内可以访问，类外不可以访问，基类可访问。</li>
-<li>　3、private:类内可以访问，类外不可以访问 。</li>
+<li>　3、private:类内可以访问，类外不可以访问。</li>
 </ul>
 <hr>
-<h1 id="1-3-struct和class的区别"><a href="#1-3-struct和class的区别" class="headerlink" title="1.3 struct和class的区别"></a>1.3 struct和class的区别</h1><p>　　区别：</p>
-<ul>
-<li>　struct 默认属性和行为为公有</li>
-<li>　class  默认属性和行为为私有<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">class c1</span><br><span class="line">&#123;</span><br><span class="line">	int a;  //默认为私有</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">struct c2</span><br><span class="line">&#123;</span><br><span class="line">	int a;	//默认为公有</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="1-3-struct和class的区别"><a href="#1-3-struct和class的区别" class="headerlink" title="1.3 struct和class的区别"></a>1.3 struct和class的区别</h1><ul>
+<li>　struct 默认属性和行为为公有。</li>
+<li>　class  默认属性和行为为私有。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">class c1</span><br><span class="line">&#123;</span><br><span class="line">	int a;  //默认为私有</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">struct c2</span><br><span class="line">&#123;</span><br><span class="line">	int a;	//默认为公有</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
@@ -199,16 +199,26 @@
 
 <hr>
 <h1 id="1-5-构造函数的分类及调用"><a href="#1-5-构造函数的分类及调用" class="headerlink" title="1.5 构造函数的分类及调用"></a>1.5 构造函数的分类及调用</h1><ul>
-<li>　分类<br>　　按参数分：有参调用与无参调用<br>　　按类型分：普通构造与拷贝构造 </li>
-<li>　调用方式<br>　　括号法<br>　　显示法<br>　　隐式转换法</li>
+<li>　分类<br>　　按参数分：有参调用与无参调用。<br>　　按类型分：普通构造与拷贝构造 。</li>
+<li>　调用方式<br>　　括号法。<br>　　显示法。<br>　　隐式转换法。</li>
 <li>　注意：当其他类对象作为本类的成员，构造时先构造类的对象，再构造自身，析构的顺序相反。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">person (int a )  //普通有参构造函数</span><br><span class="line">&#123;</span><br><span class="line">	age = a;     </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">person (const person &amp;p )//拷贝构造函数</span><br><span class="line">&#123;</span><br><span class="line">	age = p.a;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void test()</span><br><span class="line">&#123;</span><br><span class="line">	//括号法</span><br><span class="line">	person p1;//默认构造函数调用</span><br><span class="line">	pesron p2(int 10);//有参调用</span><br><span class="line">	person p3(p2);//拷贝构造</span><br><span class="line">	</span><br><span class="line">	//显示法</span><br><span class="line">	person p1;</span><br><span class="line">	person p2 = person(10);//右边默认申请了一个匿名对象 ，程序结束后系统自动回收。</span><br><span class="line">	person p3 = person(p2);</span><br><span class="line">	</span><br><span class="line">	//隐式转换法</span><br><span class="line">	person p4 = 10;//相当于 person p4 = person(10);</span><br><span class="line">	person p5 = p4;//拷贝构造</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
-<p>　　深拷贝与浅拷贝：<br>　　浅拷贝：简单幅值拷贝操作。<br>　　深拷贝：在堆区申请空间，进行拷贝。主要解决浅拷贝带来的多次释放内存造成系统出错问题。<br>　　示例：</p>
+<p>　　深拷贝与浅拷贝：<br>　　浅拷贝：简单赋值拷贝操作。<br>　　深拷贝：在堆区申请空间，进行拷贝。主要解决浅拷贝带来的多次释放内存造成系统出错问题。<br>　　示例：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">person(const person &amp;p)//深拷贝构造函数，</span><br><span class="line">&#123;</span><br><span class="line">	m_age = p.m_age;  //浅拷贝</span><br><span class="line">	</span><br><span class="line">	m_height = new int (*p.m_height);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <hr>
+<h1 id="1-6-静态成员"><a href="#1-6-静态成员" class="headerlink" title="1.6 静态成员"></a>1.6 静态成员</h1><p>　　在成员前加关键字static,称为静态成员。<br>　　静态成员变量特性：</p>
+<ul>
+<li>　所有对象共享同一份数据</li>
+<li>　在编译阶段分配内存</li>
+<li>　在类内申明，内外初始化。<br>　　静态成员函数特性</li>
+<li>　所有对象共享同一函数</li>
+<li>　静态成员函数只能访问静态成员变量<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class person</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	static int m_a;</span><br><span class="line">	int m_b;</span><br><span class="line">	static void func()</span><br><span class="line">	&#123;</span><br><span class="line">		m_a = 100;//合法访问</span><br><span class="line">		//m_b = 100;//非法访问,静态成员函数不能访问非静态成员变量</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
 <p><img src="1.jpg" alt></p>
 
       
@@ -239,6 +249,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -303,6 +324,15 @@
   
 <nav id="article-nav">
   
+    <a href="/2019/08/30/C-核心编程-五-——对象模型和this指针/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          C++核心编程(五)——对象模型和this指针
+        
+      </div>
+    </a>
+  
   
     <a href="/2019/08/28/C-核心编程—（-二-——函数/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">C++核心编程(三)——函数</div>
@@ -332,7 +362,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-1-封装"><span class="toc-number">1.</span> <span class="toc-text">1.1 封装</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-2-属性和行为的权限"><span class="toc-number">2.</span> <span class="toc-text">1.2 属性和行为的权限</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-3-struct和class的区别"><span class="toc-number">3.</span> <span class="toc-text">1.3 struct和class的区别</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-4-练习"><span class="toc-number">4.</span> <span class="toc-text">1.4 练习</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-5-构造函数的分类及调用"><span class="toc-number">5.</span> <span class="toc-text">1.5 构造函数的分类及调用</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-1-封装"><span class="toc-number">1.</span> <span class="toc-text">1.1 封装</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-2-属性和行为的权限"><span class="toc-number">2.</span> <span class="toc-text">1.2 属性和行为的权限</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-3-struct和class的区别"><span class="toc-number">3.</span> <span class="toc-text">1.3 struct和class的区别</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-4-练习"><span class="toc-number">4.</span> <span class="toc-text">1.4 练习</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-5-构造函数的分类及调用"><span class="toc-number">5.</span> <span class="toc-text">1.5 构造函数的分类及调用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-6-静态成员"><span class="toc-number">6.</span> <span class="toc-text">1.6 静态成员</span></a></li></ol>
                     </div>
                 </span>
             </div>
