@@ -6,21 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>C++核心编程(五)——对象模型和this指针 | Hexo</title>
+  <title>C++核心编程—(六)——运算符重载 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在C++中，成员变量和成员函数是分开存储的；this指针指向被调用的成员函数所属的对象。">
+  <meta name="description" content="对已有运算符重新进行定义，赋予其另一种功能，以适应不同的数据类型。">
+<meta name="keywords" content="C++">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C++核心编程(五)——对象模型和this指针">
-<meta property="og:url" content="http://yoursite.com/2019/08/30/C-核心编程-五-——对象模型和this指针/index.html">
+<meta property="og:title" content="C++核心编程—(六)——运算符重载">
+<meta property="og:url" content="http://yoursite.com/2019/09/02/C-核心编程—-六-——运算符重载/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="在C++中，成员变量和成员函数是分开存储的；this指针指向被调用的成员函数所属的对象。">
+<meta property="og:description" content="对已有运算符重新进行定义，赋予其另一种功能，以适应不同的数据类型。">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://yoursite.com/2019/08/30/C-核心编程-五-——对象模型和this指针/1.jpg">
-<meta property="og:updated_time" content="2019-08-30T09:27:44.362Z">
+<meta property="og:image" content="http://yoursite.com/2019/09/02/C-核心编程—-六-——运算符重载/1.jpg">
+<meta property="og:updated_time" content="2019-09-02T13:22:02.809Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="C++核心编程(五)——对象模型和this指针">
-<meta name="twitter:description" content="在C++中，成员变量和成员函数是分开存储的；this指针指向被调用的成员函数所属的对象。">
-<meta name="twitter:image" content="http://yoursite.com/2019/08/30/C-核心编程-五-——对象模型和this指针/1.jpg">
+<meta name="twitter:title" content="C++核心编程—(六)——运算符重载">
+<meta name="twitter:description" content="对已有运算符重新进行定义，赋予其另一种功能，以适应不同的数据类型。">
+<meta name="twitter:image" content="http://yoursite.com/2019/09/02/C-核心编程—-六-——运算符重载/1.jpg">
   
   
     <link rel="icon" href="/favicon.png">
@@ -154,53 +155,62 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-C-核心编程-五-——对象模型和this指针" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-C-核心编程—-六-——运算符重载" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      C++核心编程(五)——对象模型和this指针
+      C++核心编程—(六)——运算符重载
     </h1>
   
 
         
-        <a href="/2019/08/30/C-核心编程-五-——对象模型和this指针/" class="archive-article-date">
-  	<time datetime="2019-08-30T09:23:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-30</time>
+        <a href="/2019/09/02/C-核心编程—-六-——运算符重载/" class="archive-article-date">
+  	<time datetime="2019-09-02T08:52:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-02</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>　　在C++中，成员变量和成员函数是分开存储的；this指针指向被调用的成员函数所属的对象。</p>
+        <p>　　对已有运算符重新进行定义，赋予其另一种功能，以适应不同的数据类型。</p>
 <a id="more"></a>
-<h1 id="1-1-成员变量和成员函数分开存储"><a href="#1-1-成员变量和成员函数分开存储" class="headerlink" title="1.1 成员变量和成员函数分开存储"></a>1.1 成员变量和成员函数分开存储</h1><p>　　在C++中，成员变量和成员函数是分开存储，只有非静态成员变量才和类的对象存在一个空间。<br>　　注意：空对象占用内存为一个字节，主要是为了区分空对象所占内存的位置<br>　　示例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class person</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	person()</span><br><span class="line">	&#123;</span><br><span class="line">		m_a= 0;</span><br><span class="line">	&#125;</span><br><span class="line">	int m_a;//非静态成员变量，属于类的对象上</span><br><span class="line">	static int m_b;//静态成员变量，不属于类的对象上</span><br><span class="line">	void func</span><br><span class="line">	&#123;</span><br><span class="line">		cout &lt;&lt; this -&gt;ma &lt;&lt;endl;</span><br><span class="line">	&#125;//非静态成员函数，不属于类的对象上。所有函数共享一个函数实例，通过this指针区分</span><br><span class="line">	static void func1&#123;&#125;//静态成员函数，不属于类的对象上</span><br><span class="line">&#125;</span><br><span class="line">int person::m_b = 0;//静态成员变量类内声明，类外初始化</span><br></pre></td></tr></table></figure>
+<p>#1.1 加号运算符重载<br>　　作用：实现两个自定义数据类型相加运算。<br>　　说明：所有重载都是在类中进行的重载，一般应用中都是对对象进行特殊操作时的运算符的扩展。<br>　　示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">class person</span><br><span class="line">&#123;</span><br><span class="line">	friend person operator+(person &amp;p, int a);</span><br><span class="line">private:</span><br><span class="line">	int m_a;</span><br><span class="line">	int m_b;</span><br><span class="line">	</span><br><span class="line">public:</span><br><span class="line"></span><br><span class="line">	person()</span><br><span class="line">	&#123;</span><br><span class="line">		m_a = 10;</span><br><span class="line">		m_b = 10;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	//相加功能函数实现的常规写法</span><br><span class="line">	person Aaddb(person &amp;p)</span><br><span class="line">	&#123;</span><br><span class="line">		person temp;</span><br><span class="line">		temp.m_a = this -&gt;m_a + p.m_a;</span><br><span class="line">		temp.m_b = this -&gt;m_b + p.m_b;</span><br><span class="line">		return temp;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	//使用重载实现</span><br><span class="line">	//对于这种实现，编译器起了个通用名称&apos;+&apos;</span><br><span class="line">	person operator+(person &amp;p)</span><br><span class="line">	&#123;</span><br><span class="line">		person temp;	</span><br><span class="line">		temp.m_a = this-&gt;m_a + p.m_a;	</span><br><span class="line">		temp.m_b = this-&gt;m_b + p.m_b;	</span><br><span class="line">		return temp;	</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//通过全局函数重载 ,在重载类中进行友元申明</span><br><span class="line">person operator+(person &amp;p, int a)</span><br><span class="line">&#123;</span><br><span class="line">	person temp;</span><br><span class="line">	temp.m_a = p1.m_a + a;</span><br><span class="line">	temp.m_b = p1.m_b + b;</span><br><span class="line">	return temp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void test()</span><br><span class="line">&#123;</span><br><span class="line">	preson p1;</span><br><span class="line">	person p2;</span><br><span class="line">	int a = 20;</span><br><span class="line">	</span><br><span class="line">	//对+号运算符重载</span><br><span class="line">	person p3 = p1+p2;</span><br><span class="line">	</span><br><span class="line">	//实际的内部代码</span><br><span class="line">	//person p3 =p1.operator+(p2);</span><br><span class="line">	</span><br><span class="line">	//对+号运算符重载</span><br><span class="line">	p4 = p3 + a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <hr>
-<h1 id="1-2-this指针"><a href="#1-2-this指针" class="headerlink" title="1.2 this指针"></a>1.2 this指针</h1><p>　　多个类型的对象，对于非静态成员函数共用一块代码。为了不同对象这块代码做区分，产生了this指针。<br>　　说明：<strong>this指针指向被调用的成员函数所属的对象</strong><br>　　注意：this指针是隐含在每一个非静态成员函数内的一种指针。<br>　　用途：</p>
+<p>#1.2 左移运算符重载<br>　　作用:可以输出自定义的数据类型<br>　　总结:重载左移运算符配合友元可以实现输出自定义数据类型。<br>　　示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">class person</span><br><span class="line">&#123;</span><br><span class="line">	friend ostream&amp; operator&lt;&lt;(ostream&amp; cout,person&amp; p);</span><br><span class="line"></span><br><span class="line">public:</span><br><span class="line">	person(int a,int b)</span><br><span class="line">	&#123;</span><br><span class="line">		this-&gt;m_a = a;</span><br><span class="line">		this-&gt;m_b = b;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">private:</span><br><span class="line">	int m_a;</span><br><span class="line">	int m_b;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ostream&amp; operator&lt;&lt;(ostream &amp;cout,person &amp;p)</span><br><span class="line">&#123;</span><br><span class="line">	cout&lt;&lt;p.m_a&lt;&lt;p.m_b&lt;&lt;endl;</span><br><span class="line">	terurn cout;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>#1.3 递增运算符重载<br>　　作用：通过重载递增运算符，实现自己的整形数据。<br>　　示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">class myinteger</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	int m_num;</span><br><span class="line">	myinteger()</span><br><span class="line">	&#123;</span><br><span class="line">		m_num = 0;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	//重载前置++运算符</span><br><span class="line">	myinteger&amp; operator++()</span><br><span class="line">	&#123;</span><br><span class="line">		m_num++;</span><br><span class="line">		return *this;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	//重载后置++运算符</span><br><span class="line">	myinteger&amp; operator++(int)//int表示占位数，可以区分前置和后置递增</span><br><span class="line">	&#123;</span><br><span class="line">		myinteger temp = *this;</span><br><span class="line">		m_num++;</span><br><span class="line">		return temp;</span><br><span class="line">	&#125;	</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>#1.4 赋值运算符重载<br>　　创建一个类时C++编译器至少会添加4个函数。</p>
 <ul>
-<li>　当形参和成员变量同名时，用this指针区分。</li>
-<li>　在类的非静态成员函数中返回对象本身，可使用 tetuen *this;<br>　　示例：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">class person</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	person(int age)   //区分形参和成员变量</span><br><span class="line">	&#123;</span><br><span class="line">		this-&gt;age = age;</span><br><span class="line">	&#125;</span><br><span class="line">	person&amp; personaddage(person &amp;p)</span><br><span class="line">	&#123;</span><br><span class="line">		this-&gt;age += p.age;</span><br><span class="line">		return *this;//thi指向对象指针，*this为对象本体。</span><br><span class="line">	//以值的方式返回会创建一个新的对象（从而进入构造函数进行再次初始化），而不是对象本身。</span><br><span class="line">	//p2.personaddage(p1)对象中age == 10;  </span><br><span class="line">	//以引用的方式返回不会创建新的对象。从而一直返回对象本身。</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	int age;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void test()</span><br><span class="line">&#123;</span><br><span class="line">	person p1(10);</span><br><span class="line">	person p2(10);</span><br><span class="line">	</span><br><span class="line">	//链式编程思想 p2.age == 40;</span><br><span class="line">	p2.personaddage(p1).personaddage(p1).personaddage(p1);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li>　1.默认构造函数(无参，函数体为空)。</li>
+<li>　2.默认析构函数(无参，函数体为空)。</li>
+<li>　3.默认拷贝函数，对属性进行值拷贝。</li>
+<li>　4.赋值运算符operator= ,对属性进行值拷贝。<br>　　注意:如果类中有属性指向堆区，做赋值操作时可能出现深浅拷贝问题。编译器提供的赋值运算符重载，会出现浅拷贝多次释放同一个堆区数据的问题，为了解决这个问题，可以对赋值运算符重载，进行深拷贝。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">class person</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	void person()</span><br><span class="line">	&#123;</span><br><span class="line">		m_age = 0;</span><br><span class="line">	</span><br><span class="line">	&#125;</span><br><span class="line">	~person()</span><br><span class="line">	&#123;</span><br><span class="line">		if(m_age != NULL)</span><br><span class="line">		&#123;</span><br><span class="line">			delete m_age;</span><br><span class="line">			m_age = NULL;</span><br><span class="line">		&#125;		</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	person&amp; operator=(person &amp;p)</span><br><span class="line">	&#123;</span><br><span class="line">		//编译器提供的是浅拷贝</span><br><span class="line">		m_age = p.m_age;</span><br><span class="line">		</span><br><span class="line">		应该先判断是否数属性在堆区，如果有先释放干净，然后进行深拷贝。</span><br><span class="line">		</span><br><span class="line">		if(m_age != NULL)</span><br><span class="line">		&#123;</span><br><span class="line">			delete m_age;</span><br><span class="line">			m_age = NULL;</span><br><span class="line">		&#125;</span><br><span class="line">		m_age = new int(p.m_age)   //深拷贝</span><br><span class="line">		</span><br><span class="line">		return *this;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	int *m_age;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void test()</span><br><span class="line">&#123;</span><br><span class="line">	person p1(10);</span><br><span class="line">	person p2(20);</span><br><span class="line">	p2 = p1;     //赋值操作</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
-<h1 id="1-3-const修饰成员函数"><a href="#1-3-const修饰成员函数" class="headerlink" title="1.3 const修饰成员函数"></a>1.3 const修饰成员函数</h1><p>　　常函数：</p>
+<hr>
+<p>#1.5 关系运算符重载<br>　　作用：重载关系运算符，可以让两个自定义类型数据进行对比操作<br>　　示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">bool operator==(person &amp;p)</span><br><span class="line">&#123;</span><br><span class="line">	//内部进行关系判断</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>#1.6 函数调用运算符重载</p>
 <ul>
-<li>　成员函数后加const后称为常函数。</li>
-<li>　常函数内不可以修改成员属性。</li>
-<li>　成员属性加关键字mutable后，在常函数中依然可以修改。<br>　　常对象：</li>
-<li>　声明对象前const称为常对象</li>
-<li>　常对象只能调用常函数<br>　　示例：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">class person</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	int m_age;</span><br><span class="line">	mutable int m_b; //特殊变量 ，即使在常函数中也能修改这个值</span><br><span class="line">	</span><br><span class="line">	//this指针的本质为常指针： person * const this  </span><br><span class="line">	//常函数本质,修饰的是this的指向，让指针指向的值不能修改：const person * const this  </span><br><span class="line">	void showperson() const //常函数</span><br><span class="line">	&#123;</span><br><span class="line">		this -&gt;m_age = 10; //非法操作，常函数不能修改成员属性</span><br><span class="line">		this -&gt;m_b = 20;//合法操作，成员变量经过mutable修饰</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void test()</span><br><span class="line">&#123;</span><br><span class="line">	const person p;</span><br><span class="line">	//p.m_age = 100;非法操作</span><br><span class="line">	p.m_b = 100;	//特殊成员变量的合法操作</span><br><span class="line">	p.showperson();常对象调用常函数</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li>　函数调用运算符()也可以重载。</li>
+<li>　由于重载后使用的方式非常像函数的调用，因此称为仿函数。</li>
+<li>　仿函数没有 固定写法。<br>　　示例：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">class myprint</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	void operator()(string text)</span><br><span class="line">	&#123;</span><br><span class="line">		cout&lt;&lt;text&lt;&lt;endl;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class myadd</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	int operator()(int num1,int mum2)</span><br><span class="line">	&#123;</span><br><span class="line">		return num1 + num2;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void test()</span><br><span class="line">&#123;</span><br><span class="line">	myprint printtest;</span><br><span class="line">	printtest(&quot;print test&quot;);//非常类似于函数调用</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void test2()</span><br><span class="line">&#123;</span><br><span class="line">	myadd my_add;</span><br><span class="line">	int ret = my_add(100,100);</span><br><span class="line">	cout&lt;&lt;ret&lt;&lt;endl;</span><br><span class="line">	</span><br><span class="line">	//使用匿名函数对象</span><br><span class="line">	cout &lt;&lt; myadd()(200,200)&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
-<hr>
-<h1 id="1-4-友元"><a href="#1-4-友元" class="headerlink" title="1.4 友元"></a>1.4 友元</h1><p>　　为了让类中的私有成员被外部全局函数、外部类、其他类中的成员函数访问的技术。<br>　　友元关键字：friend</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">class building</span><br><span class="line">&#123;</span><br><span class="line">	//不需要加限制属性</span><br><span class="line">	friend void goodfriend( building &amp;b1);//全局函数做友元</span><br><span class="line">	friend class name;					//类做友元</span><br><span class="line">	friend void name::getname(); 	//其他类的成员函数做友元</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void goodfriend( building &amp;b1);  //外部全局函数</span><br></pre></td></tr></table></figure>
-
 <hr>
 <p><img src="1.jpg" alt></p>
 
@@ -232,6 +242,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -282,7 +303,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/08/30/C-核心编程-五-——对象模型和this指针/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/09/02/C-核心编程—-六-——运算符重载/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -296,18 +317,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/09/02/C-核心编程—-六-——运算符重载/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          C++核心编程—(六)——运算符重载
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/08/28/C-核心编程-四-——类和对象/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">C++核心编程(四)——类和对象</div>
+    <a href="/2019/08/30/C-核心编程-五-——对象模型和this指针/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">C++核心编程(五)——对象模型和this指针</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -334,7 +346,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-1-成员变量和成员函数分开存储"><span class="toc-number">1.</span> <span class="toc-text">1.1 成员变量和成员函数分开存储</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-2-this指针"><span class="toc-number">2.</span> <span class="toc-text">1.2 this指针</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-3-const修饰成员函数"><span class="toc-number">3.</span> <span class="toc-text">1.3 const修饰成员函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-4-友元"><span class="toc-number">4.</span> <span class="toc-text">1.4 友元</span></a></li></ol>
+                    目录，不存在的…
                     </div>
                 </span>
             </div>
