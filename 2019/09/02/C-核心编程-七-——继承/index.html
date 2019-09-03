@@ -20,7 +20,8 @@
 <meta property="og:image" content="http://yoursite.com/2019/09/02/C-核心编程-七-——继承/2.jpg">
 <meta property="og:image" content="http://yoursite.com/2019/09/02/C-核心编程-七-——继承/3.jpg">
 <meta property="og:image" content="http://yoursite.com/2019/09/02/C-核心编程-七-——继承/4.jpg">
-<meta property="og:updated_time" content="2019-09-03T01:08:15.924Z">
+<meta property="og:image" content="http://yoursite.com/2019/09/02/C-核心编程-七-——继承/5.jpg">
+<meta property="og:updated_time" content="2019-09-03T01:18:07.548Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++核心编程(七)——继承">
 <meta name="twitter:description" content="继承是面向对象三大特性之一。能大量减少重复代码。">
@@ -180,7 +181,7 @@
       
         <p>　　继承是面向对象三大特性之一。能大量减少重复代码。</p>
 <a id="more"></a>
-<p>　　语法：class 子类：继承方式 父类<br>　　继承方式：公共继承、保护继承、私有继承<br><img src="1.jpg" alt></p>
+<p>　　语法：class 子类：继承方式 父类。<br>　　继承方式：公共继承、保护继承、私有继承。<br><img src="1.jpg" alt></p>
 <h1 id="1-1-继承中的对象模型与构造和析构顺序"><a href="#1-1-继承中的对象模型与构造和析构顺序" class="headerlink" title="1.1 继承中的对象模型与构造和析构顺序"></a>1.1 继承中的对象模型与构造和析构顺序</h1><p>　　特性：</p>
 <ul>
 <li>　父类中的所有非静态成员属性都会被子类继承下去。</li>
@@ -191,21 +192,22 @@
 <hr>
 <h1 id="1-2-继承中同名成员处理方式"><a href="#1-2-继承中同名成员处理方式" class="headerlink" title="1.2 继承中同名成员处理方式"></a>1.2 继承中同名成员处理方式</h1><p>　　如果子类中出现和父类的同名函数函数时，子类的同名成员函数会隐藏掉父类中所有的成员函数。如果访问父类中的同名成员函数时，需要加作用域。</p>
 <ul>
-<li>　访问子类同名成员 直接访问即可</li>
-<li>　访问父类同名成员 需要加作用域<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">void test()</span><br><span class="line">&#123;</span><br><span class="line">	son s;</span><br><span class="line">	cout&lt;&lt; s.m_a;	//访问子类成员</span><br><span class="line">	//通过子类对象访问父类中的同名成员，需要加作用域base::</span><br><span class="line">	cout&lt;&lt; s.base::m_a&lt;&lt;endl;	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void test2()</span><br><span class="line">&#123;</span><br><span class="line">	son s;</span><br><span class="line">	s.fun();	//直接调用，访问的是子类中的成员函数</span><br><span class="line">	</span><br><span class="line">	//调用父类中的同名成员函数</span><br><span class="line">	s.base::fun();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li>　访问子类同名成员 直接访问即可。</li>
+<li>　访问父类同名成员 需要加作用域。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">void test()</span><br><span class="line">&#123;</span><br><span class="line">	son s;</span><br><span class="line">	cout&lt;&lt; s.m_a;	//访问子类成员</span><br><span class="line">	//通过子类对象访问父类中的同名成员，需要加作用域base::</span><br><span class="line">	cout&lt;&lt; s.base::m_a&lt;&lt;endl;	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void test2()</span><br><span class="line">&#123;</span><br><span class="line">	son s;</span><br><span class="line">	s.fun();	//直接调用，访问的是子类中的成员函数</span><br><span class="line">	</span><br><span class="line">	//调用父类中的同名成员函数</span><br><span class="line">	s.base::fun();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
 <hr>
-<h1 id="1-3-多继承语法与菱形继承"><a href="#1-3-多继承语法与菱形继承" class="headerlink" title="1.3 多继承语法与菱形继承"></a>1.3 多继承语法与菱形继承</h1><p>　　C++允许一个类继承多个类<br>　　语法：class 子类:继承方式1 父类1, 继承方式2 父类2,…<br>　　多继承可能会引发父类中出现同名成员函数，需要加作用域加以区分。<br>　　注意：C++在实际开发中不建议使用多继承<br>　　菱形继承概念：</p>
+<h1 id="1-3-多继承语法与菱形继承"><a href="#1-3-多继承语法与菱形继承" class="headerlink" title="1.3 多继承语法与菱形继承"></a>1.3 多继承语法与菱形继承</h1><p>　　C++允许一个类继承多个类。<br>　　语法：class 子类:继承方式1 父类1, 继承方式2 父类2,…<br>　　多继承可能会引发父类中出现同名成员函数，需要加作用域加以区分。<br>　　注意：C++在实际开发中不建议使用多继承。<br>　　菱形继承概念：</p>
 <ul>
-<li>　两个派生类同时继承同一个基类</li>
-<li>　又有某个类同时继承这两个派生类<br><img src="2.jpg" alt><br>　　示例：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">void test1()</span><br><span class="line">&#123;</span><br><span class="line">	sheeptuo st;</span><br><span class="line">	st.sheep::m_age = 18;</span><br><span class="line">	st.tuo::m_age = 28;</span><br><span class="line">	//当菱形继承时，两个父类拥有相同的数据，需要加以作用域区分。</span><br><span class="line">	cout&lt;&lt;st.sheep::m_age&lt;&lt;endl;</span><br><span class="line">	cout&lt;&lt;st.tuo&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li>　两个派生类同时继承同一个基类。</li>
+<li>　又有某个类同时继承这两个派生类。<br><img src="2.jpg" alt><br>　　示例：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">void test1()</span><br><span class="line">&#123;</span><br><span class="line">	sheeptuo st;</span><br><span class="line">	st.sheep::m_age = 18;</span><br><span class="line">	st.tuo::m_age = 28;</span><br><span class="line">	//当菱形继承时，两个父类拥有相同的数据，需要加以作用域区分。</span><br><span class="line">	cout&lt;&lt;st.sheep::m_age&lt;&lt;endl;</span><br><span class="line">	cout&lt;&lt;st.tuo&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
-<p>　　从上例中可以知道，数据属性m_age只要有一份就可以了，菱形继承会导致有两份数据m_age，资源浪费。类的结构图如下：<br><img src="3.jpg" alt><br>　　利用虚继承能很好的解决菱形继承的问题。<br>　　语法：class 派生类:virtual 继承方式 基类 {};<br><code>class sheep:virtual public aninal{};</code>class tuo:virtual public animal{};<br>　　类结构图如下:</p>
-<h2 id><a href="#" class="headerlink" title></a><img src="4.jpg" alt></h2>
+<p>　　从上例中可以知道，数据属性m_age只要有一份就可以了，菱形继承会导致有两份数据m_age，资源浪费。类的结构图如下：<br><img src="3.jpg" alt><br>　　利用虚继承能很好的解决菱形继承的问题。<br>　　语法：class 派生类:virtual 继承方式 基类 {};<br><code>class sheep:virtual public aninal{};</code><br><code>class tuo:virtual public animal{};</code><br>　　类结构图如下:</p>
+<h2 id><a href="#" class="headerlink" title></a><img src="4.jpg" alt></h2><p><img src="5.jpg" alt></p>
+
       
 
       
@@ -308,6 +310,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2019/09/03/C-核心编程八——多态/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          C++核心编程(八)——多态
+        
+      </div>
+    </a>
   
   
     <a href="/2019/09/02/C-核心编程—-六-——运算符重载/" id="article-nav-older" class="article-nav-link-wrap">
