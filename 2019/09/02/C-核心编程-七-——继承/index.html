@@ -6,21 +6,25 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>C++核心编程(五)——对象模型和this指针 | Hexo</title>
+  <title>C++核心编程(七)——继承 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在C++中，成员变量和成员函数是分开存储的；this指针指向被调用的成员函数所属的对象。">
+  <meta name="description" content="继承是面向对象三大特性之一。能大量减少重复代码。">
+<meta name="keywords" content="C++">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C++核心编程(五)——对象模型和this指针">
-<meta property="og:url" content="http://yoursite.com/2019/08/30/C-核心编程-五-——对象模型和this指针/index.html">
+<meta property="og:title" content="C++核心编程(七)——继承">
+<meta property="og:url" content="http://yoursite.com/2019/09/02/C-核心编程-七-——继承/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="在C++中，成员变量和成员函数是分开存储的；this指针指向被调用的成员函数所属的对象。">
+<meta property="og:description" content="继承是面向对象三大特性之一。能大量减少重复代码。">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://yoursite.com/2019/08/30/C-核心编程-五-——对象模型和this指针/1.jpg">
-<meta property="og:updated_time" content="2019-08-30T09:27:44.362Z">
+<meta property="og:image" content="http://yoursite.com/2019/09/02/C-核心编程-七-——继承/1.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/09/02/C-核心编程-七-——继承/2.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/09/02/C-核心编程-七-——继承/3.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/09/02/C-核心编程-七-——继承/4.jpg">
+<meta property="og:updated_time" content="2019-09-03T01:08:15.924Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="C++核心编程(五)——对象模型和this指针">
-<meta name="twitter:description" content="在C++中，成员变量和成员函数是分开存储的；this指针指向被调用的成员函数所属的对象。">
-<meta name="twitter:image" content="http://yoursite.com/2019/08/30/C-核心编程-五-——对象模型和this指针/1.jpg">
+<meta name="twitter:title" content="C++核心编程(七)——继承">
+<meta name="twitter:description" content="继承是面向对象三大特性之一。能大量减少重复代码。">
+<meta name="twitter:image" content="http://yoursite.com/2019/09/02/C-核心编程-七-——继承/1.jpg">
   
   
     <link rel="icon" href="/favicon.png">
@@ -154,56 +158,54 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-C-核心编程-五-——对象模型和this指针" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-C-核心编程-七-——继承" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      C++核心编程(五)——对象模型和this指针
+      C++核心编程(七)——继承
     </h1>
   
 
         
-        <a href="/2019/08/30/C-核心编程-五-——对象模型和this指针/" class="archive-article-date">
-  	<time datetime="2019-08-30T09:23:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-30</time>
+        <a href="/2019/09/02/C-核心编程-七-——继承/" class="archive-article-date">
+  	<time datetime="2019-09-02T13:40:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-02</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>　　在C++中，成员变量和成员函数是分开存储的；this指针指向被调用的成员函数所属的对象。</p>
+        <p>　　继承是面向对象三大特性之一。能大量减少重复代码。</p>
 <a id="more"></a>
-<h1 id="1-1-成员变量和成员函数分开存储"><a href="#1-1-成员变量和成员函数分开存储" class="headerlink" title="1.1 成员变量和成员函数分开存储"></a>1.1 成员变量和成员函数分开存储</h1><p>　　在C++中，成员变量和成员函数是分开存储，只有非静态成员变量才和类的对象存在一个空间。<br>　　注意：空对象占用内存为一个字节，主要是为了区分空对象所占内存的位置<br>　　示例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class person</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	person()</span><br><span class="line">	&#123;</span><br><span class="line">		m_a= 0;</span><br><span class="line">	&#125;</span><br><span class="line">	int m_a;//非静态成员变量，属于类的对象上</span><br><span class="line">	static int m_b;//静态成员变量，不属于类的对象上</span><br><span class="line">	void func</span><br><span class="line">	&#123;</span><br><span class="line">		cout &lt;&lt; this -&gt;ma &lt;&lt;endl;</span><br><span class="line">	&#125;//非静态成员函数，不属于类的对象上。所有函数共享一个函数实例，通过this指针区分</span><br><span class="line">	static void func1&#123;&#125;//静态成员函数，不属于类的对象上</span><br><span class="line">&#125;</span><br><span class="line">int person::m_b = 0;//静态成员变量类内声明，类外初始化</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h1 id="1-2-this指针"><a href="#1-2-this指针" class="headerlink" title="1.2 this指针"></a>1.2 this指针</h1><p>　　多个类型的对象，对于非静态成员函数共用一块代码。为了不同对象这块代码做区分，产生了this指针。<br>　　说明：<strong>this指针指向被调用的成员函数所属的对象</strong><br>　　注意：this指针是隐含在每一个非静态成员函数内的一种指针。<br>　　用途：</p>
+<p>　　语法：class 子类：继承方式 父类<br>　　继承方式：公共继承、保护继承、私有继承<br><img src="1.jpg" alt></p>
+<h1 id="1-1-继承中的对象模型与构造和析构顺序"><a href="#1-1-继承中的对象模型与构造和析构顺序" class="headerlink" title="1.1 继承中的对象模型与构造和析构顺序"></a>1.1 继承中的对象模型与构造和析构顺序</h1><p>　　特性：</p>
 <ul>
-<li>　当形参和成员变量同名时，用this指针区分。</li>
-<li>　在类的非静态成员函数中返回对象本身，可使用 tetuen *this;<br>　　示例：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">class person</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	person(int age)   //区分形参和成员变量</span><br><span class="line">	&#123;</span><br><span class="line">		this-&gt;age = age;</span><br><span class="line">	&#125;</span><br><span class="line">	person&amp; personaddage(person &amp;p)</span><br><span class="line">	&#123;</span><br><span class="line">		this-&gt;age += p.age;</span><br><span class="line">		return *this;//thi指向对象指针，*this为对象本体。</span><br><span class="line">	//以值的方式返回会创建一个新的对象（从而进入构造函数进行再次初始化），而不是对象本身。</span><br><span class="line">	//p2.personaddage(p1)对象中age == 10;  </span><br><span class="line">	//以引用的方式返回不会创建新的对象。从而一直返回对象本身。</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	int age;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void test()</span><br><span class="line">&#123;</span><br><span class="line">	person p1(10);</span><br><span class="line">	person p2(10);</span><br><span class="line">	</span><br><span class="line">	//链式编程思想 p2.age == 40;</span><br><span class="line">	p2.personaddage(p1).personaddage(p1).personaddage(p1);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h1 id="1-3-const修饰成员函数"><a href="#1-3-const修饰成员函数" class="headerlink" title="1.3 const修饰成员函数"></a>1.3 const修饰成员函数</h1><p>　　常函数：</p>
-<ul>
-<li>　成员函数后加const后称为常函数。</li>
-<li>　常函数内不可以修改成员属性。</li>
-<li>　成员属性加关键字mutable后，在常函数中依然可以修改。<br>　　常对象：</li>
-<li>　声明对象前const称为常对象</li>
-<li>　常对象只能调用常函数<br>　　示例：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">class person</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	int m_age;</span><br><span class="line">	mutable int m_b; //特殊变量 ，即使在常函数中也能修改这个值</span><br><span class="line">	</span><br><span class="line">	//this指针的本质为常指针： person * const this  </span><br><span class="line">	//常函数本质,修饰的是this的指向，让指针指向的值不能修改：const person * const this  </span><br><span class="line">	void showperson() const //常函数</span><br><span class="line">	&#123;</span><br><span class="line">		this -&gt;m_age = 10; //非法操作，常函数不能修改成员属性</span><br><span class="line">		this -&gt;m_b = 20;//合法操作，成员变量经过mutable修饰</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void test()</span><br><span class="line">&#123;</span><br><span class="line">	const person p;</span><br><span class="line">	//p.m_age = 100;非法操作</span><br><span class="line">	p.m_b = 100;	//特殊成员变量的合法操作</span><br><span class="line">	p.showperson();常对象调用常函数</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li>　父类中的所有非静态成员属性都会被子类继承下去。</li>
+<li>　父类中的私有成员属性是被编译器给影藏了，因此是访问不到，但确实被继承下去了。<br>　　子类继承父类后，当创建子类对象时，也会调用父类的构造函数。先构造父类，再构造子类，析构的顺序与构造的顺序相反。<br>　　示例：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class base</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	int a;</span><br><span class="line">private:</span><br><span class="line">	int b;</span><br><span class="line">protected:</span><br><span class="line">	int c;</span><br><span class="line">&#125;</span><br><span class="line">class son:public base</span><br><span class="line"></span><br><span class="line">//结果为12</span><br><span class="line">void test()</span><br><span class="line">&#123;</span><br><span class="line">	cout&lt;&lt;sizeof(son)&lt;&lt;endl;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
 <hr>
-<h1 id="1-4-友元"><a href="#1-4-友元" class="headerlink" title="1.4 友元"></a>1.4 友元</h1><p>　　为了让类中的私有成员被外部全局函数、外部类、其他类中的成员函数访问的技术。<br>　　友元关键字：friend</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">class building</span><br><span class="line">&#123;</span><br><span class="line">	//不需要加限制属性</span><br><span class="line">	friend void goodfriend( building &amp;b1);//全局函数做友元</span><br><span class="line">	friend class name;					//类做友元</span><br><span class="line">	friend void name::getname(); 	//其他类的成员函数做友元</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void goodfriend( building &amp;b1);  //外部全局函数</span><br></pre></td></tr></table></figure>
+<h1 id="1-2-继承中同名成员处理方式"><a href="#1-2-继承中同名成员处理方式" class="headerlink" title="1.2 继承中同名成员处理方式"></a>1.2 继承中同名成员处理方式</h1><p>　　如果子类中出现和父类的同名函数函数时，子类的同名成员函数会隐藏掉父类中所有的成员函数。如果访问父类中的同名成员函数时，需要加作用域。</p>
+<ul>
+<li>　访问子类同名成员 直接访问即可</li>
+<li>　访问父类同名成员 需要加作用域<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">void test()</span><br><span class="line">&#123;</span><br><span class="line">	son s;</span><br><span class="line">	cout&lt;&lt; s.m_a;	//访问子类成员</span><br><span class="line">	//通过子类对象访问父类中的同名成员，需要加作用域base::</span><br><span class="line">	cout&lt;&lt; s.base::m_a&lt;&lt;endl;	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void test2()</span><br><span class="line">&#123;</span><br><span class="line">	son s;</span><br><span class="line">	s.fun();	//直接调用，访问的是子类中的成员函数</span><br><span class="line">	</span><br><span class="line">	//调用父类中的同名成员函数</span><br><span class="line">	s.base::fun();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+</li>
+</ul>
 <hr>
-<p><img src="1.jpg" alt></p>
+<h1 id="1-3-多继承语法与菱形继承"><a href="#1-3-多继承语法与菱形继承" class="headerlink" title="1.3 多继承语法与菱形继承"></a>1.3 多继承语法与菱形继承</h1><p>　　C++允许一个类继承多个类<br>　　语法：class 子类:继承方式1 父类1, 继承方式2 父类2,…<br>　　多继承可能会引发父类中出现同名成员函数，需要加作用域加以区分。<br>　　注意：C++在实际开发中不建议使用多继承<br>　　菱形继承概念：</p>
+<ul>
+<li>　两个派生类同时继承同一个基类</li>
+<li>　又有某个类同时继承这两个派生类<br><img src="2.jpg" alt><br>　　示例：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">void test1()</span><br><span class="line">&#123;</span><br><span class="line">	sheeptuo st;</span><br><span class="line">	st.sheep::m_age = 18;</span><br><span class="line">	st.tuo::m_age = 28;</span><br><span class="line">	//当菱形继承时，两个父类拥有相同的数据，需要加以作用域区分。</span><br><span class="line">	cout&lt;&lt;st.sheep::m_age&lt;&lt;endl;</span><br><span class="line">	cout&lt;&lt;st.tuo&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+</li>
+</ul>
+<p>　　从上例中可以知道，数据属性m_age只要有一份就可以了，菱形继承会导致有两份数据m_age，资源浪费。类的结构图如下：<br><img src="3.jpg" alt><br>　　利用虚继承能很好的解决菱形继承的问题。<br>　　语法：class 派生类:virtual 继承方式 基类 {};<br><code>class sheep:virtual public aninal{};</code>class tuo:virtual public animal{};<br>　　类结构图如下:</p>
+<h2 id><a href="#" class="headerlink" title></a><img src="4.jpg" alt></h2>
       
 
       
@@ -232,6 +234,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -282,7 +295,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/08/30/C-核心编程-五-——对象模型和this指针/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/09/02/C-核心编程-七-——继承/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -296,18 +309,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/09/02/C-核心编程—-六-——运算符重载/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          C++核心编程(六)——运算符重载
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/08/28/C-核心编程-四-——类和对象/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">C++核心编程(四)——类和对象</div>
+    <a href="/2019/09/02/C-核心编程—-六-——运算符重载/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">C++核心编程(六)——运算符重载</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -334,7 +338,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-1-成员变量和成员函数分开存储"><span class="toc-number">1.</span> <span class="toc-text">1.1 成员变量和成员函数分开存储</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-2-this指针"><span class="toc-number">2.</span> <span class="toc-text">1.2 this指针</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-3-const修饰成员函数"><span class="toc-number">3.</span> <span class="toc-text">1.3 const修饰成员函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-4-友元"><span class="toc-number">4.</span> <span class="toc-text">1.4 友元</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-1-继承中的对象模型与构造和析构顺序"><span class="toc-number">1.</span> <span class="toc-text">1.1 继承中的对象模型与构造和析构顺序</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-2-继承中同名成员处理方式"><span class="toc-number">2.</span> <span class="toc-text">1.2 继承中同名成员处理方式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-3-多继承语法与菱形继承"><span class="toc-number">3.</span> <span class="toc-text">1.3 多继承语法与菱形继承</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#null"><span class="toc-number">3.1.</span> <span class="toc-text"></span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
