@@ -6,26 +6,15 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>C++核心编程(八)——多态 | Hexo</title>
+  <title>Archives | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="接口的多种不同的实现方式即为多态，多态性是允许你将父对象设置成为一个或更多的他的子对象相等的技术，赋值之后，父对象就可以根据当前赋值给它的子对象的特性以不同的方式运作；简单的说，允许将子类类型的指针赋值给父类类型的指针。">
-<meta name="keywords" content="C++">
-<meta property="og:type" content="article">
-<meta property="og:title" content="C++核心编程(八)——多态">
-<meta property="og:url" content="http://yoursite.com/2019/09/03/C-核心编程八——多态/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/archives/page/2/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="接口的多种不同的实现方式即为多态，多态性是允许你将父对象设置成为一个或更多的他的子对象相等的技术，赋值之后，父对象就可以根据当前赋值给它的子对象的特性以不同的方式运作；简单的说，允许将子类类型的指针赋值给父类类型的指针。">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://yoursite.com/2019/09/03/C-核心编程八——多态/1.jpg">
-<meta property="og:image" content="http://yoursite.com/2019/09/03/C-核心编程八——多态/2.jpg">
-<meta property="og:image" content="http://yoursite.com/2019/09/03/C-核心编程八——多态/3.jpg">
-<meta property="og:image" content="http://yoursite.com/2019/09/03/C-核心编程八——多态/4.jpg">
-<meta property="og:image" content="http://yoursite.com/2019/09/03/C-核心编程八——多态/5.jpg">
-<meta property="og:updated_time" content="2019-09-03T08:38:44.431Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="C++核心编程(八)——多态">
-<meta name="twitter:description" content="接口的多种不同的实现方式即为多态，多态性是允许你将父对象设置成为一个或更多的他的子对象相等的技术，赋值之后，父对象就可以根据当前赋值给它的子对象的特性以不同的方式运作；简单的说，允许将子类类型的指针赋值给父类类型的指针。">
-<meta name="twitter:image" content="http://yoursite.com/2019/09/03/C-核心编程八——多态/1.jpg">
+<meta name="twitter:title" content="Hexo">
   
   
     <link rel="icon" href="/favicon.png">
@@ -159,249 +148,64 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-C-核心编程八——多态" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      C++核心编程(八)——多态
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2019" class="archive-year">2019</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2019/08/24/研二总体规划/" class="archive-article-date">
+  	<time datetime="2019-08-24T09:09:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-24</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2019/08/24/研二总体规划/">研二总体规划</a>
     </h1>
   
 
-        
-        <a href="/2019/09/03/C-核心编程八——多态/" class="archive-article-date">
-  	<time datetime="2019-09-03T01:22:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>　　接口的多种不同的实现方式即为多态，多态性是允许你将父对象设置成为一个或更多的他的子对象相等的技术，赋值之后，父对象就可以根据当前赋值给它的子对象的特性以不同的方式运作；简单的说，允许将子类类型的指针赋值给父类类型的指针。</p>
-<a id="more"></a>
-<h1 id="1-1-概念"><a href="#1-1-概念" class="headerlink" title="1.1 概念"></a>1.1 概念</h1><p>　　多态分为两类：</p>
-<ul>
-<li>　静态多态：函数重载、运算符重载、复用函数名。</li>
-<li>　动态多态：派生类和虚函数实现运行时多态。<br>　　静态多态和动态多态区别：</li>
-<li>　静态多态地址早绑定，即编译阶段确定地址。</li>
-<li>　动态多态地址晚绑定，即运行阶段确定地址。<br>　　动态多态满足的条件：</li>
-<li>　有继承关系</li>
-<li>　派生类重写基类的虚函数。<br>　　动态多态的使用：</li>
-<li>　父类的指针或者引用指向子类的对象。<br>　　示例：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">//基类</span><br><span class="line">class animal </span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	//虚函数</span><br><span class="line">	virtual void speak()</span><br><span class="line">	&#123;</span><br><span class="line">		cout&lt;&lt;&quot;动物在说话&quot;&lt;&lt;endl;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">//派生类</span><br><span class="line">class cat:public animal</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	//重写基类虚函数，virtual可写可不写，函数返回值类型、函数名、参数列表必须完全相同。 </span><br><span class="line">	virtual void speak()</span><br><span class="line">	&#123;</span><br><span class="line">		cout&lt;&lt;&quot;小猫在说话&quot;&lt;&lt;endl;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">void dospeak(animal &amp;animal) //animal &amp;animal = cat;</span><br><span class="line">&#123;</span><br><span class="line">	animal.speak();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void test()</span><br><span class="line">&#123;</span><br><span class="line">	cat c1;</span><br><span class="line">	dospeak(c1);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<p>　　<br>　　上例中animal类的结构图：<br><img src="1.jpg" alt></p>
-<p>　　上例中没有发生重写基类虚函数时cat类结构图：<br><img src="2.jpg" alt></p>
-<p>　　上例中重写后基类虚函数后cat类结构图：<br><img src="3.jpg" alt></p>
-<p>　　结论：</p>
-<ul>
-<li>　当派生类重写基类虚函数后，派生类中的虚函数表内部会替换成派生类的虚函数地址</li>
-<li>　当基类的指针或者引用指向子对象时，发生多态。<br><img src="4.jpg" alt></li>
-</ul>
-<hr>
-<h1 id="1-2-示例"><a href="#1-2-示例" class="headerlink" title="1.2 示例"></a>1.2 示例</h1><p>　　多态优点：</p>
-<ul>
-<li>　代码组织结构清晰</li>
-<li>　可读性强</li>
-<li>　利于前期和后期的扩展以及维护<br>　　利用多态技术实现两个操作数进行运算的计数器类。<br>　　说明：在真正的开发中提倡开闭原则，即对扩展进行开放、对修改进行关闭。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">//基类</span><br><span class="line">class adsCalculator</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	virtual int getresult()  //基类虚函数</span><br><span class="line">	&#123;</span><br><span class="line">		return 0;</span><br><span class="line">	&#125;</span><br><span class="line">	int num1;</span><br><span class="line">	int num2;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">//派生类1</span><br><span class="line">class addCalculator:public adsCalculator</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	int getresult()  //重写基类虚函数</span><br><span class="line">	&#123;</span><br><span class="line">		return num1 + num2;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">//派生类2</span><br><span class="line">class subCalculator:public adsCalculator</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	int getresult()  //重写基类虚函数</span><br><span class="line">	&#123;</span><br><span class="line">		return (num1 - num2);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">void test()</span><br><span class="line">&#123;	//原则：父类的指针指向子类的对象</span><br><span class="line">	adsCalculator * add1 = new (addCalculator); </span><br><span class="line">	add1-&gt;num1 = 100;</span><br><span class="line">	add1-&gt;num2 = 100;</span><br><span class="line">	cout &lt;&lt; add1 -&gt; getresult()&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//父类的引用指向子对象</span><br><span class="line">int doSub(adsCalculator &amp;Calculator)</span><br><span class="line">&#123;</span><br><span class="line">	int temp;</span><br><span class="line">	temp =  Calculator.num1 - Calculator.num2;</span><br><span class="line">	delete Calculator; 			//释放</span><br><span class="line">	return temp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void test2()</span><br><span class="line">&#123;</span><br><span class="line">	subCalculator sub1;</span><br><span class="line">	cout&lt;&lt;doSub(sub1)&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<hr>
-<h1 id="1-3-纯虚函数和抽象类"><a href="#1-3-纯虚函数和抽象类" class="headerlink" title="1.3 纯虚函数和抽象类"></a>1.3 纯虚函数和抽象类</h1><p>　　在多态中，通常基类中虚函数的实现毫无意义，主要是调用派生类的重写内容。因此可以将虚函数改为纯虚函数。<br>　　语法：virtual 返回值类型 函数名 (参数列表) = 0;<br>　　当类中有了纯虚函数，这个类称为抽象类。<br>　　抽象特点：</p>
-<ul>
-<li>　无法示例化对象。</li>
-<li>　子类必须重写抽象类中的纯虚函数，否则子类也属于抽象类。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class base</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	//只要有一个纯虚函数，这个类称为抽象类</span><br><span class="line">	virtual void func() = 0;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">void test()</span><br><span class="line">&#123;</span><br><span class="line">	//base b;      无法实例化对象</span><br><span class="line">	//new base;    无法实例化对象</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<hr>
-<h1 id="1-4-案例"><a href="#1-4-案例" class="headerlink" title="1.4 案例"></a>1.4 案例</h1><p>　　使用多态技术实现饮品制作。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line">class absDrinking</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	virtual void boil() = 0;   //纯虚函数</span><br><span class="line">	</span><br><span class="line">	virtual void brew() = 0;</span><br><span class="line">	</span><br><span class="line">	virtual void pourincup() = 0;</span><br><span class="line">	</span><br><span class="line">	virtual void putsomething() = 0;</span><br><span class="line">	</span><br><span class="line">	void makedrink()</span><br><span class="line">	&#123;</span><br><span class="line">		boil();</span><br><span class="line">		brew();</span><br><span class="line">		pourincup();</span><br><span class="line">		putsomething();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">class coffee:public absDrinking</span><br><span class="line">&#123;</span><br><span class="line">	void boil()	//纯虚函数</span><br><span class="line">	&#123;</span><br><span class="line">		cout &lt;&lt; &quot;coffee boil&quot;&lt;&lt;endl;</span><br><span class="line">	&#125;</span><br><span class="line">	void brew()</span><br><span class="line">	&#123;</span><br><span class="line">		cout &lt;&lt; &quot;coffee brew&quot;&lt;&lt;endl;</span><br><span class="line">	&#125;</span><br><span class="line">	void pourincup()</span><br><span class="line">	&#123;</span><br><span class="line">		cout &lt;&lt; &quot;coffee pourincup&quot;&lt;&lt;endl;</span><br><span class="line">	&#125;</span><br><span class="line">	void putsomething()</span><br><span class="line">	&#123;</span><br><span class="line">		cout &lt;&lt; &quot;coffee putsomething&quot;&lt;&lt;endl;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">class tea:public absDrinking</span><br><span class="line">&#123;</span><br><span class="line">	void boil()	//纯虚函数</span><br><span class="line">	&#123;</span><br><span class="line">		cout &lt;&lt; &quot;tea boil&quot;&lt;&lt;endl;</span><br><span class="line">	&#125;</span><br><span class="line">	void brew()</span><br><span class="line">	&#123;</span><br><span class="line">		cout &lt;&lt; &quot;tea brew&quot;&lt;&lt;endl;</span><br><span class="line">	&#125;</span><br><span class="line">	void pourincup()</span><br><span class="line">	&#123;</span><br><span class="line">		cout &lt;&lt; &quot;tea pourincup&quot;&lt;&lt;endl;</span><br><span class="line">	&#125;</span><br><span class="line">	void putsomething()</span><br><span class="line">	&#123;</span><br><span class="line">		cout &lt;&lt; &quot;tea putsomething&quot;&lt;&lt;endl;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">void dowork(absDrinking *abs)</span><br><span class="line">&#123;</span><br><span class="line">	abs -&gt;  makedrink();</span><br><span class="line">	delete abs;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void test()</span><br><span class="line">&#123;</span><br><span class="line">	dowork(new coffee);</span><br><span class="line">	cout&lt;&lt;_______________________________&lt;&lt;endl;</span><br><span class="line">	dowork(new tea);</span><br><span class="line">	</span><br><span class="line">	delete coffee;  //释放</span><br><span class="line">	delete tea;     //释放</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h1 id="1-5-虚析构和纯虚析构"><a href="#1-5-虚析构和纯虚析构" class="headerlink" title="1.5 虚析构和纯虚析构"></a>1.5 虚析构和纯虚析构</h1><p>　　多态使用时，如果子类中有数据开辟到了堆区，那么父类指针在释放时无法调用子类的析构代码。会造成内存泄露。<br>　　解决方式：将父类中的析构函数改成虚析构或者纯虚析构。<br>　　虚析构和纯虚析构共性：</p>
-<ul>
-<li>　可以解决父类指针释放子类对象。</li>
-<li>　二者都需要具体的函数实现。<br>　　虚析构和纯虚析构区别：</li>
-<li>　如果是纯虚析构，该类属于抽象类，无法实例化对象。<br>　　虚析构语法：  <code>virtual ~类名(){}</code><br>　　纯虚析构语法：<code>virtual ~类名() = 0;</code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">//父类指针在析构的时候不会调用子类中的析构函数，子类中如果有属性在堆区，会导致内存泄露</span><br><span class="line">~animal()</span><br><span class="line">&#123;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void test()</span><br><span class="line">&#123;</span><br><span class="line">	animal *animal1 = new cat(&quot;tom&quot;);</span><br><span class="line">	animal1-&gt;speak();</span><br><span class="line">	delete animal1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//虚析构函数，解决释放子类堆区数据问题</span><br><span class="line">virtual ~animal()</span><br><span class="line">&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//纯虚析构函数声明</span><br><span class="line">virtual ~animal() = 0;</span><br><span class="line"></span><br><span class="line">//纯虚析构函数实现</span><br><span class="line">animal::~animal()</span><br><span class="line">&#123;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h1 id="1-6-多态综合示例"><a href="#1-6-多态综合示例" class="headerlink" title="1.6 多态综合示例"></a>1.6 多态综合示例</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br></pre></td><td class="code"><pre><span class="line">/***************************computer类******************************/</span><br><span class="line">class computer</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	computer(cpu * cpu,discard * discard,memery * mem);</span><br><span class="line">	~computer();</span><br><span class="line">	void work();</span><br><span class="line"></span><br><span class="line">private:</span><br><span class="line">	cpu * m_cpu;</span><br><span class="line">	discard * m_discard;</span><br><span class="line">	memery * m_mem;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">computer::computer(cpu * cpu, discard * discard, memery * mem)</span><br><span class="line">&#123;</span><br><span class="line">	m_cpu = cpu;</span><br><span class="line">	m_discard = discard;</span><br><span class="line">	m_mem = mem;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">computer::~computer()</span><br><span class="line">&#123;</span><br><span class="line">	if (m_cpu != NULL)</span><br><span class="line">	&#123;</span><br><span class="line">		delete m_cpu;</span><br><span class="line">	&#125;</span><br><span class="line">	if (m_discard != NULL)</span><br><span class="line">	&#123;</span><br><span class="line">		delete m_discard;</span><br><span class="line">	&#125;</span><br><span class="line">	if (m_mem != NULL)</span><br><span class="line">	&#123;</span><br><span class="line">		delete m_mem;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void computer::work()</span><br><span class="line">&#123;</span><br><span class="line">	m_cpu-&gt;cpucacultor();</span><br><span class="line">	m_discard-&gt;display();</span><br><span class="line">	m_mem-&gt;memerying();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*****************************cpu类********************************/</span><br><span class="line">class cpu</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	cpu();</span><br><span class="line">	~cpu();</span><br><span class="line">	virtual void cpucacultor();</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">void cpu::cpucacultor()</span><br><span class="line">&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*****************************discard类********************************/</span><br><span class="line">class discard</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	discard();</span><br><span class="line">	~discard();</span><br><span class="line">	virtual void display();</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">void discard::display()</span><br><span class="line">&#123;	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*****************************memery********************************/</span><br><span class="line">class memery</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	memery();</span><br><span class="line">	~memery();</span><br><span class="line">	virtual void memerying();</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">void memery::memerying()</span><br><span class="line">&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*****************************intercpu类********************************/</span><br><span class="line">class intercpu :public cpu</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	intercpu();</span><br><span class="line">	~intercpu();</span><br><span class="line">	void cpucacultor();</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">void intercpu::cpucacultor()</span><br><span class="line">&#123;</span><br><span class="line">	cout &lt;&lt; &quot;inter cpu&quot; &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*****************************interdisacrd类********************************/</span><br><span class="line">class interdiscard :</span><br><span class="line">	public discard</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	interdiscard();</span><br><span class="line">	~interdiscard();</span><br><span class="line">	void display();</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">void lenvendiacard::display()</span><br><span class="line">&#123;</span><br><span class="line">	cout &lt;&lt; &quot;lenvendiacard display&quot;&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*****************************intermem类********************************/</span><br><span class="line">class intermem :public memery</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	intermem();</span><br><span class="line">	~intermem();</span><br><span class="line">	void memerying();</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">void intermem::memerying()</span><br><span class="line">&#123;</span><br><span class="line">	cout &lt;&lt; &quot;intermem&quot; &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*****************************lenvencpu类********************************/</span><br><span class="line">class lenvencpu : public cpu</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	lenvencpu();</span><br><span class="line">	~lenvencpu();</span><br><span class="line">	void cpucacultor();</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">void lenvencpu::cpucacultor()</span><br><span class="line">&#123;</span><br><span class="line">	cout &lt;&lt; &quot;lenvencpu cpu&quot; &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*****************************lenvendiacard类********************************/</span><br><span class="line">class lenvendiacard :</span><br><span class="line">	public discard</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	lenvendiacard();</span><br><span class="line">	~lenvendiacard();</span><br><span class="line">	void display();</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">void lenvendiacard::display()</span><br><span class="line">&#123;</span><br><span class="line">	cout &lt;&lt; &quot;lenvendiacard display&quot;&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*****************************lenvenmem类********************************/</span><br><span class="line">class lenvenmem :</span><br><span class="line">	public memery</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	lenvenmem();</span><br><span class="line">	~lenvenmem();</span><br><span class="line">	void memerying();</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">void lenvenmem::memerying()</span><br><span class="line">&#123;</span><br><span class="line">	cout &lt;&lt; &quot;lenvenmem&quot; &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**********************************************************************/</span><br><span class="line">void test()</span><br><span class="line">&#123;</span><br><span class="line">	cpu *intercpu1 = new intercpu;</span><br><span class="line">	discard *interdiscard1 = new interdiscard;</span><br><span class="line">	memery *intermem1 = new intermem;</span><br><span class="line">	computer *copmuter1 = new  computer(intercpu1, interdiscard1, intermem1);</span><br><span class="line">	copmuter1-&gt;work();</span><br><span class="line">	delete copmuter1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	test();</span><br><span class="line">	system(&quot;pause&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<p><img src="5.jpg" alt></p>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">生活</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/09/03/C-核心编程八——多态/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2019/09/05/C-核心编程—-—-九-——文件操作/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          C++核心编程(九)——文件操作
-        
-      </div>
-    </a>
   
   
-    <a href="/2019/09/02/C-核心编程-七-——继承/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">C++核心编程(七)——继承</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-1-概念"><span class="toc-number">1.</span> <span class="toc-text">1.1 概念</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-2-示例"><span class="toc-number">2.</span> <span class="toc-text">1.2 示例</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-3-纯虚函数和抽象类"><span class="toc-number">3.</span> <span class="toc-text">1.3 纯虚函数和抽象类</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-4-案例"><span class="toc-number">4.</span> <span class="toc-text">1.4 案例</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-5-虚析构和纯虚析构"><span class="toc-number">5.</span> <span class="toc-text">1.5 虚析构和纯虚析构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-6-多态综合示例"><span class="toc-number">6.</span> <span class="toc-text">1.6 多态综合示例</span></a></li></ol>
-                    </div>
-                </span>
-            </div>
-        </div>
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
+    
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/archives/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span>
+    </nav>
   
-
-  
-
-  
-
-
-
-
-
 
 
           </div>
@@ -424,8 +228,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
