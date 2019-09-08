@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | Hexo</title>
+  <title>C++高级编程(一)——函数模板 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/page/2/index.html">
+  <meta name="description" content="C++提供另一种编程思想称为泛型编程，主要利用的技术就是模板；C++提供两种模板机制函数模板和类模板。1.1 函数模板作用：建立一个通用函数，其函数返回值类型和参数类型可以不具体指定，用一个虚拟的类型来代替。语法：template为声明创建模板；class表示其后面的符号是一种数据类型，可用typename代替；T为通用的数据类型，可以替换为其他大写字母template&amp;lt;class T&amp;gt">
+<meta name="keywords" content="C++">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++高级编程(一)——函数模板">
+<meta property="og:url" content="http://yoursite.com/2019/09/08/C-高级编程-一-——函数模板/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="C++提供另一种编程思想称为泛型编程，主要利用的技术就是模板；C++提供两种模板机制函数模板和类模板。1.1 函数模板作用：建立一个通用函数，其函数返回值类型和参数类型可以不具体指定，用一个虚拟的类型来代替。语法：template为声明创建模板；class表示其后面的符号是一种数据类型，可用typename代替；T为通用的数据类型，可以替换为其他大写字母template&amp;lt;class T&amp;gt">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-09-08T12:39:05.710Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="C++高级编程(一)——函数模板">
+<meta name="twitter:description" content="C++提供另一种编程思想称为泛型编程，主要利用的技术就是模板；C++提供两种模板机制函数模板和类模板。1.1 函数模板作用：建立一个通用函数，其函数返回值类型和参数类型可以不具体指定，用一个虚拟的类型来代替。语法：template为声明创建模板；class表示其后面的符号是一种数据类型，可用typename代替；T为通用的数据类型，可以替换为其他大写字母template&amp;lt;class T&amp;gt">
   
   
     <link rel="icon" href="/favicon.png">
@@ -148,36 +153,81 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-C-高级编程-一-——函数模板" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/25/C-核心编程————内存分区模型/" class="archive-article-date">
-  	<time datetime="2019-08-25T12:40:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-25</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/25/C-核心编程————内存分区模型/">C++核心编程(一)——内存分区模型</a>
+    <h1 class="article-title" itemprop="name">
+      C++高级编程(一)——函数模板
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/09/08/C-高级编程-一-——函数模板/" class="archive-article-date">
+  	<time datetime="2019-09-08T09:17:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="C-提供另一种编程思想称为泛型编程，主要利用的技术就是模板；C-提供两种模板机制函数模板和类模板。"><a href="#C-提供另一种编程思想称为泛型编程，主要利用的技术就是模板；C-提供两种模板机制函数模板和类模板。" class="headerlink" title="C++提供另一种编程思想称为泛型编程，主要利用的技术就是模板；C++提供两种模板机制函数模板和类模板。"></a>C++提供另一种编程思想称为泛型编程，主要利用的技术就是模板；C++提供两种模板机制函数模板和类模板。</h2><h1 id="1-1-函数模板"><a href="#1-1-函数模板" class="headerlink" title="1.1 函数模板"></a>1.1 函数模板</h1><p>作用：建立一个通用函数，其函数返回值类型和参数类型可以不具体指定，用一个虚拟的类型来代替。<br>语法：template为声明创建模板；class表示其后面的符号是一种数据类型，可用typename代替；T为通用的数据类型，可以替换为其他大写字母<br><code>template&lt;class T&gt;</code>函数申明或定义`<br>说明：可用两种方式使用模板，1自动类型推导，2显示指定类型。<br>示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">template&lt;class T&gt;</span><br><span class="line">void fun(T &amp;a, T &amp;b)</span><br><span class="line">&#123;</span><br><span class="line">	cout&lt;&lt;a&lt;&lt;endl;</span><br><span class="line">	cout&lt;&lt;b&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void test()</span><br><span class="line">&#123;</span><br><span class="line">	int a = 10;</span><br><span class="line">	int b = 20;</span><br><span class="line">	fun(a,b);//自动类型推导</span><br><span class="line">	</span><br><span class="line">	fun&lt;int&gt;(a,b);//显示指定类型</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意事项：</strong></p>
+<ul>
+<li>自动类型推导需要推导出一致的数据类型才可以使用</li>
+<li>模板必须确定出T的数据类型才可以使用。</li>
+</ul>
+<p><strong>示例1：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">template&lt;class T&gt;</span><br><span class="line">void fun(T &amp;a, T &amp;b)</span><br><span class="line">&#123;</span><br><span class="line">	cout&lt;&lt;a&lt;&lt;endl;</span><br><span class="line">	cout&lt;&lt;b&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void test()</span><br><span class="line">&#123;</span><br><span class="line">	int a = 10;</span><br><span class="line">	int  b = 20;</span><br><span class="line">	char c = &apos;w&apos;;</span><br><span class="line">	fun(a,b);		//正确写法</span><br><span class="line">	//fun(a,c);		  错误写法</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例2：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">template&lt;class T&gt;</span><br><span class="line">void fun()</span><br><span class="line">&#123;</span><br><span class="line">	cout&lt;&lt; &quot;fun调用&quot;&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void test()</span><br><span class="line">&#123;</span><br><span class="line">	//fun(); 错误调用，不能确定出T的数据类型</span><br><span class="line">	fun&lt;int&gt;();//正确调用</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="1-2-函数模板案例"><a href="#1-2-函数模板案例" class="headerlink" title="1.2 函数模板案例"></a>1.2 函数模板案例</h1><p><strong>案例描述</strong></p>
+<ul>
+<li>利用函数模板封装一个排序的函数，可以对不同的数据类型数组进行排序。</li>
+<li>排序规则从大到小，算法为选择排序。</li>
+<li>分别使用int数组，char数组验证。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">//交换函数模板</span><br><span class="line">template&lt;class T&gt;</span><br><span class="line">void swap(T &amp;a, T &amp;b)</span><br><span class="line">&#123;</span><br><span class="line">	T temp;</span><br><span class="line">	temp = a;</span><br><span class="line">	a = b;</span><br><span class="line">	b = temp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//排序函数模板</span><br><span class="line">template&lt;class&gt;</span><br><span class="line">void sort(T arry[],int lenth)</span><br><span class="line">&#123;</span><br><span class="line">	for(int i = 0;i &lt; lenth;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		int max = i;</span><br><span class="line">		for(int j = i+1 ; j&lt; lenth;j++)</span><br><span class="line">		&#123;</span><br><span class="line">			if(arry[max]　&lt; arry[j]　)</span><br><span class="line">				max = j;</span><br><span class="line">		&#125;</span><br><span class="line">		if(max != i)</span><br><span class="line">		&#123;</span><br><span class="line">			swap(arry[i],arry[max]);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">template&lt;class T&gt;</span><br><span class="line">void printfarry(T arry,int lenth)</span><br><span class="line">&#123;</span><br><span class="line">	for (int i = 0;i&lt;lenth;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		cout&lt;&lt;arry[i]&lt;&lt;endl;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//char类型测试</span><br><span class="line">void test1()</span><br><span class="line">&#123;</span><br><span class="line">	char arry[] =&quot;qwlnhd&quot;;</span><br><span class="line">	int lenth = sizeof(arry)/sizeof(char);	</span><br><span class="line">	sort(arry,lenth)</span><br><span class="line">	printfarry(arry,lenth);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//int类型测试</span><br><span class="line">void test2()</span><br><span class="line">&#123;</span><br><span class="line">	int arry[] = &#123;6,4,9,8,2,7,3&#125;;</span><br><span class="line">	int lenth = sizeof(array)/sizeof(int);</span><br><span class="line">	sort(arry,lenth)</span><br><span class="line">	printfarry(arry,lenth);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h1 id="1-3-普通函数与函数模板的区别"><a href="#1-3-普通函数与函数模板的区别" class="headerlink" title="1.3 普通函数与函数模板的区别"></a>1.3 普通函数与函数模板的区别</h1><p>普通模板与函数模板的区别：</p>
+<ul>
+<li></li>
+</ul>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -189,99 +239,124 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/09/08/C-高级编程-一-——函数模板/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/25/工作要求/" class="archive-article-date">
-  	<time datetime="2019-08-25T06:26:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-25</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/09/08/C-核心编程-十-——职工人员管理系统/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">C++核心编程(十)——职工人员管理系统</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/25/工作要求/">工作要求</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">生活</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#C-提供另一种编程思想称为泛型编程，主要利用的技术就是模板；C-提供两种模板机制函数模板和类模板。"><span class="toc-number">1.</span> <span class="toc-text">C++提供另一种编程思想称为泛型编程，主要利用的技术就是模板；C++提供两种模板机制函数模板和类模板。</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-1-函数模板"><span class="toc-number"></span> <span class="toc-text">1.1 函数模板</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-2-函数模板案例"><span class="toc-number"></span> <span class="toc-text">1.2 函数模板案例</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-3-普通函数与函数模板的区别"><span class="toc-number"></span> <span class="toc-text">1.3 普通函数与函数模板的区别</span></a>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/24/研二总体规划/" class="archive-article-date">
-  	<time datetime="2019-08-24T09:09:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-24</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/24/研二总体规划/">研二总体规划</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">生活</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span>
-    </nav>
   
+
+  
+
+
+
+
+
 
 
           </div>
@@ -304,8 +379,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
