@@ -17,7 +17,7 @@
 <meta property="og:description" content="程序运行时产生的数据都属于临时数据，程序一旦运行结束都会被释放，通过文件可以将数据持久化。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://yoursite.com/2019/09/05/C-核心编程—-—-九-——文件操作/1.jpg">
-<meta property="og:updated_time" content="2019-09-05T02:03:49.151Z">
+<meta property="og:updated_time" content="2019-09-05T02:17:05.931Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++核心编程(九)——文件操作">
 <meta name="twitter:description" content="程序运行时产生的数据都属于临时数据，程序一旦运行结束都会被释放，通过文件可以将数据持久化。">
@@ -177,42 +177,77 @@
       
         <p>　　程序运行时产生的数据都属于临时数据，程序一旦运行结束都会被释放，通过文件可以将数据持久化。</p>
 <a id="more"></a>
-<p>　　C++中对文件操作需要包含头文件<fsteram><br>　　文件类型分为两种:</fsteram></p>
+<p>　　C++中对文件操作需要包含头文件 &lt; fsteram &gt;</p>
+<p>　　<strong>文件类型分为两种:</strong></p>
 <ul>
 <li>　1、文本文件：文件以文本的ASCII码的形式存储在计算机中。</li>
-<li>　2、二进制文件：文件以文本的二进制形式存储在计算机中。<br>　　操作文件的三大类：</li>
+<li>　2、二进制文件：文件以文本的二进制形式存储在计算机中。</li>
+</ul>
+<p>　　<strong>操作文件的三大类：</strong></p>
+<ul>
 <li>　1、ofstream:写操作</li>
 <li>　2、ifstream:读操作</li>
-<li>　3、fstream:读写操作<h1 id="1-1-写操作步骤"><a href="#1-1-写操作步骤" class="headerlink" title="1.1 写操作步骤"></a>1.1 写操作步骤</h1></li>
+<li>　3、fstream:读写操作</li>
+</ul>
+<hr>
+<h1 id="1-1-写操作步骤"><a href="#1-1-写操作步骤" class="headerlink" title="1.1 写操作步骤"></a>1.1 写操作步骤</h1><ul>
 <li>　1、包含头文件<br><code>#include&lt;fstream&gt;</code></li>
 <li>　2、创建流对象<br><code>ofstream ofs;</code></li>
 <li>　3、打开文件<br><code>ofs.open(&quot;文件路径&quot;,打开方式);</code></li>
 <li>　4、写数据<br><code>ofs&lt;&lt;&quot;写入的数据&quot;;</code></li>
-<li>　5、关闭文件<br><code>ofs.close();</code><br>　　文件打开方式：</li>
+<li>　5、关闭文件<br><code>ofs.close();</code></li>
 </ul>
-<p>/ 打开方式 / 解释 /<br>/ :——:/ :——: /<br>/ ios::in / 以读打开 /<br>/ ios::out / 以写打开 /<br>/ ios::ate / 初始位置:文件尾 /<br>/ ios::app / 追加方式写文件 /<br>/ ios::trunc / 如果文件存在先删除,再创建 /<br>/ ios::binary / 二进制方式 /</p>
+<p>　　<strong>文件打开方式:</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">打开方式</th>
+<th align="center">解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">ios::in</td>
+<td align="center">以读打开</td>
+</tr>
+<tr>
+<td align="center">ios::out</td>
+<td align="center">以写打开</td>
+</tr>
+<tr>
+<td align="center">ios::ate</td>
+<td align="center">初始位置:文件尾</td>
+</tr>
+<tr>
+<td align="center">ios::app</td>
+<td align="center">追加方式写文件</td>
+</tr>
+<tr>
+<td align="center">ios::trunc</td>
+<td align="center">如果文件存在先删除,再创建</td>
+</tr>
+<tr>
+<td align="center">ios::binary</td>
+<td align="center">二进制方式</td>
+</tr>
+</tbody></table>
+<hr>
 <h1 id="1-2-读操作步骤"><a href="#1-2-读操作步骤" class="headerlink" title="1.2 读操作步骤"></a>1.2 读操作步骤</h1><ul>
-<li><p>　1、包含头文件<br><code>#include&lt;fstream&gt;</code></p>
-</li>
-<li><p>　2、创建流对象<br><code>ifstream ifs;</code></p>
-</li>
-<li><p>　3、打开文件,判断文件是否打开成功<br><code>ifs.open(&quot;文件路径&quot;,打开方式);</code></p>
-</li>
-<li><p>　4、读数据<br>　　四种方式读取</p>
-</li>
-<li><p>　5、关闭文件<br><code>ofs.close();</code></p>
-</li>
-<li><p>　1、按逐字节读取：</p>
+<li>　1、包含头文件<br><code>#include&lt;fstream&gt;</code></li>
+<li>　2、创建流对象<br><code>ifstream ifs;</code></li>
+<li>　3、打开文件,判断文件是否打开成功<br><code>ifs.open(&quot;文件路径&quot;,打开方式);</code></li>
+<li>　4、读数据<br>　　四种方式读取</li>
+<li>　5、关闭文件<br><code>ofs.close();</code></li>
+</ul>
+<p>　　1、按逐字节读取：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">char buf[1024] = &#123;0&#125;;</span><br><span class="line">while(ifs &gt;&gt; buf)</span><br><span class="line">&#123;</span><br><span class="line">	cout &lt;&lt; buf &lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ifs.close();</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>　2、按行读取：</p>
+
+<p>　　2、按行读取：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">char buf[1024] = &#123;0&#125;;</span><br><span class="line">while(ifs.getline(buf,sizeof(buf)))</span><br><span class="line">&#123;</span><br><span class="line">	cout&lt;&lt; buf &lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ifs.close();</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>　3、按string格式读取</p>
+
+<p>　　3、按string格式读取</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">string buf;</span><br><span class="line">while(ifs.getline(ifs,buf))</span><br><span class="line">&#123;</span><br><span class="line">	cout &lt;&lt; buf &lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-</li>
-</ul>
+<hr>
 <p><img src="1.jpg" alt></p>
 
       
@@ -317,6 +352,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2019/09/08/C-核心编程-十-——职工人员管理系统/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          C++核心编程(十)——职工人员管理系统
+        
+      </div>
+    </a>
   
   
     <a href="/2019/09/03/C-核心编程八——多态/" id="article-nav-older" class="article-nav-link-wrap">
