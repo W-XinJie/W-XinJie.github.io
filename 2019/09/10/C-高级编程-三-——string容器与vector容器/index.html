@@ -6,15 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: C++ | Hexo</title>
+  <title>C++高级编程(三)——string容器与vector容器 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/tags/C/index.html">
+  <meta name="description" content="C++除了面向对象编程思想还有泛型编程思想，其目的就是为了提升代码的复用性。">
+<meta name="keywords" content="C++">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++高级编程(三)——string容器与vector容器">
+<meta property="og:url" content="http://yoursite.com/2019/09/10/C-高级编程-三-——string容器与vector容器/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="C++除了面向对象编程思想还有泛型编程思想，其目的就是为了提升代码的复用性。">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/2019/09/10/C-高级编程-三-——string容器与vector容器/1.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/09/10/C-高级编程-三-——string容器与vector容器/2.jpg">
+<meta property="og:updated_time" content="2019-09-10T15:14:31.743Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="C++高级编程(三)——string容器与vector容器">
+<meta name="twitter:description" content="C++除了面向对象编程思想还有泛型编程思想，其目的就是为了提升代码的复用性。">
+<meta name="twitter:image" content="http://yoursite.com/2019/09/10/C-高级编程-三-——string容器与vector容器/1.jpg">
   
   
     <link rel="icon" href="/favicon.png">
@@ -148,36 +156,373 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-C-高级编程-三-——string容器与vector容器" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      C++高级编程(三)——string容器与vector容器
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/10/C-高级编程-三-——string容器与vector容器/" class="archive-article-date">
+
+        
+        <a href="/2019/09/10/C-高级编程-三-——string容器与vector容器/" class="archive-article-date">
   	<time datetime="2019-09-10T08:13:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-10</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/10/C-高级编程-三-——string容器与vector容器/">C++高级编程(三)——string容器与vector容器</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>　　C++除了<strong>面向对象编程</strong>思想还有<strong>泛型编程</strong>思想，其目的就是为了提升代码的复用性。</p>
+<a id="more"></a>
+<h1 id="1-1-STL的概念"><a href="#1-1-STL的概念" class="headerlink" title="1.1 STL的概念"></a>1.1 STL的概念</h1><ul>
+<li>　STL(standard template library)即标准模板库。</li>
+<li>　STL广义上分为：容器(container)、算法(algorithm)、迭代器(iterator)。</li>
+<li>　容器和算法之前通过迭代器进行无缝连接。</li>
+<li>　STL大部分代码都采用的函数模板或者类模板。<br>　　<strong>六大组件：</strong></li>
+<li>　容器：各种数据结构，如vector、list、string、deque、set、map等，用来存放数据。</li>
+<li>　算法：如sort、find、copy、for_each等。</li>
+<li>　迭代器：衔接容器和算法。</li>
+<li>　仿函数：行为类似函数，可作为算法的某种策略。</li>
+<li>　适配器：修饰容器、迭代器、仿函数。</li>
+<li>　空间适配器：负责空间配置与管理。<br>　　<strong>迭代器种类：</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">种类</th>
+<th align="center">功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">输入迭代器</td>
+<td align="center">对数据只读访问</td>
+</tr>
+<tr>
+<td align="center">输出迭代器</td>
+<td align="center">对数据只写访问</td>
+</tr>
+<tr>
+<td align="center">前向迭代器</td>
+<td align="center">读写操作，并能向前推进</td>
+</tr>
+<tr>
+<td align="center"><strong>双向迭代器</strong></td>
+<td align="center">读写操作，并能前后向操作</td>
+</tr>
+<tr>
+<td align="center"><strong>随机访问迭代器</strong></td>
+<td align="center">读写操作，可以跳跃的方式访问任意数据</td>
+</tr>
+<tr>
+<td align="center">—</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"># 1.3 string容器</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">本质：</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">- 　string是C++风格的字符串，本质是一个类。</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">string和char*的区别:</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">- 　char*是一个指针</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">- 　string 是一个类，类内部封装了char<em>,管理这个字符串，是个char</em>型的容器。</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><strong>string构造函数：</strong></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>string();//创建空字符串，如 string str;</code></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>string(const char* s);//用字符串s初始化</code></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>string(const string &amp;str);</code></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>string(int n,char c);//使用n个字符初始化</code></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><strong>string赋值操作：</strong></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>string&amp; operator=(const char *s);</code></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>string&amp; operator=(const string &amp;s;</code></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>string&amp; operator=(char c);</code></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>string&amp; assign(const char *s);</code></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>string&amp; assign(const char *s,int n);//把字符串s的前n个字符赋给当前字符串</code></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>string&amp; assign(const string &amp;s);</code></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>string&amp; assign(int n,chat c);//n个字符c赋给当前字符串</code></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><strong>string叠加操作：</strong></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>string&amp; operator+=(const char *str);</code></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>string&amp; operator+=(const char c);</code></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>string&amp; operator+=(const string &amp;str);</code></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>string&amp; append(const char *s);//把字符串s连接到当前字符串尾部</code></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>string&amp; append(const char *s,int n);</code></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>string&amp; append(const string &amp;s);</code></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>string&amp; append(const string &amp;s,int pos,int n);</code></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><strong>string查找和替换操作：</strong></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>int find(const string &amp;str,int pos = 0) const;//const表示这个成员函数返回的this指针不能修改类中的成员变量</code></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>int find(const char *s,int pos = 0) const;</code></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>int find(const char *s,int pos,int n) const;//查找s前n个字符第一次出现的位置</code></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>int find(const char c,int pos = 0) const;</code></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>int rfind(const string &amp;str,int pos = npos) const;//从右往左查找</code></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>int rfind(const char *str,int pos = npos) const;</code></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>int rfind(const char *str,int pos,int n) const;</code></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>int rfind(const char c,int pos = 0) const;</code></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>string&amp; replace(int pos,int n,const string &amp;str);</code></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>string&amp; replace(int pos,int n,const char *s);</code></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><strong>string字符串比较：</strong></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>int conpare(const string &amp;s) const;</code></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>int conpare(const char *s) const;</code></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><strong>string字符串存取：</strong></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>char&amp; operator[](int n);</code></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>char&amp; at(int n);</code></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><strong>string插入和删除：</strong></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>string&amp; insert(int pos,const char *s);</code></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>string&amp; insert(int pos,const string &amp;s);</code></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>string&amp; insert(int pos,int n,char c);</code></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>string&amp; erase(int pos, int npos);</code></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><strong>string获取子串：</strong></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>string substr(int pos = 0,int n = npos) const;</code></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">—</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"># 1.4 vector容器</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><strong>功能：</strong></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">- 　vector数据结构和数组非常相似，也称为单端数组；vector容器的迭代器是支持随机访问的迭代器。</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><strong>vertor与普通数组的区别：</strong></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">- 　普通数组是静态空间，vector可以动态扩展。</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><strong>动态扩展：</strong></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">- 　并不是在原有空间之后续接新空间，而是找更大的内存空间，然后将原数据拷贝新空间，释放原空间。</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><img src="1.jpg" alt></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><strong>构造函数原型：</strong></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>vector&lt;T&gt; v;</code></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>vector(v.begin(),v.end());</code></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>vector(n,elem);//拷贝n个elem</code></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>vector(const vector *vec);  //拷贝构造函数</code></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<p>　　<strong>ector容量和大小：</strong><br><code>empty();</code><br><code>capacity();</code><br><code>size();</code><br><code>resize(int num);</code><br><code>resize(int num,elem)</code></p>
+<p><strong>vector插入与删除：</strong><br><code>push_back(ele);</code><br><code>pop_back();</code><br><code>insert(const_iterator pos,ele);//迭代器指向的位置pos插入元素ele</code><br><code>insert(const_iterator pos,int count,ele);</code><br><code>erase(const_iterator pos);</code><br><code>erase(const_iterator start,const_iterator end);</code><br><code>clear()</code></p>
+<p>　　<strong>vector数据存取：</strong><br><code>at(int idx);</code><br><code>operator[];</code><br><code>front();//返回容器中的第一个元素</code><br><code>back();</code></p>
+<p>　　<strong>vector存放自定义数组：</strong><br>　　示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">class person</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	person(string name,int age)</span><br><span class="line">	&#123;</span><br><span class="line">		this-&gt;m_name = name;</span><br><span class="line">		this-&gt;m_age = age;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	string name;</span><br><span class="line">	int age;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">void test()</span><br><span class="line">&#123;</span><br><span class="line">	vector&lt;person&gt; v;    	//对象</span><br><span class="line">	person p1(&quot;w1&quot;,50);</span><br><span class="line">	person p2(&quot;w2&quot;,40);</span><br><span class="line">	person p3(&quot;w3&quot;,50);	</span><br><span class="line">	person p4(&quot;w4&quot;,20);	</span><br><span class="line">	person p5(&quot;w5&quot;,10);</span><br><span class="line">	</span><br><span class="line">	//向容器中添加数据</span><br><span class="line">	v.push_back(p1);</span><br><span class="line">	v.push_back(p2);</span><br><span class="line">	v.push_back(p3);</span><br><span class="line">	v.push_back(p4);</span><br><span class="line">	v.push_back(p5);	</span><br><span class="line">	</span><br><span class="line">	//遍历容器元素</span><br><span class="line">	for(vector&lt;person&gt;::iterator it = v.begin(); it!=v.end();it++)</span><br><span class="line">	&#123;</span><br><span class="line">		cout&lt;&lt;(*it).m_name&lt;&lt;(*it).m_age &lt;&lt;endl;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void test1()</span><br><span class="line">&#123;</span><br><span class="line">	vector&lt;person *&gt; v;   //对象指针</span><br><span class="line">	person p1(&quot;w1&quot;,50);</span><br><span class="line">	person p2(&quot;w2&quot;,40);</span><br><span class="line">	person p3(&quot;w3&quot;,50);	</span><br><span class="line">	person p4(&quot;w4&quot;,20);	</span><br><span class="line">	person p5(&quot;w5&quot;,10);</span><br><span class="line">	</span><br><span class="line">	//向容器中添加数据</span><br><span class="line">	v.push_back(&amp;p1);</span><br><span class="line">	v.push_back(&amp;p2);</span><br><span class="line">	v.push_back(&amp;p3);</span><br><span class="line">	v.push_back(&amp;p4);</span><br><span class="line">	v.push_back(&amp;p5);	</span><br><span class="line">	</span><br><span class="line">	//遍历容器元素</span><br><span class="line">	for(vector&lt;person *&gt;::iterator it = v.begin(); it!=v.end();it++)</span><br><span class="line">	&#123;</span><br><span class="line">		cout&lt;&lt;(*it)-&gt;m_name&lt;&lt;(*it)-&gt;m_age &lt;&lt;endl;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
-          
+<p>　　<strong>vector互换容器：</strong><br><code>swap(vec);//将vec本本容器元素互换</code><br>　　<strong>vector预留空间：</strong><br>　　说明：如果数据量够大，可以一开始利用reserve预留空间，以免系统重复进行动态内存申请。<br><code>reserve(int len);</code></p>
+<p>　　<strong>vector容器嵌套容器：</strong><br>　　示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">void test()</span><br><span class="line">&#123;</span><br><span class="line">	vector&lt;vector &lt;int&gt;&gt; v;</span><br><span class="line">	</span><br><span class="line">	//创建小容器</span><br><span class="line">	vector&lt;int&gt; v1;</span><br><span class="line">	vector&lt;int&gt; v2;</span><br><span class="line">	vector&lt;int&gt; v3;</span><br><span class="line">	vector&lt;int&gt; v4;</span><br><span class="line"></span><br><span class="line">	//第一次插入数据</span><br><span class="line">	for(i=0;i&lt;4;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		v1.push_back(i);</span><br><span class="line">		v2.push_back(i+1);</span><br><span class="line">		v3.push_back(i+2);</span><br><span class="line">		v4.push_back(i+3);		</span><br><span class="line">	&#125;</span><br><span class="line">	//第二次插入数据</span><br><span class="line">	v.push_back(v1);</span><br><span class="line">	v.push_back(v2);</span><br><span class="line">	v.push_back(v3);</span><br><span class="line">	v.push_back(v4);</span><br><span class="line">	</span><br><span class="line">	//遍历</span><br><span class="line">	for(vector&lt;vector&lt;int&gt;&gt;::iterator it = v.begin(); it!=v.end();it++ )</span><br><span class="line">	&#123;</span><br><span class="line">		for(vector&lt;int&gt; vit = (*it).begin(); vit!=(*it).end();vit++)</span><br><span class="line">		&#123;</span><br><span class="line">			cout&lt;&lt;(*it)&lt;&lt;endl;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p><img src="2.jpg" alt></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -189,365 +534,124 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/09/10/C-高级编程-三-——string容器与vector容器/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/10/C-高级编程-二-——模板案例/" class="archive-article-date">
-  	<time datetime="2019-09-10T01:20:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-10</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/09/10/C-高级编程-二-——模板案例/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">C++高级编程(二)——模板案例</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/10/C-高级编程-二-——模板案例/">C++高级编程(二)——模板案例</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-1-STL的概念"><span class="toc-number">1.</span> <span class="toc-text">1.1 STL的概念</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/08/C-高级编程-一-——函数模板/" class="archive-article-date">
-  	<time datetime="2019-09-08T09:17:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-08</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/08/C-高级编程-一-——函数模板/">C++高级编程(一)——模板</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/08/C-核心编程-十-——职工人员管理系统/" class="archive-article-date">
-  	<time datetime="2019-09-08T06:52:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/08/C-核心编程-十-——职工人员管理系统/">C++核心编程(十)——职工人员管理系统</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/05/C-核心编程—-—-九-——文件操作/" class="archive-article-date">
-  	<time datetime="2019-09-05T01:19:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/05/C-核心编程—-—-九-——文件操作/">C++核心编程(九)——文件操作</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/03/C-核心编程八——多态/" class="archive-article-date">
-  	<time datetime="2019-09-03T01:22:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/03/C-核心编程八——多态/">C++核心编程(八)——多态</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/02/C-核心编程-七-——继承/" class="archive-article-date">
-  	<time datetime="2019-09-02T13:40:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/02/C-核心编程-七-——继承/">C++核心编程(七)——继承</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/02/C-核心编程—-六-——运算符重载/" class="archive-article-date">
-  	<time datetime="2019-09-02T08:52:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/02/C-核心编程—-六-——运算符重载/">C++核心编程(六)——运算符重载</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/30/C-核心编程-五-——对象模型和this指针/" class="archive-article-date">
-  	<time datetime="2019-08-30T09:23:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/30/C-核心编程-五-——对象模型和this指针/">C++核心编程(五)——对象模型和this指针</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/28/C-核心编程-四-——类和对象/" class="archive-article-date">
-  	<time datetime="2019-08-28T08:47:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/28/C-核心编程-四-——类和对象/">C++核心编程(四)——类和对象</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/tags/C/page/2/">2</a><a class="extend next" rel="next" href="/tags/C/page/2/">Next &raquo;</a>
-    </nav>
-  
 
 
           </div>
@@ -570,9 +674,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
