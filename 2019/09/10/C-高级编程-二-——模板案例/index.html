@@ -6,15 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: C++ | Hexo</title>
+  <title>C++高级编程(二)——模板案例 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/tags/C/index.html">
+  <meta name="description" content="本案例实现一个通用的数组类。">
+<meta name="keywords" content="C++">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++高级编程(二)——模板案例">
+<meta property="og:url" content="http://yoursite.com/2019/09/10/C-高级编程-二-——模板案例/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="本案例实现一个通用的数组类。">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/2019/09/10/C-高级编程-二-——模板案例/1.jpg">
+<meta property="og:updated_time" content="2019-09-10T03:35:07.596Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="C++高级编程(二)——模板案例">
+<meta name="twitter:description" content="本案例实现一个通用的数组类。">
+<meta name="twitter:image" content="http://yoursite.com/2019/09/10/C-高级编程-二-——模板案例/1.jpg">
   
   
     <link rel="icon" href="/favicon.png">
@@ -148,36 +155,76 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-C-高级编程-二-——模板案例" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      C++高级编程(二)——模板案例
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/10/C-高级编程-二-——模板案例/" class="archive-article-date">
+
+        
+        <a href="/2019/09/10/C-高级编程-二-——模板案例/" class="archive-article-date">
   	<time datetime="2019-09-10T01:20:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-10</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/10/C-高级编程-二-——模板案例/">C++高级编程(二)——模板案例</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本案例实现一个通用的数组类。</p>
+<a id="more"></a>
+<h1 id="1-1-案例功能"><a href="#1-1-案例功能" class="headerlink" title="1.1 案例功能"></a>1.1 案例功能</h1><p><strong>功能如下：</strong></p>
+<ul>
+<li>对内置数据类型以及自定义数据类型的数据进行存储。</li>
+<li>将数组中的数据存储到堆区。</li>
+<li>构造函数中可以传入数组的容量。</li>
+<li>提供对应的拷贝构造函数以及operator=防止浅拷贝问题。</li>
+<li>提供尾插法和尾删法对数组中的数据进行增加和删除。</li>
+<li>可以通过下标方式访问数组中的元素。</li>
+<li>可以获取数组中当前元素的个数和数组容量。</li>
+</ul>
+<hr>
+<h1 id="1-2-案例程序"><a href="#1-2-案例程序" class="headerlink" title="1.2 案例程序"></a>1.2 案例程序</h1><p><strong>类模板实现代码：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br></pre></td><td class="code"><pre><span class="line">template&lt;class T&gt;   						//模板声明</span><br><span class="line">class myarray</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	myarray(int capacity)  						//普通构造函数</span><br><span class="line">	&#123;</span><br><span class="line">		this-&gt;m_capacity = capacity;</span><br><span class="line">		this-&gt;m_size = 0;</span><br><span class="line">		this-&gt;address = new T[this-&gt;m_capacity]; //内存申请</span><br><span class="line">	&#125;</span><br><span class="line">	myarray(const myarray &amp; arr) //拷贝构造函数</span><br><span class="line">	&#123;</span><br><span class="line">		this-&gt;m_capacity = arr.m_capacity;</span><br><span class="line">		this-&gt;m_size = arr.m_size;</span><br><span class="line">		</span><br><span class="line">		//深拷贝 </span><br><span class="line">		this-&gt;address = new T[arr.m_capacity];//开辟内存</span><br><span class="line">		for (int i = 0; i &lt; arr.m_size; i++)  //数据拷贝</span><br><span class="line">		&#123;</span><br><span class="line">			this-&gt;address[i] = arr.address[i];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	myarray&amp; operator=(const myarray &amp; arry)   //=重载</span><br><span class="line">	&#123;</span><br><span class="line">		if (this-&gt;address != NULL)</span><br><span class="line">		&#123;</span><br><span class="line">			delete[] this-&gt;address;</span><br><span class="line">			this-&gt;address = NULL;</span><br><span class="line">			this-&gt;m_size = 0;</span><br><span class="line">			this-&gt;m_capacity = 0;</span><br><span class="line">		&#125;</span><br><span class="line">		this-&gt;m_size = arry.m_size;</span><br><span class="line">		this-&gt;m_capacity = arry.m_capacity;</span><br><span class="line"></span><br><span class="line">		this-&gt;address = new T[arry.m_capacity];//开辟内存</span><br><span class="line">		for (int i = 0; i &lt; this-&gt;m_size; i++)</span><br><span class="line">		&#123;</span><br><span class="line">			this-&gt;address[i] = arry.address[i];</span><br><span class="line">		&#125;</span><br><span class="line">		return *this;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	~myarray()</span><br><span class="line">	&#123;</span><br><span class="line">		if (this-&gt;address != NULL)</span><br><span class="line">		&#123;</span><br><span class="line">			delete[] this-&gt;address;</span><br><span class="line">			this-&gt;address = NULL;</span><br><span class="line">			this-&gt;m_size = 0;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	int getsize()</span><br><span class="line">	&#123;</span><br><span class="line">		return this-&gt;m_size;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	int getcapacity()</span><br><span class="line">	&#123;</span><br><span class="line">		return this-&gt;m_capacity;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	//尾插法</span><br><span class="line">	void push_back(const T &amp; val)</span><br><span class="line">	&#123;</span><br><span class="line">		if (this-&gt;m_size == this-&gt;m_capacity)</span><br><span class="line">		&#123;</span><br><span class="line">			return ;</span><br><span class="line">		&#125;</span><br><span class="line">		this-&gt;address[this-&gt;m_size] = val;  //尾端插入数据</span><br><span class="line">		this-&gt;m_size++;  //数组大小加一</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	//尾删法</span><br><span class="line">	void pop_back()</span><br><span class="line">	&#123;</span><br><span class="line">		if (this-&gt;m_size == 0)</span><br><span class="line">		&#123;</span><br><span class="line">			return;</span><br><span class="line">		&#125;</span><br><span class="line">		this-&gt;m_size--;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	//重载[]，通过下标访问数组元素</span><br><span class="line">	T&amp; operator[](int i)</span><br><span class="line">	&#123; </span><br><span class="line">		return this-&gt;address[i];</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">private:</span><br><span class="line">	int m_capacity;  //数组长度</span><br><span class="line">	int m_size;      //数组大小</span><br><span class="line">	T * address;     //数组容量</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
-          
+<p><strong>类模板测试：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line">/********************自定义数组测试********************************/</span><br><span class="line"></span><br><span class="line">class person    </span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	person() &#123;&#125;;</span><br><span class="line">	person(string name,int age)</span><br><span class="line">	&#123;</span><br><span class="line">		this-&gt;m_name = name;</span><br><span class="line">		this-&gt;m_age = age;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	string m_name;</span><br><span class="line">	int m_age;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">void printpersonarry(myarray&lt;person&gt; &amp;arry)</span><br><span class="line">&#123;</span><br><span class="line">	for (int i = 0; i &lt; arry.getsize(); i++)</span><br><span class="line">	&#123;</span><br><span class="line">		cout &lt;&lt; &quot;姓名：&quot; &lt;&lt; arry[i].m_name &lt;&lt; &quot; 年龄:&quot; &lt;&lt; arry[i].m_age &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void test()</span><br><span class="line">&#123;</span><br><span class="line">	person p1(&quot;w1&quot;, 18);</span><br><span class="line">	person p2(&quot;w2&quot;, 17);</span><br><span class="line">	person p3(&quot;w3&quot;, 16);</span><br><span class="line">	person p4(&quot;w4&quot;, 15);</span><br><span class="line">	person p5(&quot;w5&quot;, 14);</span><br><span class="line">	person p6(&quot;w6&quot;, 13);</span><br><span class="line"></span><br><span class="line">	myarray&lt;person&gt; p(10);</span><br><span class="line">	p.push_back(p1);</span><br><span class="line">	p.push_back(p2);</span><br><span class="line">	p.push_back(p3);</span><br><span class="line">	p.push_back(p4);</span><br><span class="line">	p.push_back(p5);</span><br><span class="line">	p.push_back(p6);</span><br><span class="line"></span><br><span class="line">	cout&lt;&lt; &quot;数组容量:&quot;&lt;&lt; p.getcapacity() &lt;&lt; endl;</span><br><span class="line">	cout&lt;&lt; &quot;数组大小:&quot; &lt;&lt; p.getsize() &lt;&lt; endl;</span><br><span class="line">	printpersonarry(p);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/********************整形数组测试********************************/</span><br><span class="line"></span><br><span class="line">void printfarray(myarray&lt;int&gt; &amp;arry)//打印int数组元素</span><br><span class="line">&#123;</span><br><span class="line">	for (int i = 0; i &lt; arry.getsize(); i++)</span><br><span class="line">	&#123;</span><br><span class="line">		cout &lt;&lt; arry[i] &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">void test()</span><br><span class="line">&#123;</span><br><span class="line">	myarray&lt;int&gt; arry1(10);        //定义数组类型、个数</span><br><span class="line">	for (int i = 0; i &lt; 5; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		arry1.push_back(i);        //尾插法数据输入</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	cout&lt;&lt; &quot;数组容量:&quot;&lt;&lt; arry1.getcapacity() &lt;&lt; endl;</span><br><span class="line">	cout&lt;&lt; &quot;数组大小:&quot; &lt;&lt; arry1.getsize() &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">	printfarray(arry1);            //打印输出</span><br><span class="line">	arry1.pop_back();              //尾删数据                     </span><br><span class="line">	cout &lt;&lt; &quot;尾删后数据&quot; &lt;&lt; endl;</span><br><span class="line">	printfarray(arry1);			   //打印输出</span><br><span class="line"></span><br><span class="line">	myarray&lt;int&gt; arry2(arry1);     //拷贝方式定义数组</span><br><span class="line"></span><br><span class="line">	cout &lt;&lt; &quot;arry2数据&quot; &lt;&lt; endl;</span><br><span class="line">	printfarray(arry2);            //打印输出</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	myarray&lt;int&gt; arry3(10);</span><br><span class="line">	arry3 = arry2;                 //数组赋值测试</span><br><span class="line">	cout &lt;&lt; &quot;arry3数据&quot; &lt;&lt; endl;</span><br><span class="line">	printfarray(arry3);	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p><img src="1.jpg" alt></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -189,365 +236,124 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/09/10/C-高级编程-二-——模板案例/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/08/C-高级编程-一-——函数模板/" class="archive-article-date">
-  	<time datetime="2019-09-08T09:17:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-08</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/09/08/C-高级编程-一-——函数模板/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">C++高级编程(一)——模板</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/08/C-高级编程-一-——函数模板/">C++高级编程(一)——模板</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-1-案例功能"><span class="toc-number">1.</span> <span class="toc-text">1.1 案例功能</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-2-案例程序"><span class="toc-number">2.</span> <span class="toc-text">1.2 案例程序</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/08/C-核心编程-十-——职工人员管理系统/" class="archive-article-date">
-  	<time datetime="2019-09-08T06:52:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-08</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/08/C-核心编程-十-——职工人员管理系统/">C++核心编程(十)——职工人员管理系统</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/05/C-核心编程—-—-九-——文件操作/" class="archive-article-date">
-  	<time datetime="2019-09-05T01:19:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/05/C-核心编程—-—-九-——文件操作/">C++核心编程(九)——文件操作</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/03/C-核心编程八——多态/" class="archive-article-date">
-  	<time datetime="2019-09-03T01:22:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/03/C-核心编程八——多态/">C++核心编程(八)——多态</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/02/C-核心编程-七-——继承/" class="archive-article-date">
-  	<time datetime="2019-09-02T13:40:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/02/C-核心编程-七-——继承/">C++核心编程(七)——继承</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/02/C-核心编程—-六-——运算符重载/" class="archive-article-date">
-  	<time datetime="2019-09-02T08:52:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/02/C-核心编程—-六-——运算符重载/">C++核心编程(六)——运算符重载</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/30/C-核心编程-五-——对象模型和this指针/" class="archive-article-date">
-  	<time datetime="2019-08-30T09:23:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/30/C-核心编程-五-——对象模型和this指针/">C++核心编程(五)——对象模型和this指针</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/28/C-核心编程-四-——类和对象/" class="archive-article-date">
-  	<time datetime="2019-08-28T08:47:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/28/C-核心编程-四-——类和对象/">C++核心编程(四)——类和对象</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/28/C-核心编程—（-二-——函数/" class="archive-article-date">
-  	<time datetime="2019-08-28T08:15:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/28/C-核心编程—（-二-——函数/">C++核心编程(三)——函数</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/tags/C/page/2/">2</a><a class="extend next" rel="next" href="/tags/C/page/2/">Next &raquo;</a>
-    </nav>
-  
 
 
           </div>
@@ -570,9 +376,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
