@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>C++高级编程(一)——函数模板 | Hexo</title>
+  <title>C++高级编程(一)——模板 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="C++提供另一种编程思想称为泛型编程，主要利用的技术就是模板；C++提供两种模板机制函数模板和类模板。">
 <meta name="keywords" content="C++">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C++高级编程(一)——函数模板">
+<meta property="og:title" content="C++高级编程(一)——模板">
 <meta property="og:url" content="http://yoursite.com/2019/09/08/C-高级编程-一-——函数模板/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="C++提供另一种编程思想称为泛型编程，主要利用的技术就是模板；C++提供两种模板机制函数模板和类模板。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://yoursite.com/2019/09/08/C-高级编程-一-——函数模板/1.jpg">
-<meta property="og:updated_time" content="2019-09-08T13:35:36.341Z">
+<meta property="og:updated_time" content="2019-09-08T14:46:03.720Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="C++高级编程(一)——函数模板">
+<meta name="twitter:title" content="C++高级编程(一)——模板">
 <meta name="twitter:description" content="C++提供另一种编程思想称为泛型编程，主要利用的技术就是模板；C++提供两种模板机制函数模板和类模板。">
 <meta name="twitter:image" content="http://yoursite.com/2019/09/08/C-高级编程-一-——函数模板/1.jpg">
   
@@ -162,7 +162,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      C++高级编程(一)——函数模板
+      C++高级编程(一)——模板
     </h1>
   
 
@@ -177,6 +177,7 @@
       
         <p>　　C++提供另一种编程思想称为泛型编程，主要利用的技术就是模板；C++提供两种模板机制函数模板和类模板。</p>
 <a id="more"></a>
+
 <h1 id="1-1-函数模板"><a href="#1-1-函数模板" class="headerlink" title="1.1 函数模板"></a>1.1 函数模板</h1><p>　　作用：建立一个通用函数，其函数返回值类型和参数类型可以不具体指定，用一个虚拟的类型来代替。<br>　　语法：template为声明创建模板；class表示其后面的符号是一种数据类型，可用typename代替；T为通用的数据类型，可以替换为其他大写字母。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">template&lt;class T&gt;</span><br><span class="line">函数申明或定义</span><br></pre></td></tr></table></figure>
 
@@ -195,7 +196,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">template&lt;class T&gt;</span><br><span class="line">void fun()</span><br><span class="line">&#123;</span><br><span class="line">	cout&lt;&lt; &quot;fun调用&quot;&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void test()</span><br><span class="line">&#123;</span><br><span class="line">	//fun(); 错误调用，不能确定出T的数据类型</span><br><span class="line">	fun&lt;int&gt;();//正确调用</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <hr>
-<h1 id="1-2-函数模板案例"><a href="#1-2-函数模板案例" class="headerlink" title="1.2 函数模板案例"></a>1.2 函数模板案例</h1><p>　　<strong>案例描述</strong></p>
+<h1 id="1-2-函数模板案例"><a href="#1-2-函数模板案例" class="headerlink" title="1.2 函数模板案例"></a>1.2 函数模板案例</h1><p>　　<strong>案例描述：</strong></p>
 <ul>
 <li>　利用函数模板封装一个排序的函数，可以对不同的数据类型数组进行排序。</li>
 <li>　排序规则从大到小，算法为选择排序。</li>
@@ -221,6 +222,55 @@
 <hr>
 <h1 id="1-5-模板的局限性"><a href="#1-5-模板的局限性" class="headerlink" title="1.5 模板的局限性"></a>1.5 模板的局限性</h1><p>　　模板并不是万能的，有些特定的数据类型，需要用具体化的方式做特殊实现。<br>　　<strong>示例：</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">//对比两个数据是否相等</span><br><span class="line">template&lt;class T&gt;</span><br><span class="line">bool compare(T &amp;a, T &amp;b)</span><br><span class="line">&#123;</span><br><span class="line">	if(a == b)</span><br><span class="line">	&#123;</span><br><span class="line">		return true;</span><br><span class="line">	&#125;</span><br><span class="line">	else </span><br><span class="line">	&#123;</span><br><span class="line">		return false;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//当a、b为具体对象时以上模板失效</span><br><span class="line">//使用具体化person的版本实现，具体化优先调用</span><br><span class="line">template&lt;&gt; bool compare(person &amp;p1,person &amp;p2)</span><br><span class="line">&#123;</span><br><span class="line">	if(p1.name == p2.name &amp;&amp; p1.age == p2.age)</span><br><span class="line">	&#123;</span><br><span class="line">		return ture;</span><br><span class="line">	&#125;</span><br><span class="line">	else </span><br><span class="line">		return false;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="1-6-类模板"><a href="#1-6-类模板" class="headerlink" title="1.6 类模板"></a>1.6 类模板</h1><p>　　作用：建立一个通用类，类中的成员，数据类型可以不具体指定，用一个虚拟的类型来代替。<br>　　语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">template&lt;class T&gt;</span><br><span class="line">类</span><br></pre></td></tr></table></figure>
+
+<p>　　<strong>示例：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">template&lt;class nametype,class agetype&gt;</span><br><span class="line">class person</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	person(nametype name,agetype age)//构造函数</span><br><span class="line">	&#123;</span><br><span class="line">		this -&gt; m_name = name;</span><br><span class="line">		this -&gt; m_age  = age;</span><br><span class="line">	&#125;</span><br><span class="line">	nametype m_name;</span><br><span class="line">	agetype  m_age;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//调用</span><br><span class="line">void test()</span><br><span class="line">&#123;</span><br><span class="line">	person&lt;string,int&gt; p(&quot;tom&quot;,18);   //实例化</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>　　<strong>类模板与函数模板的区别：</strong></p>
+<ul>
+<li>　类模板没用自动类型推导。</li>
+<li>　类模板在参数列表中可以用默认的参数。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">void test()</span><br><span class="line">&#123;</span><br><span class="line">	//person p(&quot;tom&quot;,18);   错误调用，无法自动类型推导</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">template&lt;class nametype,class agetype = int&gt;	//默认参数int</span><br><span class="line">void test()</span><br><span class="line">&#123;</span><br><span class="line">	person&lt;string&gt; p(&quot;tom&quot;,18);   				//第二个参数使用默认参数int</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>　　<strong>类模板中成员函数的创建时机：</strong></p>
+<ul>
+<li>　普通成员函数一开始就可以创建</li>
+<li>　类模板的成员函数在调用时才创建</li>
+</ul>
+<hr>
+<h1 id="1-7-类模板对象做函数的参数"><a href="#1-7-类模板对象做函数的参数" class="headerlink" title="1.7 类模板对象做函数的参数"></a>1.7 类模板对象做函数的参数</h1><p>　　<strong>一共有三种参数传递方式：</strong></p>
+<ul>
+<li>　指定传入的数据类型——直接显示数据的类型(最为常用)。</li>
+<li>　参数模板化——将对象中的参数变为模板进行传递。</li>
+<li>　整个类模板化——将这个对象类型模板化进行传递。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">template&lt;class T1,class T2&gt;</span><br><span class="line">class person</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	person(T1 name,T2 age)//构造函数</span><br><span class="line">	&#123;</span><br><span class="line">		this -&gt; m_name = name;</span><br><span class="line">		this -&gt; m_age  = age;</span><br><span class="line">	&#125;</span><br><span class="line">	void showperson()</span><br><span class="line">	&#123;</span><br><span class="line">		cout&lt;&lt;this-&gt;name&lt;&lt;endl;</span><br><span class="line">		coud&lt;&lt;this-&gt;age&lt;&lt;endl;</span><br><span class="line">	&#125;	</span><br><span class="line">	nametype m_name;</span><br><span class="line">	agetype  m_age;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//方式一：在函数中指定参数类型</span><br><span class="line">void printperson(person&lt;string, int&gt; &amp;p)   </span><br><span class="line">&#123;</span><br><span class="line">	p.showperson();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//方式二：函数参数模板化</span><br><span class="line">void printperson(person&lt;T1, T2&gt; &amp;p)   </span><br><span class="line">&#123;</span><br><span class="line">	p.showperson();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//方式三：将传入的类整个模板化</span><br><span class="line">void printperson(T &amp;p)   </span><br><span class="line">&#123;</span><br><span class="line">	p.showperson();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void test()</span><br><span class="line">&#123;</span><br><span class="line">	person&lt;string ,int&gt;(&quot;tom&quot;,18);</span><br><span class="line">	printperson(p);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<hr>
+<h1 id="1-8-类模板与继承"><a href="#1-8-类模板与继承" class="headerlink" title="1.8 类模板与继承"></a>1.8 类模板与继承</h1><p>　　<strong>当类模板碰到继承时，需要注意几点：</strong></p>
+<ul>
+<li>　子类继承模板类时，子类声明时需要指出父类T的类型。</li>
+<li>　如果想要灵活指出父类T，子类也需要模板化。<br>　　<strong>示例：</strong><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">template&lt;class T&gt;</span><br><span class="line">class base</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	T m;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">//class son::public base&#123;&#125;；错误继承</span><br><span class="line">class son::public base&lt;int&gt;&#123;&#125;；//正确继承</span><br><span class="line"></span><br><span class="line">template&lt;class T1,class T2&gt; //子类也模板化  </span><br><span class="line">class son2::public base&lt;T2&gt;</span><br><span class="line">&#123;</span><br><span class="line">	T1 n;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">void test()</span><br><span class="line">&#123;   //   &lt;子类参数，父类参数&gt;</span><br><span class="line">	son2&lt;int ,char&gt; s;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<hr>
+<h1 id="1-8-类模板成员函数与类友元函数的实现"><a href="#1-8-类模板成员函数与类友元函数的实现" class="headerlink" title="1.8 类模板成员函数与类友元函数的实现"></a>1.8 类模板成员函数与类友元函数的实现</h1><p>　　<strong>构造函数的类外实现:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">template&lt;class T1,class T2&gt;</span><br><span class="line">person&lt;T1,T2&gt;::person(T1 name, T2 age)</span><br><span class="line">&#123;</span><br><span class="line">	this-&gt;m_name = name;</span><br><span class="line">	this-&gt;m_age  = age;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>　　<strong>成员函数的类外实现:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">template&lt;class T1,class T2&gt;</span><br><span class="line">void person&lt;T1,T2&gt;::showperson()&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>　　<strong>类友元函数类内实现(常用)：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">template&lt;class T1,class T2&gt;</span><br><span class="line">class person</span><br><span class="line">&#123;</span><br><span class="line">	friend void printperson(person&lt;T1,T2&gt; p)</span><br><span class="line">	&#123;</span><br><span class="line">		coun&lt;&lt;p.m_age&lt;&lt;endl;</span><br><span class="line">		cout&lt;&lt;p.m_name&lt;&lt;endl;</span><br><span class="line">	&#125;</span><br><span class="line">private:</span><br><span class="line">	T1 m_name;</span><br><span class="line">	T2 m_age;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>　　<strong>类友元函数类外实现：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">template&lt;class T1,class T2&gt;	//模板类提前声明</span><br><span class="line">class person;</span><br><span class="line"></span><br><span class="line">template&lt;class T1,class T2&gt;</span><br><span class="line">class person</span><br><span class="line">&#123;</span><br><span class="line">	friend void printperson(person&lt;T1,T2&gt; p);	//类中友元函数声明</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">template&lt;class T1,class T2&gt;</span><br><span class="line">friend void printperson(person&lt;T1,T2&gt; p) 		//类外的具体实现</span><br><span class="line">&#123;</span><br><span class="line">	coun&lt;&lt;p.m_age&lt;&lt;endl;</span><br><span class="line">	cout&lt;&lt;p.m_name&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <hr>
 <p><img src="1.jpg" alt></p>
@@ -357,7 +407,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-1-函数模板"><span class="toc-number">1.</span> <span class="toc-text">1.1 函数模板</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-2-函数模板案例"><span class="toc-number">2.</span> <span class="toc-text">1.2 函数模板案例</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-3-普通函数与函数模板的区别"><span class="toc-number">3.</span> <span class="toc-text">1.3 普通函数与函数模板的区别</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-4-普通函数与函数模板的调用规则"><span class="toc-number">4.</span> <span class="toc-text">1.4 普通函数与函数模板的调用规则</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-5-模板的局限性"><span class="toc-number">5.</span> <span class="toc-text">1.5 模板的局限性</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-1-函数模板"><span class="toc-number">1.</span> <span class="toc-text">1.1 函数模板</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-2-函数模板案例"><span class="toc-number">2.</span> <span class="toc-text">1.2 函数模板案例</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-3-普通函数与函数模板的区别"><span class="toc-number">3.</span> <span class="toc-text">1.3 普通函数与函数模板的区别</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-4-普通函数与函数模板的调用规则"><span class="toc-number">4.</span> <span class="toc-text">1.4 普通函数与函数模板的调用规则</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-5-模板的局限性"><span class="toc-number">5.</span> <span class="toc-text">1.5 模板的局限性</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-6-类模板"><span class="toc-number">6.</span> <span class="toc-text">1.6 类模板</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-7-类模板对象做函数的参数"><span class="toc-number">7.</span> <span class="toc-text">1.7 类模板对象做函数的参数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-8-类模板与继承"><span class="toc-number">8.</span> <span class="toc-text">1.8 类模板与继承</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-8-类模板成员函数与类友元函数的实现"><span class="toc-number">9.</span> <span class="toc-text">1.8 类模板成员函数与类友元函数的实现</span></a></li></ol>
                     </div>
                 </span>
             </div>
