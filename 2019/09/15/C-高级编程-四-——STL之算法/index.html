@@ -8,19 +8,19 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>C++高级编程(四)——STL之函数 | WangXJ&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="STL中的算法主要由&amp;lt;algorithm&amp;gt;/&amp;lt;functional&amp;gt;/&amp;lt;numeric&amp;gt;组成。&amp;lt;algorithm&amp;gt;涉及到比较、交换、查找、遍历、复制、修改等。&amp;lt;numeric&amp;gt;体积比较小。只包括几个在序列上进行简单数学运算的模板函数。functional定义了一些模板类、用以声明函数对象。 1.1 遍历算法　　普通遍历：for_ea">
+  <meta name="description" content="STL中的算法主要由&amp;lt;algorithm&amp;gt;/&amp;lt;functional&amp;gt;/&amp;lt;numeric&amp;gt;组成。&amp;lt;algorithm&amp;gt;涉及到比较、交换、查找、遍历、复制、修改等。&amp;lt;numeric&amp;gt;体积比较小。只包括几个在序列上进行简单数学运算的模板函数。functional定义了一些模板类、用以声明函数对象。">
 <meta name="keywords" content="C++">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C++高级编程(四)——STL之函数">
 <meta property="og:url" content="http://yoursite.com/2019/09/15/C-高级编程-四-——STL之算法/index.html">
 <meta property="og:site_name" content="WangXJ&#39;s Blog">
-<meta property="og:description" content="STL中的算法主要由&amp;lt;algorithm&amp;gt;/&amp;lt;functional&amp;gt;/&amp;lt;numeric&amp;gt;组成。&amp;lt;algorithm&amp;gt;涉及到比较、交换、查找、遍历、复制、修改等。&amp;lt;numeric&amp;gt;体积比较小。只包括几个在序列上进行简单数学运算的模板函数。functional定义了一些模板类、用以声明函数对象。 1.1 遍历算法　　普通遍历：for_ea">
+<meta property="og:description" content="STL中的算法主要由&amp;lt;algorithm&amp;gt;/&amp;lt;functional&amp;gt;/&amp;lt;numeric&amp;gt;组成。&amp;lt;algorithm&amp;gt;涉及到比较、交换、查找、遍历、复制、修改等。&amp;lt;numeric&amp;gt;体积比较小。只包括几个在序列上进行简单数学运算的模板函数。functional定义了一些模板类、用以声明函数对象。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://yoursite.com/2019/09/15/C-高级编程-四-——STL之算法/1.jpg">
-<meta property="og:updated_time" content="2019-09-15T07:38:23.351Z">
+<meta property="og:updated_time" content="2019-09-15T08:09:57.580Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++高级编程(四)——STL之函数">
-<meta name="twitter:description" content="STL中的算法主要由&amp;lt;algorithm&amp;gt;/&amp;lt;functional&amp;gt;/&amp;lt;numeric&amp;gt;组成。&amp;lt;algorithm&amp;gt;涉及到比较、交换、查找、遍历、复制、修改等。&amp;lt;numeric&amp;gt;体积比较小。只包括几个在序列上进行简单数学运算的模板函数。functional定义了一些模板类、用以声明函数对象。 1.1 遍历算法　　普通遍历：for_ea">
+<meta name="twitter:description" content="STL中的算法主要由&amp;lt;algorithm&amp;gt;/&amp;lt;functional&amp;gt;/&amp;lt;numeric&amp;gt;组成。&amp;lt;algorithm&amp;gt;涉及到比较、交换、查找、遍历、复制、修改等。&amp;lt;numeric&amp;gt;体积比较小。只包括几个在序列上进行简单数学运算的模板函数。functional定义了一些模板类、用以声明函数对象。">
 <meta name="twitter:image" content="http://yoursite.com/2019/09/15/C-高级编程-四-——STL之算法/1.jpg">
   
   
@@ -186,6 +186,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>　　STL中的算法主要由<code>&lt;algorithm&gt;/&lt;functional&gt;/&lt;numeric&gt;</code>组成。<code>&lt;algorithm&gt;</code>涉及到比较、交换、查找、遍历、复制、修改等。<code>&lt;numeric&gt;</code>体积比较小。只包括几个在序列上进行简单数学运算的模板函数。<code>functional</code>定义了一些模板类、用以声明函数对象。</p>
+<a id="more"></a>
 <h1 id="1-1-遍历算法"><a href="#1-1-遍历算法" class="headerlink" title="1.1 遍历算法"></a>1.1 遍历算法</h1><p>　　<strong>普通遍历：</strong><code>for_each(iterator beg,iterator end,_func);</code><br>　　<strong>示例：</strong>func使用两种方式访问元素。<br>　　<strong>注意：</strong>使用仿函数时为重载()。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">//方式一：普通函数方式</span><br><span class="line">void myprint1(int val) </span><br><span class="line">&#123;</span><br><span class="line">	cout&lt;&lt; val&lt;&lt;&quot;&quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//方式二：仿函数方式</span><br><span class="line">class myprint2</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	void operator()(int val)</span><br><span class="line">	&#123;</span><br><span class="line">		cout&lt;&lt; val&lt;&lt;&quot; &quot;;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">void test()</span><br><span class="line">&#123;</span><br><span class="line">	vector&lt;int&gt; v;</span><br><span class="line">	for(int i =0;i&lt;10;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		v.push_back(i);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	for_each(v.begin(),v.end(),myprint1);</span><br><span class="line">	cout&lt;&lt;endl;</span><br><span class="line">	for_each(v.begin(),v.end(),myprint2());</span><br><span class="line">	cout&lt;&lt;endl;	</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
