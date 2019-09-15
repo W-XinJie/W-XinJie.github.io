@@ -158,6 +158,124 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-C-高级编程-四-——STL之算法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/15/C-高级编程-四-——STL之算法/">C++高级编程(四)——STL之函数</a>
+    </h1>
+  
+
+        
+         
+<a href="/2019/09/15/C-高级编程-四-——STL之算法/" class="archive-article-date">
+  	<time datetime="2019-09-15T02:03:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>　　STL中的算法主要由<code>&lt;algorithm&gt;/&lt;functional&gt;/&lt;numeric&gt;</code>组成。<code>&lt;algorithm&gt;</code>涉及到比较、交换、查找、遍历、复制、修改等。<code>&lt;numeric&gt;</code>体积比较小。只包括几个在序列上进行简单数学运算的模板函数。<code>functional</code>定义了一些模板类、用以声明函数对象。</p>
+<h1 id="1-1-遍历算法"><a href="#1-1-遍历算法" class="headerlink" title="1.1 遍历算法"></a>1.1 遍历算法</h1><p>　　<strong>普通遍历：</strong><code>for_each(iterator beg,iterator end,_func);</code><br>　　<strong>示例：</strong>func使用两种方式访问元素。<br>　　<strong>注意：</strong>使用仿函数时为重载()。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">//方式一：普通函数方式</span><br><span class="line">void myprint1(int val) </span><br><span class="line">&#123;</span><br><span class="line">	cout&lt;&lt; val&lt;&lt;&quot;&quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//方式二：仿函数方式</span><br><span class="line">class myprint2</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	void operator()(int val)</span><br><span class="line">	&#123;</span><br><span class="line">		cout&lt;&lt; val&lt;&lt;&quot; &quot;;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">void test()</span><br><span class="line">&#123;</span><br><span class="line">	vector&lt;int&gt; v;</span><br><span class="line">	for(int i =0;i&lt;10;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		v.push_back(i);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	for_each(v.begin(),v.end(),myprint1);</span><br><span class="line">	cout&lt;&lt;endl;</span><br><span class="line">	for_each(v.begin(),v.end(),myprint2());</span><br><span class="line">	cout&lt;&lt;endl;	</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>　　<strong>数据转移：</strong><code>transform(iterator beg1,iterator end1,iterator beg2,_func);</code><br>　　<strong>注意：</strong>目标容易需要提取开辟空间。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">class transform1</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	int operator()(int val)</span><br><span class="line">	&#123;</span><br><span class="line">		return val;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">class transform2</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	int operator()(int val)</span><br><span class="line">	&#123;</span><br><span class="line">		return val + 1000;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">void test()</span><br><span class="line">&#123;</span><br><span class="line">	vector&lt;int&gt; v2;        //目标容器</span><br><span class="line">	v2.resize(v1.size());  //提前开辟空间  </span><br><span class="line">	transform(v1.begin(),v1.end(),v2.begin(),transform1());//方式一</span><br><span class="line">	transform(v1.begin(),v1.end(),v2.begin(),transform2());//方式二</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="1-2-查找算法"><a href="#1-2-查找算法" class="headerlink" title="1.2 查找算法"></a>1.2 查找算法</h1><p>　　<strong>普通查找：</strong><code>InputIterator find(iterator beg,iterator end,val);</code><br>　　<strong>示例：</strong>当查找自定义数据类型时需要在函数对象中重载”==”。重载函数参数中需要加关键字const。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">class person</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	bool operator==(const person &amp;p)</span><br><span class="line">	&#123;</span><br><span class="line">		if(p.m_name == this-&gt;m_name &amp;&amp; p.m_age == this-&gt;m_age)</span><br><span class="line">		&#123;</span><br><span class="line">			return true;</span><br><span class="line">		&#125;</span><br><span class="line">		else</span><br><span class="line">		&#123;</span><br><span class="line">			return false;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	person(string name, int age)</span><br><span class="line">	&#123;</span><br><span class="line">		m_name = name;</span><br><span class="line">		m_age = age;</span><br><span class="line">	&#125;</span><br><span class="line">	string m_name;</span><br><span class="line">	int m_age;</span><br><span class="line">	</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">void test()</span><br><span class="line">&#123;</span><br><span class="line">	vector&lt;int&gt;::iterator it = find(v.begin(),v.end(),5);//查找元素5</span><br><span class="line">	if(it == v.end)</span><br><span class="line">	&#123;</span><br><span class="line">		coud&lt;&lt;&quot;没有找到&quot;&lt;&lt;endl;</span><br><span class="line">	&#125;</span><br><span class="line">	else</span><br><span class="line">	&#123;</span><br><span class="line">		coud&lt;&lt;&quot;找到:&quot;&lt;&lt;*it&lt;&lt;endl;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	person p(&quot;w1&quot;,12)</span><br><span class="line">	vector&lt;int&gt;::iterator it = find(v.begin(),v.end(),p);//查找元素5</span><br><span class="line">		if(it == v.end)</span><br><span class="line">	&#123;</span><br><span class="line">		coud&lt;&lt;&quot;没有找到&quot;&lt;&lt;endl;</span><br><span class="line">	&#125;</span><br><span class="line">	else</span><br><span class="line">	&#123;</span><br><span class="line">		coud&lt;&lt;&quot;找到:&quot;&lt;&lt;*it.m_name&lt;&lt;&quot; &quot;&lt;&lt;*it.m_age&lt;&lt;endl;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>　　<strong>按条件查找：</strong><code>InputIterator find_if(iterator beg,iterator end,_pred);</code><br>　　<strong>说明：</strong>pred可以是普通函数，也可以是函数对象。自定义数据类型时，可能需要重载==。<br>　　<strong>示例：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">class greaterfive()     //内置数据类型  </span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	bool operator()(int val)</span><br><span class="line">	&#123;</span><br><span class="line">		return val &gt; 5;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">class person</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	person(string name, int age)</span><br><span class="line">	&#123;</span><br><span class="line">		m_name = name;</span><br><span class="line">		m_age = age;</span><br><span class="line">	&#125;</span><br><span class="line">	string m_name;</span><br><span class="line">	int m_age;</span><br><span class="line">	</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">class greateragefive()     //自定义数据类型  </span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	bool operator()(person p)</span><br><span class="line">	&#123;</span><br><span class="line">		return p.m_age &gt; 5;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">void test1()</span><br><span class="line">&#123;</span><br><span class="line">	vector&lt;int&gt;::iterator it = find_if(v.begin(),v.end(),greaterfive());//查找内置数据类型</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void test2()</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">	vector&lt;person&gt;::iterator it = find_if(v.begin(),v.end(),greateragefive());//查找自定义数据类型</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="查找相邻重复元素：adjacent-iterator-beg-iterator-end-val-查找相邻重复元素，返回响铃元素的第一个迭代器"><a href="#查找相邻重复元素：adjacent-iterator-beg-iterator-end-val-查找相邻重复元素，返回响铃元素的第一个迭代器" class="headerlink" title="　　查找相邻重复元素：adjacent(iterator beg ,iterator end,val);//查找相邻重复元素，返回响铃元素的第一个迭代器"></a>　　<strong>查找相邻重复元素：</strong><code>adjacent(iterator beg ,iterator end,val);//查找相邻重复元素，返回响铃元素的第一个迭代器</code></h2><h1 id="1-3-统计算法"><a href="#1-3-统计算法" class="headerlink" title="1.3 统计算法"></a>1.3 统计算法</h1><p>　　<strong>统计元素个数：</strong><code>count(iterator beg,iterator end,val);</code><br>　　<strong>注意：</strong>当统计自定义数据类型时需要在函数对象中重载”==”。重载函数参数中需要加关键字const。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class person</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	bool operator()(const person &amp;p)</span><br><span class="line">	&#123;</span><br><span class="line">		if(p.age == this-&gt;age)</span><br><span class="line">		&#123;</span><br><span class="line">			return true;</span><br><span class="line">		&#125;</span><br><span class="line">		else return false;</span><br><span class="line">	&#125;</span><br><span class="line">	string name;</span><br><span class="line">	int age;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>　　<strong>按条件统计元素个数：</strong><code>count_if(iterator beg,iterator end,_pred);</code></p>
+<h2 id="说明：-pred可以是普通函数，也可以是函数对象。"><a href="#说明：-pred可以是普通函数，也可以是函数对象。" class="headerlink" title="　　说明： pred可以是普通函数，也可以是函数对象。"></a>　　<strong>说明：</strong> pred可以是普通函数，也可以是函数对象。</h2><h1 id="1-4-排序算法"><a href="#1-4-排序算法" class="headerlink" title="1.4 排序算法"></a>1.4 排序算法</h1><p>　　<strong>普通排序：</strong><code>sort(iterator beg,iterator end,_pred);</code><br>　　<strong>说明：</strong>默认为升序排序，可以改变谓词改变排序方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">sort(v.begin(),v.end(),greater&lt;int&gt;());//STL法改为降序</span><br><span class="line"></span><br><span class="line">bool greater1(const int v1,const int v2)   //普通函数方法改为降序</span><br><span class="line">&#123;</span><br><span class="line">	return v1 &gt; v2;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class greater2              //谓词方法改为降序</span><br><span class="line">&#123;</span><br><span class="line">	bool operator()(const int v1,const int v2)</span><br><span class="line">	&#123;</span><br><span class="line">		return v1 &gt; v2;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>　　<strong>打乱排序：</strong><code>random_shuffle(iterator beg,iterator end);</code><br>　　<strong>说明：</strong>使用时需要每次启动程序随机改变数据，需要在程序中加如随机种子。<br>　　<br>　　<strong>容器合并：</strong><code>merge(iterator beg1,iterator end1,iterator beg2,iterator end2,iterator dest);</code><br>　　<strong>说明：</strong>dest容器需提取指定大小<code>dest.resize(v1.size()+v2.size());</code></p>
+<h2 id="反转排序：reverse-iterator-beg-iterator-end"><a href="#反转排序：reverse-iterator-beg-iterator-end" class="headerlink" title="　　反转排序：reverse(iterator beg,iterator end);"></a>　　<strong>反转排序：</strong><code>reverse(iterator beg,iterator end);</code></h2><h1 id="1-5-拷贝和替换算法"><a href="#1-5-拷贝和替换算法" class="headerlink" title="1.5 拷贝和替换算法"></a>1.5 拷贝和替换算法</h1><p>　　<strong>普通拷贝：</strong><code>copy(iterator beg1,iterator end1,iterator dest);</code><br>　　<strong>说明：</strong>dest容器需提取指定大小<code>dest.resize(v1.size());</code></p>
+<p>　　<strong>普通替换：</strong><code>replace(iterator beg,iterator end,oldval,newval);</code></p>
+<p>　　<strong>条件替换：</strong><code>repalce_if(iterator beg,iterator end,_pred,newvalue);</code></p>
+<h2 id="容器互换：swap-container-c1-container-c2"><a href="#容器互换：swap-container-c1-container-c2" class="headerlink" title="　　容器互换：swap(container c1,container c2);"></a>　　<strong>容器互换：</strong><code>swap(container c1,container c2);</code></h2><h1 id="1-6-常用的算术生成算法"><a href="#1-6-常用的算术生成算法" class="headerlink" title="1.6 常用的算术生成算法"></a>1.6 常用的算术生成算法</h1><p>　　<strong>说明：</strong>算术生成算法属于小型算法，包含头文件<code>#include&lt;numeric&gt;</code></p>
+<p>　　<strong>计算容器元素总和：</strong><code>acculate(iterator beg,iterator end,start val);//val为累加的起始值</code><br>　　<br>　　<strong>向元素中添加指定值：</strong><code>fill(iterator beg,iterator end,value);</code></p>
+<h2 id="注意：需要先指定容器的大小。"><a href="#注意：需要先指定容器的大小。" class="headerlink" title="　　注意：需要先指定容器的大小。"></a>　　<strong>注意：</strong>需要先指定容器的大小。</h2><h1 id="1-7-常用的集合算法"><a href="#1-7-常用的集合算法" class="headerlink" title="1.7 常用的集合算法"></a>1.7 常用的集合算法</h1><p>　　<strong>求两个容器的交集：</strong><code>interator_itend set_intersection(iterator beg1.interator end1,interator beg2,interator end2,interator dest);</code><br>　　<strong>注意:</strong></p>
+<ul>
+<li>　需要提前开辟空间<code>vtasget.resize(min(v1.size(),v2.size()));//取最特殊的值</code></li>
+<li>　遍历时使用函数返回值作为目标容器结束跌迭代器<code>for_each(vtasget.begin(),itend,myprint());</code></li>
+</ul>
+<p>　　<strong>求两个容器的并集：</strong><code>interator_itend set_union(iterator beg1,interator end1,interator beg2,interator end2,interator dest);</code><br>　　<strong>注意：</strong>需要提取开辟空间<code>vtasget.resize(max(v1.size(),v2.size()));//取最特殊的值</code></p>
+<h2 id="求两个容器的差集：set-difference-iterator-beg1-interator-end1-interator-beg2-interator-end2-interator-dest"><a href="#求两个容器的差集：set-difference-iterator-beg1-interator-end1-interator-beg2-interator-end2-interator-dest" class="headerlink" title="　　求两个容器的差集：set_difference(iterator beg1.interator end1,interator beg2,interator end2,interator dest);"></a>　　<strong>求两个容器的差集：</strong><code>set_difference(iterator beg1.interator end1,interator beg2,interator end2,interator dest);</code></h2><p><img src="1.jpg" alt></p>
+
+      
+
+
+
+  <div class="declare" hidden="hidden"></div>
+
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/09/15/C-高级编程-四-——STL之算法/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-C-高级编程-三-——string容器与vector容器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -889,91 +1007,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/08/30/C-核心编程-五-——对象模型和this指针/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-C-核心编程-四-——类和对象" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/28/C-核心编程-四-——类和对象/">C++核心编程(四)——类和对象</a>
-    </h1>
-  
-
-        
-         
-<a href="/2019/08/28/C-核心编程-四-——类和对象/" class="archive-article-date">
-  	<time datetime="2019-08-28T08:47:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>　　C++面向对象三大特征：封装、继承、多态。</p>
-        
-      
-
-
-
-  <div class="declare" hidden="hidden"></div>
-
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/28/C-核心编程-四-——类和对象/">展开全文 >></a>
         </p>
       
 
