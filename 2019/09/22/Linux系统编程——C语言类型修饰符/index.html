@@ -6,19 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>WangXJ&#39;s Blog</title>
+  <title>Linux系统编程——C语言类型修饰符 | WangXJ&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="记录学习、生活上的一些趣事。">
-<meta name="keywords" content="C++,Linux,图像处理">
-<meta property="og:type" content="website">
-<meta property="og:title" content="WangXJ&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="说明一个变量的类型，便于区分及优化内存。">
+<meta name="keywords" content="Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux系统编程——C语言类型修饰符">
+<meta property="og:url" content="http://yoursite.com/2019/09/22/Linux系统编程——C语言类型修饰符/index.html">
 <meta property="og:site_name" content="WangXJ&#39;s Blog">
-<meta property="og:description" content="记录学习、生活上的一些趣事。">
+<meta property="og:description" content="说明一个变量的类型，便于区分及优化内存。">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-09-22T02:44:02.559Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="WangXJ&#39;s Blog">
-<meta name="twitter:description" content="记录学习、生活上的一些趣事。">
+<meta name="twitter:title" content="Linux系统编程——C语言类型修饰符">
+<meta name="twitter:description" content="说明一个变量的类型，便于区分及优化内存。">
   
   
     <link rel="icon" href="/img/pic1.ico">
@@ -156,21 +157,24 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-Linux系统编程——C语言类型修饰符" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-Linux系统编程——C语言类型修饰符" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/22/Linux系统编程——C语言类型修饰符/">Linux系统编程——C语言类型修饰符</a>
+    <h1 class="article-title" itemprop="name">
+      Linux系统编程——C语言类型修饰符
     </h1>
   
 
         
          
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
 <a href="/2019/09/22/Linux系统编程——C语言类型修饰符/" class="archive-article-date">
   	<time datetime="2019-09-22T01:33:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-22</time>
 </a>
@@ -180,7 +184,25 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>　　说明一个变量的类型，便于区分及优化内存。</p>
-        
+<a id="more"></a>
+<h1 id="1-C的5大内存分区"><a href="#1-C的5大内存分区" class="headerlink" title="1.C的5大内存分区"></a>1.C的5大内存分区</h1><p>　　C中内存分为5个区，他们分别为堆、栈、全局/静态和常量存储区域。</p>
+<ul>
+<li>　栈区:在程序运行时分配，在不需要时由系统自动释放。通常为局部变量、局部函数等。</li>
+<li>　堆区：malloc分配(C++中由new分配)，释放时使用free(C++中使用delete)。</li>
+<li>　全局/静态存储区：<strong>初始化</strong>后的全局变量和静态变量。</li>
+<li>　bss区：(C++中没有这个分区，统一到了全局存储区)<strong>未初始化</strong>的全局变量和静态变量。</li>
+<li>　常量存储区：他们里面存放的是常量，不允许修改(C中常量存储区并不在只读区域，因此通过特殊方法也能修改)。</li>
+</ul>
+<h1 id="2-C语言类型修饰符"><a href="#2-C语言类型修饰符" class="headerlink" title="2.C语言类型修饰符"></a>2.C语言类型修饰符</h1><p>　　C中常用类型修饰符有6个。</p>
+<ul>
+<li>　auto：分配到可读可写区域。</li>
+<li>　register：<br>　　1.分配到寄存器区域,当寄存器不足时还是放在存储器中。(CPU寄存器，当对速度有比较高要求时，考虑使用)。<br>　　2.注意：’&amp;’对register不起作用。</li>
+<li>　static:<br>　　1.修饰局部变量,只初始化一次。<br>　　2.修饰全局变量/函数，称为静态变量及静态函数，普通函数变量对于全局可见，在申明时使用extern申明后，其他文件就可以用了。<br>　　3.静态变量级函数只对本文件可见，常使用static关键字避免重名问题。<br>　　4.注意：在c++类中的静态成员变量/函数，只拷贝一份，对该类的所有对象可见。所以，静态成员不属于任何对象。</li>
+<li>　volatile:对变量不进行优化，底层应用中比较多。</li>
+<li>　const:不等于常量</li>
+<li>　extern: 外部函数或者外部变量。</li>
+</ul>
+
       
 
 
@@ -188,6 +210,27 @@
   <div class="declare" hidden="hidden"></div>
 
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -207,16 +250,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/22/Linux系统编程——C语言类型修饰符/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/09/22/Linux系统编程——C语言类型修饰符/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2019/09/15/C-高级编程-四-——STL之算法/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">C++高级编程(四)——STL之函数</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -231,788 +333,38 @@
         </div>
         
         
-    </div>
-</aside>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-C-高级编程-四-——STL之算法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/15/C-高级编程-四-——STL之算法/">C++高级编程(四)——STL之函数</a>
-    </h1>
-  
-
-        
-         
-<a href="/2019/09/15/C-高级编程-四-——STL之算法/" class="archive-article-date">
-  	<time datetime="2019-09-15T02:03:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>　　<code>&lt;algorithm&gt;</code>涉及到比较、交换、查找、遍历、复制、修改等。<br>　　<code>&lt;numeric&gt;</code>体积比较小,只包括几个在序列上进行简单数学运算的模板函数。<br>　　<code>functional</code>定义了一些模板类、用以声明函数对象。</p>
-        
-      
-
-
-
-  <div class="declare" hidden="hidden"></div>
-
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/15/C-高级编程-四-——STL之算法/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-C的5大内存分区"><span class="toc-number">1.</span> <span class="toc-text">1.C的5大内存分区</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-C语言类型修饰符"><span class="toc-number">2.</span> <span class="toc-text">2.C语言类型修饰符</span></a></li></ol>
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
 
 
 
-
-
-
-
-
-
-  
-    <article id="post-C-高级编程-三-——string容器与vector容器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/10/C-高级编程-三-——string容器与vector容器/">C++高级编程(三)——STL之容器</a>
-    </h1>
-  
-
-        
-         
-<a href="/2019/09/10/C-高级编程-三-——string容器与vector容器/" class="archive-article-date">
-  	<time datetime="2019-09-10T08:13:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>　　C++除了<strong>面向对象编程</strong>思想还有<strong>泛型编程</strong>思想，其目的就是为了提升代码的复用性。</p>
-        
-      
-
-
-
-  <div class="declare" hidden="hidden"></div>
-
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/10/C-高级编程-三-——string容器与vector容器/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-C-高级编程-二-——模板案例" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/10/C-高级编程-二-——模板案例/">C++高级编程(二)——模板案例</a>
-    </h1>
-  
-
-        
-         
-<a href="/2019/09/10/C-高级编程-二-——模板案例/" class="archive-article-date">
-  	<time datetime="2019-09-10T01:20:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本案例实现一个通用的数组类。</p>
-        
-      
-
-
-
-  <div class="declare" hidden="hidden"></div>
-
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/10/C-高级编程-二-——模板案例/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-C-高级编程-一-——函数模板" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/08/C-高级编程-一-——函数模板/">C++高级编程(一)——模板</a>
-    </h1>
-  
-
-        
-         
-<a href="/2019/09/08/C-高级编程-一-——函数模板/" class="archive-article-date">
-  	<time datetime="2019-09-08T09:17:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>　　C++提供另一种编程思想称为泛型编程，主要利用的技术就是模板；C++提供两种模板机制函数模板和类模板。</p>
-        
-      
-
-
-
-  <div class="declare" hidden="hidden"></div>
-
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/08/C-高级编程-一-——函数模板/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-C-核心编程-十-——职工人员管理系统" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/08/C-核心编程-十-——职工人员管理系统/">C++核心编程(十)——职工人员管理系统</a>
-    </h1>
-  
-
-        
-         
-<a href="/2019/09/08/C-核心编程-十-——职工人员管理系统/" class="archive-article-date">
-  	<time datetime="2019-09-08T06:52:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>　　本篇利用C++实现一个基于多态的职工人员管理系统。</p>
-        
-      
-
-
-
-  <div class="declare" hidden="hidden"></div>
-
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/08/C-核心编程-十-——职工人员管理系统/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-C-核心编程—-—-九-——文件操作" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/05/C-核心编程—-—-九-——文件操作/">C++核心编程(九)——文件操作</a>
-    </h1>
-  
-
-        
-         
-<a href="/2019/09/05/C-核心编程—-—-九-——文件操作/" class="archive-article-date">
-  	<time datetime="2019-09-05T01:19:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>　　程序运行时产生的数据都属于临时数据，程序一旦运行结束都会被释放，通过文件可以将数据持久化。</p>
-        
-      
-
-
-
-  <div class="declare" hidden="hidden"></div>
-
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/05/C-核心编程—-—-九-——文件操作/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-C-核心编程八——多态" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/03/C-核心编程八——多态/">C++核心编程(八)——多态</a>
-    </h1>
-  
-
-        
-         
-<a href="/2019/09/03/C-核心编程八——多态/" class="archive-article-date">
-  	<time datetime="2019-09-03T01:22:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>　　接口的多种不同的实现方式即为多态，多态性是允许你将父对象设置成为一个或更多的他的子对象相等的技术，赋值之后，父对象就可以根据当前赋值给它的子对象的特性以不同的方式运作；简单的说，允许将子类类型的指针赋值给父类类型的指针。</p>
-        
-      
-
-
-
-  <div class="declare" hidden="hidden"></div>
-
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/03/C-核心编程八——多态/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-C-核心编程-七-——继承" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/02/C-核心编程-七-——继承/">C++核心编程(七)——继承</a>
-    </h1>
-  
-
-        
-         
-<a href="/2019/09/02/C-核心编程-七-——继承/" class="archive-article-date">
-  	<time datetime="2019-09-02T13:40:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>　　继承是面向对象三大特性之一。能大量减少重复代码。</p>
-        
-      
-
-
-
-  <div class="declare" hidden="hidden"></div>
-
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/02/C-核心编程-七-——继承/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-C-核心编程—-六-——运算符重载" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/02/C-核心编程—-六-——运算符重载/">C++核心编程(六)——运算符重载</a>
-    </h1>
-  
-
-        
-         
-<a href="/2019/09/02/C-核心编程—-六-——运算符重载/" class="archive-article-date">
-  	<time datetime="2019-09-02T08:52:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>　　对已有运算符重新进行定义，赋予其另一种功能，以适应不同的数据类型。</p>
-        
-      
-
-
-
-  <div class="declare" hidden="hidden"></div>
-
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/02/C-核心编程—-六-——运算符重载/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-
-
-
   
   
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-    </nav>
   
+
+  
+
+  
+
+  
+
+
+
+
+
 
 
           </div>
@@ -1045,8 +397,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
