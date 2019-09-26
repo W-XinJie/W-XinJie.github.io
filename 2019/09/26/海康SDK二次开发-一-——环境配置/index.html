@@ -6,19 +6,30 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2019 | WangXJ&#39;s Blog</title>
+  <title>海康威视SDK二次开发(一)——环境配置 | WangXJ&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="记录学习、生活上的一些趣事。">
+  <meta name="description" content="在海康SDK开发中遇到几个坑，耽误了时间，为了防止再次采坑，以及给后来开发人员一些小参考，写此博文。">
 <meta name="keywords" content="C++,Linux,图像处理">
-<meta property="og:type" content="website">
-<meta property="og:title" content="WangXJ&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/archives/2019/page/2/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="海康威视SDK二次开发(一)——环境配置">
+<meta property="og:url" content="http://yoursite.com/2019/09/26/海康SDK二次开发-一-——环境配置/index.html">
 <meta property="og:site_name" content="WangXJ&#39;s Blog">
-<meta property="og:description" content="记录学习、生活上的一些趣事。">
+<meta property="og:description" content="在海康SDK开发中遇到几个坑，耽误了时间，为了防止再次采坑，以及给后来开发人员一些小参考，写此博文。">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/2019/09/26/海康SDK二次开发-一-——环境配置/1.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/09/26/海康SDK二次开发-一-——环境配置/2.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/09/26/海康SDK二次开发-一-——环境配置/3.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/09/26/海康SDK二次开发-一-——环境配置/4.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/09/26/海康SDK二次开发-一-——环境配置/5.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/09/26/海康SDK二次开发-一-——环境配置/6.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/09/26/海康SDK二次开发-一-——环境配置/7.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/09/26/海康SDK二次开发-一-——环境配置/8.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/09/26/海康SDK二次开发-一-——环境配置/9.jpg">
+<meta property="og:updated_time" content="2019-09-26T02:28:55.002Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="WangXJ&#39;s Blog">
-<meta name="twitter:description" content="记录学习、生活上的一些趣事。">
+<meta name="twitter:title" content="海康威视SDK二次开发(一)——环境配置">
+<meta name="twitter:description" content="在海康SDK开发中遇到几个坑，耽误了时间，为了防止再次采坑，以及给后来开发人员一些小参考，写此博文。">
+<meta name="twitter:image" content="http://yoursite.com/2019/09/26/海康SDK二次开发-一-——环境配置/1.jpg">
   
   
     <link rel="icon" href="/img/pic1.ico">
@@ -156,338 +167,198 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-海康SDK二次开发-一-——环境配置" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      海康威视SDK二次开发(一)——环境配置
+    </h1>
+  
+
+        
+         
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+<a href="/2019/09/26/海康SDK二次开发-一-——环境配置/" class="archive-article-date">
+  	<time datetime="2019-09-26T01:44:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-26</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在海康SDK开发中遇到几个坑，耽误了时间，为了防止再次采坑，以及给后来开发人员一些小参考，写此博文。</p>
+<a id="more"></a>
+
+<h1 id="1-开发环境"><a href="#1-开发环境" class="headerlink" title="1.开发环境"></a>1.开发环境</h1><ul>
+<li>vs2015 </li>
+<li>opencv3.1.0(bit64)</li>
+<li>海康威视SDK(bit64)</li>
+</ul>
+<hr>
+<h1 id="2-SDK下载"><a href="#2-SDK下载" class="headerlink" title="2.SDK下载"></a>2.SDK下载</h1><p>下载与工程相对应版本的SDK，<a href="https://www.hikvision.com/cn/download_61.html" target="_blank" rel="noopener">SDK下载地址</a> 。<br><img src="1.jpg" alt><br>本人在开发中配置的opencv是64位的，由于SDK是之前从其他开发人员拷贝的，没检查版本，导致配置好后一直报错，如下图。还在一直检查环境配置是否出错，耽误了开发时间。<br><img src="2.jpg" alt><br>将SDK拷贝到开发工程中，并解压缩。</p>
+<h2 id><a href="#" class="headerlink" title></a><img src="3.jpg" alt></h2><h1 id="3-工程配置"><a href="#3-工程配置" class="headerlink" title="3 工程配置"></a>3 工程配置</h1><p>添加头文件:工程属性–配置属性–C/C++–常规–附加包含目录<br><img src="4.jpg" alt><br>添加库文件:工程属性–配置属性–链接器–输入–附加依赖项<br><img src="5.jpg" alt><br>添加附加依赖项:工程属性–配置属性–链接器–输入–附加依赖项</p>
+<h2 id="-1"><a href="#-1" class="headerlink" title></a><img src="6.jpg" alt></h2><h1 id="3-测试"><a href="#3-测试" class="headerlink" title="3 测试"></a>3 测试</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;iostream&gt;  </span><br><span class="line">#include &lt;opencv2/opencv.hpp&gt;</span><br><span class="line">#include &lt;opencv2/core/core.hpp&gt;  </span><br><span class="line">#include &quot;Windows.h&quot;</span><br><span class="line">#include &lt;time.h&gt;</span><br><span class="line">#include &quot;HCNetSDK.h&quot;</span><br><span class="line">#include &quot;plaympeg4.h&quot;</span><br><span class="line">#include &quot;PlayM4.h&quot;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line">using namespace cv;</span><br><span class="line"></span><br><span class="line">void main()</span><br><span class="line">&#123;</span><br><span class="line">	Mat img = imread(&quot;4.jpg&quot;);// 读入一张图片</span><br><span class="line">	NET_DVR_Init();</span><br><span class="line">	imshow(&quot;sorce&quot;, img);</span><br><span class="line">	waitKey(0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行工程可能会报错，如下图。<br><img src="7.jpg" alt><br>解决方法:将下载的库文件拷贝到有.exe的文件目录下，如下图。<br><img src="8.jpg" alt><br>再次运行，程序通过。<br><img src="9.jpg" alt></p>
+
+      
+
+
+
+  <div class="declare" hidden="hidden"></div>
+
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	 
-<a href="/2019/09/02/C-核心编程—-六-——运算符重载/" class="archive-article-date">
-  	<time datetime="2019-09-02T08:52:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/02/C-核心编程—-六-——运算符重载/">C++核心编程(六)——运算符重载</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
+      
 
-          
-
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/09/26/海康SDK二次开发-一-——环境配置/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	 
-<a href="/2019/08/30/C-核心编程-五-——对象模型和this指针/" class="archive-article-date">
-  	<time datetime="2019-08-30T09:23:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-30</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/09/22/Linux系统编程——C语言类型修饰符/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Linux系统编程——C语言类型修饰符</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/30/C-核心编程-五-——对象模型和this指针/">C++核心编程(五)——对象模型和this指针</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-开发环境"><span class="toc-number">1.</span> <span class="toc-text">1.开发环境</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-SDK下载"><span class="toc-number">2.</span> <span class="toc-text">2.SDK下载</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#null"><span class="toc-number">2.1.</span> <span class="toc-text"></span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-工程配置"><span class="toc-number">3.</span> <span class="toc-text">3 工程配置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#-1"><span class="toc-number">3.1.</span> <span class="toc-text"></span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-测试"><span class="toc-number">4.</span> <span class="toc-text">3 测试</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	 
-<a href="/2019/08/28/C-核心编程-四-——类和对象/" class="archive-article-date">
-  	<time datetime="2019-08-28T08:47:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-28</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/28/C-核心编程-四-——类和对象/">C++核心编程(四)——类和对象</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	 
-<a href="/2019/08/28/C-核心编程—（-二-——函数/" class="archive-article-date">
-  	<time datetime="2019-08-28T08:15:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/28/C-核心编程—（-二-——函数/">C++核心编程(三)——函数</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	 
-<a href="/2019/08/25/C-核心编程——引用-二/" class="archive-article-date">
-  	<time datetime="2019-08-25T13:42:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/25/C-核心编程——引用-二/">C++核心编程(二)——引用</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	 
-<a href="/2019/08/25/C-核心编程————内存分区模型/" class="archive-article-date">
-  	<time datetime="2019-08-25T12:40:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/25/C-核心编程————内存分区模型/">C++核心编程(一)——内存分区模型</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	 
-<a href="/2019/08/25/工作要求/" class="archive-article-date">
-  	<time datetime="2019-08-25T06:26:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/25/工作要求/">工作要求</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">生活</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	 
-<a href="/2019/08/24/研二总体规划/" class="archive-article-date">
-  	<time datetime="2019-08-24T09:09:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/24/研二总体规划/">研二总体规划</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">生活</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2019/">&laquo; Prev</a><a class="page-number" href="/archives/2019/">1</a><span class="page-number current">2</span>
-    </nav>
-  
 
 
           </div>
@@ -521,8 +392,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
