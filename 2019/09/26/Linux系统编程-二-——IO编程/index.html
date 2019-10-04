@@ -17,7 +17,7 @@
 <meta property="og:description" content="一切皆文件”是Linux系统的基本思想。Linux 提供的文件系统为多种文件系统和外设驱动提供了统一的接口，基于此类接口，可以实现文件的新建、打开（open）、读（read）、写（write）、关闭（close），及对随机文件的定位（lseek）。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://yoursite.com/2019/09/26/Linux系统编程-二-——IO编程/1.jpg">
-<meta property="og:updated_time" content="2019-10-04T02:29:37.152Z">
+<meta property="og:updated_time" content="2019-10-04T02:41:00.459Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux系统编程(二)——IO编程">
 <meta name="twitter:description" content="一切皆文件”是Linux系统的基本思想。Linux 提供的文件系统为多种文件系统和外设驱动提供了统一的接口，基于此类接口，可以实现文件的新建、打开（open）、读（read）、写（write）、关闭（close），及对随机文件的定位（lseek）。">
@@ -227,13 +227,59 @@
 <td align="center">追加方式打开文件，文件原有内容不会删除</td>
 </tr>
 </tbody></table>
-<p>|mode | 值 | 二进制 | 具体作用 |<br>|:——| :——: | :——: |<br>| r | 4 | 0000 0100 | 可读取 |<br>| w | 2 | 0000 0010 | 可写入 |<br>| x | 1 | 0000 0001 | 可执行 |</p>
+<table>
+<thead>
+<tr>
+<th align="left">mode</th>
+<th align="center">值</th>
+<th align="center">二进制</th>
+<th align="center">具体作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">r</td>
+<td align="center">4</td>
+<td align="center">0000 0100</td>
+<td align="center">可读取</td>
+</tr>
+<tr>
+<td align="left">w</td>
+<td align="center">2</td>
+<td align="center">0000 0010</td>
+<td align="center">可写入</td>
+</tr>
+<tr>
+<td align="left">x</td>
+<td align="center">1</td>
+<td align="center">0000 0001</td>
+<td align="center">可执行</td>
+</tr>
+</tbody></table>
 <ul>
 <li>　<code>write(int fd,void *buf ,size_t count);</code> :写文件<br>　　fd：文件名<br>　　buf: 内容<br>　　count ：字节个数</li>
 <li>　<code>leek(int fd ,off_t offset,int whence);</code>:调制读写位置指针<br>　　fd:调整文件描述符。<br>　　offset:偏移量<br>　　whence:位置基点 </li>
 </ul>
-<p>|:——| :——: |<br>| SEEK_SET | 文件头位置 |<br>| SEEK_SUR | 文件指针位置 |<br>| SEEK_END | 文件尾位置 | </p>
-<h1 id="1-标准IO"><a href="#1-标准IO" class="headerlink" title="1. 标准IO"></a>1. 标准IO</h1><p>　　标准IO:间接调用系统调用函数，头文件是stdio.h。<br>　　存在用户空间缓存的概念，缓存满时才会调用系统调用函数。</p>
+<table>
+<thead>
+<tr>
+<th align="left">whence</th>
+<th align="center">功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">SEEK_SET</td>
+<td align="center">文件头位置</td>
+</tr>
+<tr>
+<td align="left">SEEK_SUR</td>
+<td align="center">文件指针位置</td>
+</tr>
+<tr>
+<td align="left">SEEK_END</td>
+<td align="center">文件尾位置</td>
+</tr>
+</tbody></table>
+<h1 id="2-标准IO"><a href="#2-标准IO" class="headerlink" title="2. 标准IO"></a>2. 标准IO</h1><p>　　标准IO:间接调用系统调用函数，头文件是stdio.h。<br>　　存在用户空间缓存的概念，缓存满时才会调用系统调用函数。</p>
 <ul>
 <li><p>　三个缓存的概念：<br>　　1. 用户空间缓存：从内核读取到数组(write等文件IO函数)<br>　　2. 内核空间缓存：内核空间中的缓存<br>　　3. 库缓存：标准IO库中缓存(printf等标准库函数)</p>
 </li>
@@ -256,7 +302,7 @@
 <li><p>　<code>sprintf();</code><br>　　输出到字符串</p>
 </li>
 </ul>
-<h1 id="2-目录IO"><a href="#2-目录IO" class="headerlink" title="2. 目录IO"></a>2. 目录IO</h1><ul>
+<h1 id="3-目录IO"><a href="#3-目录IO" class="headerlink" title="3. 目录IO"></a>3. 目录IO</h1><ul>
 <li>　<code>opendir();</code><br>　　打开目录</li>
 <li>　<code>mkdir();</code><br>　　创建目录</li>
 <li>　<code>readdir();</code><br>　　读目录</li>
@@ -265,10 +311,12 @@
 <li>　<code>seekdir();</code><br>　　调整位置指针</li>
 <li>　<code>closedir();</code><br>　　关闭目录</li>
 </ul>
-<h1 id="2-库IO"><a href="#2-库IO" class="headerlink" title="2. 库IO"></a>2. 库IO</h1><ul>
+<h1 id="4-库文件"><a href="#4-库文件" class="headerlink" title="4. 库文件"></a>4. 库文件</h1><ul>
 <li>　静态库：libxxx.a，在编译时就将库编译进可执行程序中。</li>
-<li>　动态库：libxxx.so，在运行时将库加载到可执行程序中。<br><img src="1.jpg" alt></li>
+<li>　动态库：libxxx.so，在运行时将库加载到可执行程序中。</li>
 </ul>
+<hr>
+<p><img src="1.jpg" alt></p>
 
       
 
@@ -407,7 +455,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-文件IO"><span class="toc-number">1.</span> <span class="toc-text">1. 文件IO</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-标准IO"><span class="toc-number">2.</span> <span class="toc-text">1. 标准IO</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-目录IO"><span class="toc-number">3.</span> <span class="toc-text">2. 目录IO</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-库IO"><span class="toc-number">4.</span> <span class="toc-text">2. 库IO</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-文件IO"><span class="toc-number">1.</span> <span class="toc-text">1. 文件IO</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-标准IO"><span class="toc-number">2.</span> <span class="toc-text">2. 标准IO</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-目录IO"><span class="toc-number">3.</span> <span class="toc-text">3. 目录IO</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-库文件"><span class="toc-number">4.</span> <span class="toc-text">4. 库文件</span></a></li></ol>
                     </div>
                 </span>
             </div>
