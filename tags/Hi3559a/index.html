@@ -6,22 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Linux系统编程(二)——IO编程 | WangXJ&#39;s Blog</title>
+  <title>Tag: Hi3559a | WangXJ&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一切皆文件”是Linux系统的基本思想。Linux 提供的文件系统为多种文件系统和外设驱动提供了统一的接口，基于此类接口，可以实现文件的新建、打开（open）、读（read）、写（write）、关闭（close），及对随机文件的定位（lseek）。">
-<meta name="keywords" content="Linux">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Linux系统编程(二)——IO编程">
-<meta property="og:url" content="http://yoursite.com/2019/09/26/Linux系统编程-二-——IO编程/index.html">
+  <meta name="description" content="记录学习、生活上的一些趣事。">
+<meta name="keywords" content="C++,Linux,图像处理">
+<meta property="og:type" content="website">
+<meta property="og:title" content="WangXJ&#39;s Blog">
+<meta property="og:url" content="http://yoursite.com/tags/Hi3559a/index.html">
 <meta property="og:site_name" content="WangXJ&#39;s Blog">
-<meta property="og:description" content="一切皆文件”是Linux系统的基本思想。Linux 提供的文件系统为多种文件系统和外设驱动提供了统一的接口，基于此类接口，可以实现文件的新建、打开（open）、读（read）、写（write）、关闭（close），及对随机文件的定位（lseek）。">
+<meta property="og:description" content="记录学习、生活上的一些趣事。">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://yoursite.com/2019/09/26/Linux系统编程-二-——IO编程/1.jpg">
-<meta property="og:updated_time" content="2019-10-04T02:41:00.459Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Linux系统编程(二)——IO编程">
-<meta name="twitter:description" content="一切皆文件”是Linux系统的基本思想。Linux 提供的文件系统为多种文件系统和外设驱动提供了统一的接口，基于此类接口，可以实现文件的新建、打开（open）、读（read）、写（write）、关闭（close），及对随机文件的定位（lseek）。">
-<meta name="twitter:image" content="http://yoursite.com/2019/09/26/Linux系统编程-二-——IO编程/1.jpg">
+<meta name="twitter:title" content="WangXJ&#39;s Blog">
+<meta name="twitter:description" content="记录学习、生活上的一些趣事。">
   
   
     <link rel="icon" href="/img/pic1.ico">
@@ -159,336 +156,61 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Linux系统编程-二-——IO编程" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      Linux系统编程(二)——IO编程
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2019" class="archive-year">2019</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	 
+<a href="/2019/10/18/Hi3559a开发环境配搭建—-一-——交叉编译器安装/" class="archive-article-date">
+  	<time datetime="2019-10-18T02:11:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-18</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2019/10/18/Hi3559a开发环境配搭建—-一-——交叉编译器安装/">Hi3559a开发环境配搭建(一)——交叉编译器安装</a>
     </h1>
   
 
-        
-         
-        <!-- 不蒜子统计 -->
-        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
-              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
-        </span>
-
-<a href="/2019/09/26/Linux系统编程-二-——IO编程/" class="archive-article-date">
-  	<time datetime="2019-09-26T14:25:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>　　一切皆文件”是Linux系统的基本思想。Linux 提供的文件系统为多种文件系统和外设驱动提供了统一的接口，基于此类接口，可以实现文件的新建、打开（open）、读（read）、写（write）、关闭（close），及对随机文件的定位（lseek）。</p>
-<a id="more"></a>
-<h1 id="1-文件IO"><a href="#1-文件IO" class="headerlink" title="1. 文件IO"></a>1. 文件IO</h1><p>　　文件IO直接调用内核提供的系统调用函数，头文件是unistd.h，无缓存，直接从系统调用。<br>　　文件描述符：为了区分内核中的每一个文件，采样ID标号的方式进行标识，inode号表示不同的文件。</p>
-<ul>
-<li>　<code>open(char * ,falg,mode);</code>:打开或者创建一个文件<br>　　char *:文件路径<br>　　flag:打开方式</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th align="left">flag</th>
-<th align="center">功能</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">O_RDONLY</td>
-<td align="center">只读</td>
-</tr>
-<tr>
-<td align="left">O_WRONLY</td>
-<td align="center">只写</td>
-</tr>
-<tr>
-<td align="left">O_RDWR</td>
-<td align="center">读写</td>
-</tr>
-<tr>
-<td align="left">O_CREAT</td>
-<td align="center">创建一个文件</td>
-</tr>
-<tr>
-<td align="left">O_EXCL</td>
-<td align="center">如果使用O_CREAT时文件存在，则返回出错</td>
-</tr>
-<tr>
-<td align="left">O_TRUNC</td>
-<td align="center">打开文件，文件原有内容删除</td>
-</tr>
-<tr>
-<td align="left">O_APPEND</td>
-<td align="center">追加方式打开文件，文件原有内容不会删除</td>
-</tr>
-</tbody></table>
-<table>
-<thead>
-<tr>
-<th align="left">mode</th>
-<th align="center">值</th>
-<th align="center">二进制</th>
-<th align="center">具体作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">r</td>
-<td align="center">4</td>
-<td align="center">0000 0100</td>
-<td align="center">可读取</td>
-</tr>
-<tr>
-<td align="left">w</td>
-<td align="center">2</td>
-<td align="center">0000 0010</td>
-<td align="center">可写入</td>
-</tr>
-<tr>
-<td align="left">x</td>
-<td align="center">1</td>
-<td align="center">0000 0001</td>
-<td align="center">可执行</td>
-</tr>
-</tbody></table>
-<ul>
-<li>　<code>write(int fd,void *buf ,size_t count);</code> :写文件<br>　　fd：文件名<br>　　buf: 内容<br>　　count ：字节个数</li>
-<li>　<code>leek(int fd ,off_t offset,int whence);</code>:调制读写位置指针<br>　　fd:调整文件描述符。<br>　　offset:偏移量<br>　　whence:位置基点 </li>
-</ul>
-<table>
-<thead>
-<tr>
-<th align="left">whence</th>
-<th align="center">功能</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">SEEK_SET</td>
-<td align="center">文件头位置</td>
-</tr>
-<tr>
-<td align="left">SEEK_SUR</td>
-<td align="center">文件指针位置</td>
-</tr>
-<tr>
-<td align="left">SEEK_END</td>
-<td align="center">文件尾位置</td>
-</tr>
-</tbody></table>
-<h1 id="2-标准IO"><a href="#2-标准IO" class="headerlink" title="2. 标准IO"></a>2. 标准IO</h1><p>　　标准IO:间接调用系统调用函数，头文件是stdio.h。<br>　　存在用户空间缓存的概念，缓存满时才会调用系统调用函数。</p>
-<ul>
-<li><p>　三个缓存的概念：<br>　　1. 用户空间缓存：从内核读取到数组(write等文件IO函数)<br>　　2. 内核空间缓存：内核空间中的缓存<br>　　3. 库缓存：标准IO库中缓存(printf等标准库函数)</p>
-</li>
-<li><p>　<code>FILE *fopen(const char *path ,const char *mode);</code><br>　　mode:<br>　　b:二进制<br>　　r:只读方式，文件必须存在<br>　　w:写方式，原有内容删除<br>　　a:追加方式写<br>　　r+:读写方式，文件必须存在</p>
-</li>
-<li><p>　<code>fclose()</code>:文件关闭前只读释放缓存</p>
-</li>
-<li><p>　<code>char *fgets(char *s,int size,FILE *stream);</code><br>　　若成功则返回缓存地址，出错返回null。</p>
-</li>
-<li><p>　<code>int fputs(const char *s,FILE *stream);</code><br>　　若成功则非负，出错返回EOF。</p>
-</li>
-<li><p>　刷新缓存函数：<code>fflush(FILE *fp);</code><br>　　把函数中的缓存内容强制写入内核中去。</p>
-</li>
-<li><p>　<code>ftell(FILE *fp);</code><br>　　获取当前文件位置</p>
-</li>
-<li><p>　<code>fprintf();</code><br>　　输出到文件，也可以输出到显示器。</p>
-</li>
-<li><p>　<code>printf();</code><br>　　输出到显示器</p>
-</li>
-<li><p>　<code>sprintf();</code><br>　　输出到字符串</p>
-</li>
-</ul>
-<h1 id="3-目录IO"><a href="#3-目录IO" class="headerlink" title="3. 目录IO"></a>3. 目录IO</h1><ul>
-<li>　<code>opendir();</code><br>　　打开目录</li>
-<li>　<code>mkdir();</code><br>　　创建目录</li>
-<li>　<code>readdir();</code><br>　　读目录</li>
-<li>　<code>rewinddir();</code><br>　　调整位置指针</li>
-<li>　<code>telldir();</code><br>　　返回位置指针</li>
-<li>　<code>seekdir();</code><br>　　调整位置指针</li>
-<li>　<code>closedir();</code><br>　　关闭目录</li>
-</ul>
-<h1 id="4-库文件"><a href="#4-库文件" class="headerlink" title="4. 库文件"></a>4. 库文件</h1><ul>
-<li>　静态库：libxxx.a，在编译时就将库编译进可执行程序中。</li>
-<li>　动态库：libxxx.so，在运行时将库加载到可执行程序中。</li>
-</ul>
-<hr>
-<p><img src="1.jpg" alt></p>
-
-      
-
-
-
-  <div class="declare" hidden="hidden"></div>
-
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Hi3559a</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/09/26/Linux系统编程-二-——IO编程/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2019/10/05/Linux系统编程-三-——进程通信/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Linux系统编程(三)——进程通信
-        
-      </div>
-    </a>
   
   
-    <a href="/2019/09/26/海康SDK二次开发-一-——环境配置/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">海康威视SDK二次开发(一)——环境配置</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-文件IO"><span class="toc-number">1.</span> <span class="toc-text">1. 文件IO</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-标准IO"><span class="toc-number">2.</span> <span class="toc-text">2. 标准IO</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-目录IO"><span class="toc-number">3.</span> <span class="toc-text">3. 目录IO</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-库文件"><span class="toc-number">4.</span> <span class="toc-text">4. 库文件</span></a></li></ol>
-                    </div>
-                </span>
-            </div>
-        </div>
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
-
-
-
-
-
+    
 
 
           </div>
@@ -522,9 +244,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
