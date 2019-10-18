@@ -8,20 +8,21 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Hi3559a开发环境配搭建(一)——交叉编译器安装 | WangXJ&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="海思Hi3559a开发。">
+  <meta name="description" content="海思Hi3559a开发">
 <meta name="keywords" content="Hi3559a">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hi3559a开发环境配搭建(一)——交叉编译器安装">
 <meta property="og:url" content="http://yoursite.com/2019/10/18/Hi3559a开发环境配搭建—-一-——交叉编译器安装/index.html">
 <meta property="og:site_name" content="WangXJ&#39;s Blog">
-<meta property="og:description" content="海思Hi3559a开发。">
+<meta property="og:description" content="海思Hi3559a开发">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/2019/10/18/Hi3559a开发环境配搭建—-一-——交叉编译器安装/1.png">
 <meta property="og:image" content="http://yoursite.com/2019/10/18/Hi3559a开发环境配搭建—-一-——交叉编译器安装/1.jpg">
-<meta property="og:updated_time" content="2019-10-18T07:02:28.861Z">
+<meta property="og:updated_time" content="2019-10-18T07:13:11.543Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hi3559a开发环境配搭建(一)——交叉编译器安装">
-<meta name="twitter:description" content="海思Hi3559a开发。">
-<meta name="twitter:image" content="http://yoursite.com/2019/10/18/Hi3559a开发环境配搭建—-一-——交叉编译器安装/1.jpg">
+<meta name="twitter:description" content="海思Hi3559a开发">
+<meta name="twitter:image" content="http://yoursite.com/2019/10/18/Hi3559a开发环境配搭建—-一-——交叉编译器安装/1.png">
   
   
     <link rel="icon" href="/img/pic1.ico">
@@ -185,7 +186,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>　　海思Hi3559a开发。</p>
+        <p>　　海思Hi3559a开发</p>
 <a id="more"></a>
 <hr>
 <h1 id="1-1-交叉编译工具介绍"><a href="#1-1-交叉编译工具介绍" class="headerlink" title="1.1 交叉编译工具介绍"></a>1.1 交叉编译工具介绍</h1><ul>
@@ -194,14 +195,9 @@
 </ul>
 <hr>
 <h1 id="1-2-安装交叉编译链接"><a href="#1-2-安装交叉编译链接" class="headerlink" title="1.2 安装交叉编译链接"></a>1.2 安装交叉编译链接</h1><ul>
-<li>tar命令</li>
-<li>c: 建立压缩档案 </li>
-<li>x：解压 </li>
-<li>t：查看内容 </li>
-<li>r：向压缩归档文件末尾追加文件 </li>
-<li>u：更新原压缩包中的文件<br>这五个是独立的命令，压缩解压都要用到其中一个，可以和别的命令连用但只能用其中一个。</li>
+<li>tar命令<br>c: 建立压缩档案<br>x：解压<br>t：查看内容<br>r：向压缩归档文件末尾追加文件<br>u：更新原压缩包中的文件<br>这五个是独立的命令，压缩解压都要用到其中一个，可以和别的命令连用但只能用其中一个。</li>
 </ul>
-<p>下面的参数是根据需要在压缩或解压档案时可选的。<br>-z：有gzip属性的<br>-j：有bz2属性的<br>-Z：有compress属性的<br>-v：显示所有过程<br>-O：将文件解开到标准输出 </p>
+<p>下面的参数是根据需要在压缩或解压档案时可选的。<br>z：有gzip属性的<br>j：有bz2属性的<br>Z：有compress属性的<br>v：显示所有过程<br>O：将文件解开到标准输出 </p>
 <p>必须参数:<br>-f: 使用档案名字，这个参数是最后一个参数，后面只能接档案名。</p>
 <ul>
 <li>解压：<code>tar -xzf aarch64-hisiv610-linux.tgz</code></li>
@@ -214,7 +210,7 @@
 <li>进入目录获得权限：<code>chomd 777 ./sdk.unpack</code></li>
 <li>解包：<code>./sdk.unpack</code></li>
 </ul>
-<p><img src="1.jpg" alt></p>
+<h1 id="1-4-SDK目录"><a href="#1-4-SDK目录" class="headerlink" title="1.4 SDK目录"></a>1.4 SDK目录</h1><h2 id><a href="#" class="headerlink" title></a><img src="1.png" alt></h2><p><img src="1.jpg" alt></p>
 
       
 
@@ -353,7 +349,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-1-交叉编译工具介绍"><span class="toc-number">1.</span> <span class="toc-text">1.1 交叉编译工具介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-2-安装交叉编译链接"><span class="toc-number">2.</span> <span class="toc-text">1.2 安装交叉编译链接</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-3-安装SDK"><span class="toc-number">3.</span> <span class="toc-text">1.3 安装SDK</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-1-交叉编译工具介绍"><span class="toc-number">1.</span> <span class="toc-text">1.1 交叉编译工具介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-2-安装交叉编译链接"><span class="toc-number">2.</span> <span class="toc-text">1.2 安装交叉编译链接</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-3-安装SDK"><span class="toc-number">3.</span> <span class="toc-text">1.3 安装SDK</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-4-SDK目录"><span class="toc-number">4.</span> <span class="toc-text">1.4 SDK目录</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#null"><span class="toc-number">4.1.</span> <span class="toc-text"></span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
