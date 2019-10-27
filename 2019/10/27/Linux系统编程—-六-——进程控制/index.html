@@ -6,19 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | WangXJ&#39;s Blog</title>
+  <title>Linux系统编程—(六)——进程控制 | WangXJ&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="记录学习、生活上的一些趣事。">
-<meta name="keywords" content="C++,Linux,图像处理">
-<meta property="og:type" content="website">
-<meta property="og:title" content="WangXJ&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="进程是具有一定独立功能的程序的一次运动活动。">
+<meta name="keywords" content="Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux系统编程—(六)——进程控制">
+<meta property="og:url" content="http://yoursite.com/2019/10/27/Linux系统编程—-六-——进程控制/index.html">
 <meta property="og:site_name" content="WangXJ&#39;s Blog">
-<meta property="og:description" content="记录学习、生活上的一些趣事。">
+<meta property="og:description" content="进程是具有一定独立功能的程序的一次运动活动。">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/2019/10/27/Linux系统编程—-六-——进程控制/1.png">
+<meta property="og:image" content="http://yoursite.com/2019/10/27/Linux系统编程—-六-——进程控制/1.jpg">
+<meta property="og:updated_time" content="2019-10-27T12:47:10.019Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="WangXJ&#39;s Blog">
-<meta name="twitter:description" content="记录学习、生活上的一些趣事。">
+<meta name="twitter:title" content="Linux系统编程—(六)——进程控制">
+<meta name="twitter:description" content="进程是具有一定独立功能的程序的一次运动活动。">
+<meta name="twitter:image" content="http://yoursite.com/2019/10/27/Linux系统编程—-六-——进程控制/1.png">
   
   
     <link rel="icon" href="/img/pic1.ico">
@@ -156,37 +160,137 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-Linux系统编程—-六-——进程控制" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      Linux系统编程—(六)——进程控制
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	 
+
+        
+         
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
 <a href="/2019/10/27/Linux系统编程—-六-——进程控制/" class="archive-article-date">
   	<time datetime="2019-10-27T03:06:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-27</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/10/27/Linux系统编程—-六-——进程控制/">Linux系统编程—(六)——进程控制</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>　　进程是具有一定独立功能的程序的一次运动活动。</p>
+<a id="more"></a>
+<h1 id="1-1-基本概念"><a href="#1-1-基本概念" class="headerlink" title="1.1 基本概念"></a>1.1 基本概念</h1><ul>
+<li>特点：<br>动态性、并发性、独立性、异步性。</li>
+<li>状态：<br>就绪、执行、阻塞。<br><img src="1.png" alt></li>
+<li>进程ID(PID)、父进程ID(PPID)、启动进程的用户ID(UID)。</li>
+<li>进程互斥<br>进程互斥是指当有若干进程都要使用某一共享资源时，任何时刻最多允许一个进程使用，其他要使用该资源的进程必须等待，直到占用该资源者释放了该资源为止。</li>
+<li>临界资源<br>一次只允许一个进程访问的资源。</li>
+<li>临界区<br>进程访问临界资源的那段程序代码。</li>
+<li>进程同步<br>一组并发进程按一定的顺序执行的过程称为进程间的同步。具有同步关系的一组并发进程称为合作进程，合作进程间互相发送的信号称为信息或事件。</li>
+<li>死锁<br>多个进程因竞争资源而形成一种僵局，若无外力作用，进程永远不能再向前推进。</li>
+</ul>
+<hr>
+<h1 id="1-2-获取ID、进程创建"><a href="#1-2-获取ID、进程创建" class="headerlink" title="1.2 获取ID、进程创建"></a>1.2 获取ID、进程创建</h1><ul>
+<li>获取进程ID：pid_t getpid(void);</li>
+<li>获取父进程 ID：pid_t getppid(void);</li>
+<li>创建子进程：pid_t fork(void);</li>
+</ul>
+<p><strong>fork调用一次，返回两次</strong>，因此它可能有三种不同的返回值<br>1、在父进程中返回新建子进程饿PID<br>2、在子进程中，返回0<br>3、出现错误返回负值</p>
+<ul>
+<li>示例：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">void main()</span><br><span class="line">&#123;</span><br><span class="line">	pid_t pid;</span><br><span class="line">	</span><br><span class="line">	pid = fork();</span><br><span class="line">	/*此时已经有两个进程了*/</span><br><span class="line">	if(pid&lt;0)</span><br><span class="line">		printf(&quot;fork erro \n&quot;);</span><br><span class="line">	else if(pid==0)</span><br><span class="line">		printf(&quot;child process id = %d\n&quot;,getpid());</span><br><span class="line">	else</span><br><span class="line">		printf(&quot;parent process id = %d\n&quot;,getpid());</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
-          
+</li>
+</ul>
+<p>说明:在pid = fork()之前，只有一个进程执行，这条语句执行后有两个进程执行了，这<strong>两个进程的共享代码段</strong>，将要执行的下一条语句都是if(pid == 0)。两个进程中，原来就存在的那个进程被称为”父进程”，新出现的那个进程被称为”子进程”，父子进程的区别在于进程标示符(PID)不同。</p>
+<ul>
+<li>示例：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	pid_t pid;</span><br><span class="line">	int count = 0;</span><br><span class="line">	pid = fork();</span><br><span class="line">	/*此时已经有两个进程了*/</span><br><span class="line">	count++;</span><br><span class="line">	printf(&quot;count = %d\n&quot;,count);</span><br><span class="line">	</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>说明：fork创建的子进程和父进程共享代码段。子进程会拷贝数据空间、堆栈空间。printf打印两次,count = 1。</p>
+<ul>
+<li>创建子进程:pid_t vfork(void)<br>区别：<br>fork:子进程拷贝父进程数据段<br>vfork:子进程共享父进程数据段</li>
+</ul>
+<p>fork:父子进程执行先后顺序次序不确定<br>vfork:子进程先运行，父进程后运行</p>
+<ul>
+<li>示例：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	pid_t pid;</span><br><span class="line">	int count = 0;</span><br><span class="line">	pid = vfork();</span><br><span class="line">	count++;</span><br><span class="line">	printf(&quot;count = %d\n&quot;,count);</span><br><span class="line">	</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="说明：fork创建的子进程和父进程共享数据段。printf打印两次-count-1，count-2。"><a href="#说明：fork创建的子进程和父进程共享数据段。printf打印两次-count-1，count-2。" class="headerlink" title="说明：fork创建的子进程和父进程共享数据段。printf打印两次,count = 1，count = 2。"></a>说明：fork创建的子进程和父进程共享数据段。printf打印两次,count = 1，count = 2。</h2><h1 id="1-3-exec函数族"><a href="#1-3-exec函数族" class="headerlink" title="1.3 exec函数族"></a>1.3 exec函数族</h1><ul>
+<li><p>exec用被执行的程序替换调用它的程序。</p>
+</li>
+<li><p>与fork区别：<br>fork创建一个新进程，产生新的PID。<br>exec启动一个新程序。替换原有的进程，进程PID不会改变。</p>
+</li>
+<li><p>int execl(const char* path,const char * arg1,…)<br>path:被执行的程序名，包含完整路径。<br>arg1-argn:程序命令行参数</p>
+</li>
+<li><p>示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	execl(&quot;/bin/ls&quot;,&quot;ls&quot;,&quot;-al&quot;,&quot;/etc/passwd&quot;,(char *)0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>int execlp(const char* path,const char * arg1,…)<br>path:不包含路径，将从path环境变量中查找该程序。</p>
+</li>
+<li><p>示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	execlp(&quot;ls&quot;,&quot;ls&quot;,&quot;-al&quot;,&quot;/etc/passwd&quot;,(char *)0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>int execlp(const char* path,char * const argv[])<br>path:程序名，包含完整路径。<br>argv[]:命令行参数数组</p>
+</li>
+<li><p>int system(const char * string);<br>调用fork产生子进程，由子进程执行/bin/sh -c string命令。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">void main()</span><br><span class="line">&#123;</span><br><span class="line">	system(&quot;ls -al /etc/passwd&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<hr>
+<h1 id="1-4-进程等待"><a href="#1-4-进程等待" class="headerlink" title="1.4 进程等待"></a>1.4 进程等待</h1><ul>
+<li>阻塞该进程，直到某个子进程退出。</li>
+<li>示例:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">void main()</span><br><span class="line">&#123;</span><br><span class="line">	pid_t pc,pr;</span><br><span class="line">	pc = fork();</span><br><span class="line">	if(pc == 0)//子进程</span><br><span class="line">	&#123;</span><br><span class="line">		printf(&quot;child process pid = %d\n&quot;,getpid());</span><br><span class="line">		sleep(10);//睡眠10秒</span><br><span class="line">	&#125;</span><br><span class="line">	else if(pc &gt;０)//父进程</span><br><span class="line">	&#123;</span><br><span class="line">		pr = wait(NULL);//等待</span><br><span class="line">		printf(&quot;wait pid = %d\n&quot;,pr);</span><br><span class="line">	&#125;</span><br><span class="line">	exit(0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<hr>
+<p><img src="1.jpg" alt></p>
+
+      
+
+
+
+  <div class="declare" hidden="hidden"></div>
+
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -198,374 +302,124 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/10/27/Linux系统编程—-六-——进程控制/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	 
-<a href="/2019/10/23/Linux系统编程-五-——GDB调试工具/" class="archive-article-date">
-  	<time datetime="2019-10-23T09:08:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-23</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/10/23/Linux系统编程-五-——GDB调试工具/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Linux系统编程(五)——GDB调试工具</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/10/23/Linux系统编程-五-——GDB调试工具/">Linux系统编程(五)——GDB调试工具</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-1-基本概念"><span class="toc-number">1.</span> <span class="toc-text">1.1 基本概念</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-2-获取ID、进程创建"><span class="toc-number">2.</span> <span class="toc-text">1.2 获取ID、进程创建</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#说明：fork创建的子进程和父进程共享数据段。printf打印两次-count-1，count-2。"><span class="toc-number">2.1.</span> <span class="toc-text">说明：fork创建的子进程和父进程共享数据段。printf打印两次,count = 1，count = 2。</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-3-exec函数族"><span class="toc-number">3.</span> <span class="toc-text">1.3 exec函数族</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-4-进程等待"><span class="toc-number">4.</span> <span class="toc-text">1.4 进程等待</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	 
-<a href="/2019/10/18/Hi3559a开发环境配搭建—-一-——交叉编译器安装/" class="archive-article-date">
-  	<time datetime="2019-10-18T02:11:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-18</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/10/18/Hi3559a开发环境配搭建—-一-——交叉编译器安装/">Hi3559a开发环境配搭建(一)——交叉编译器安装</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Hi3559a</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	 
-<a href="/2019/10/16/Linux系统编程-四-——线程/" class="archive-article-date">
-  	<time datetime="2019-10-16T03:25:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/10/16/Linux系统编程-四-——线程/">Linux系统编程(四)——多线程</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	 
-<a href="/2019/10/05/Linux系统编程-三-——进程通信/" class="archive-article-date">
-  	<time datetime="2019-10-05T03:19:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/10/05/Linux系统编程-三-——进程通信/">Linux系统编程(三)——进程通信</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	 
-<a href="/2019/09/26/Linux系统编程-二-——IO编程/" class="archive-article-date">
-  	<time datetime="2019-09-26T14:25:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/26/Linux系统编程-二-——IO编程/">Linux系统编程(二)——IO编程</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	 
-<a href="/2019/09/26/海康SDK二次开发-一-——环境配置/" class="archive-article-date">
-  	<time datetime="2019-09-26T01:44:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/26/海康SDK二次开发-一-——环境配置/">海康威视SDK二次开发(一)——环境配置</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">视频/图像</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	 
-<a href="/2019/09/22/Linux系统编程——C语言类型修饰符/" class="archive-article-date">
-  	<time datetime="2019-09-22T01:33:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/22/Linux系统编程——C语言类型修饰符/">Linux系统编程(一)——C语言类型修饰符</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	 
-<a href="/2019/09/15/C-高级编程-四-——STL之算法/" class="archive-article-date">
-  	<time datetime="2019-09-15T02:03:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/15/C-高级编程-四-——STL之算法/">C++高级编程(四)——STL之函数</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	 
-<a href="/2019/09/10/C-高级编程-三-——string容器与vector容器/" class="archive-article-date">
-  	<time datetime="2019-09-10T08:13:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/10/C-高级编程-三-——string容器与vector容器/">C++高级编程(三)——STL之容器</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><a class="extend next" rel="next" href="/archives/page/2/">Next &raquo;</a>
-    </nav>
-  
 
 
           </div>
@@ -599,8 +453,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
