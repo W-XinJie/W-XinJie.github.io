@@ -8,20 +8,20 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Linux系统编程—(六)——进程控制 | WangXJ&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="进程是具有一定独立功能的程序的一次运动活动。">
+  <meta name="description" content="进程是具有一定独立功能的程序的一次运动活动。是系统进行资源分配和调度的基本单位，是操作系统结构的基础。它的执行需要系统分配资源创建实体之后，才能进行。">
 <meta name="keywords" content="Linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux系统编程—(六)——进程控制">
 <meta property="og:url" content="http://yoursite.com/2019/10/27/Linux系统编程—-六-——进程控制/index.html">
 <meta property="og:site_name" content="WangXJ&#39;s Blog">
-<meta property="og:description" content="进程是具有一定独立功能的程序的一次运动活动。">
+<meta property="og:description" content="进程是具有一定独立功能的程序的一次运动活动。是系统进行资源分配和调度的基本单位，是操作系统结构的基础。它的执行需要系统分配资源创建实体之后，才能进行。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://yoursite.com/2019/10/27/Linux系统编程—-六-——进程控制/1.png">
 <meta property="og:image" content="http://yoursite.com/2019/10/27/Linux系统编程—-六-——进程控制/1.jpg">
-<meta property="og:updated_time" content="2019-10-27T12:47:10.019Z">
+<meta property="og:updated_time" content="2019-11-02T03:06:46.977Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux系统编程—(六)——进程控制">
-<meta name="twitter:description" content="进程是具有一定独立功能的程序的一次运动活动。">
+<meta name="twitter:description" content="进程是具有一定独立功能的程序的一次运动活动。是系统进行资源分配和调度的基本单位，是操作系统结构的基础。它的执行需要系统分配资源创建实体之后，才能进行。">
 <meta name="twitter:image" content="http://yoursite.com/2019/10/27/Linux系统编程—-六-——进程控制/1.png">
   
   
@@ -186,31 +186,44 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>　　进程是具有一定独立功能的程序的一次运动活动。</p>
+        <p>　　进程是具有一定独立功能的程序的一次运动活动。是系统进行资源分配和调度的基本单位，是操作系统结构的基础。它的执行需要系统分配资源创建实体之后，才能进行。</p>
 <a id="more"></a>
 <h1 id="1-1-基本概念"><a href="#1-1-基本概念" class="headerlink" title="1.1 基本概念"></a>1.1 基本概念</h1><ul>
-<li>特点：<br>动态性、并发性、独立性、异步性。</li>
-<li>状态：<br>就绪、执行、阻塞。<br><img src="1.png" alt></li>
-<li>进程ID(PID)、父进程ID(PPID)、启动进程的用户ID(UID)。</li>
-<li>进程互斥<br>进程互斥是指当有若干进程都要使用某一共享资源时，任何时刻最多允许一个进程使用，其他要使用该资源的进程必须等待，直到占用该资源者释放了该资源为止。</li>
-<li>临界资源<br>一次只允许一个进程访问的资源。</li>
-<li>临界区<br>进程访问临界资源的那段程序代码。</li>
-<li>进程同步<br>一组并发进程按一定的顺序执行的过程称为进程间的同步。具有同步关系的一组并发进程称为合作进程，合作进程间互相发送的信号称为信息或事件。</li>
-<li>死锁<br>多个进程因竞争资源而形成一种僵局，若无外力作用，进程永远不能再向前推进。</li>
+<li><p>特点：动态性、并发性、独立性、异步性。</p>
+</li>
+<li><p>状态：就绪、执行、阻塞。</p>
+</li>
+</ul>
+<p><img src="1.png" alt></p>
+<ul>
+<li><p>进程ID(PID)、父进程ID(PPID)、启动进程的用户ID(UID)。</p>
+</li>
+<li><p>进程互斥:进程互斥是指当有若干进程都要使用某一共享资源时，任何时刻最多允许一个进程使用，其他要使用该资源的进程必须等待，直到占用该资源者释放了该资源为止。</p>
+</li>
+<li><p>临界资源:一次只允许一个进程访问的资源。</p>
+</li>
+<li><p>临界区:进程访问临界资源的那段程序代码。</p>
+</li>
+<li><p>进程同步:一组并发进程按一定的顺序执行的过程称为进程间的同步。具有同步关系的一组并发进程称为合作进程，合作进程间互相发送的信号称为信息或事件。</p>
+</li>
+<li><p>死锁:多个进程因竞争资源而形成一种僵局，若无外力作用，进程永远不能再向前推进。</p>
+</li>
+<li><p>打印进程状态：ps -axj</p>
+</li>
 </ul>
 <hr>
 <h1 id="1-2-获取ID、进程创建"><a href="#1-2-获取ID、进程创建" class="headerlink" title="1.2 获取ID、进程创建"></a>1.2 获取ID、进程创建</h1><ul>
-<li>获取进程ID：pid_t getpid(void);</li>
-<li>获取父进程 ID：pid_t getppid(void);</li>
-<li>创建子进程：pid_t fork(void);</li>
+<li>获取进程ID：<code>pid_t getpid(void);</code></li>
+<li>获取父进程ID：<code>pid_t getppid(void);</code></li>
+<li>创建子进程：<code>pid_t fork(void);</code></li>
 </ul>
-<p><strong>fork调用一次，返回两次</strong>，因此它可能有三种不同的返回值<br>1、在父进程中返回新建子进程饿PID<br>2、在子进程中，返回0<br>3、出现错误返回负值</p>
+<p><strong>fork调用一次，返回两次</strong>，因此它可能有三种不同的返回值<br>1、在父进程中返回新建子进程PID<br>2、在子进程中，返回0<br>3、出现错误返回负值</p>
 <ul>
 <li>示例：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">void main()</span><br><span class="line">&#123;</span><br><span class="line">	pid_t pid;</span><br><span class="line">	</span><br><span class="line">	pid = fork();</span><br><span class="line">	/*此时已经有两个进程了*/</span><br><span class="line">	if(pid&lt;0)</span><br><span class="line">		printf(&quot;fork erro \n&quot;);</span><br><span class="line">	else if(pid==0)</span><br><span class="line">		printf(&quot;child process id = %d\n&quot;,getpid());</span><br><span class="line">	else</span><br><span class="line">		printf(&quot;parent process id = %d\n&quot;,getpid());</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
-<p>说明:在pid = fork()之前，只有一个进程执行，这条语句执行后有两个进程执行了，这<strong>两个进程的共享代码段</strong>，将要执行的下一条语句都是if(pid == 0)。两个进程中，原来就存在的那个进程被称为”父进程”，新出现的那个进程被称为”子进程”，父子进程的区别在于进程标示符(PID)不同。</p>
+<p>说明:在<code>pid = fork()</code>之前，只有一个进程执行，这条语句执行后有两个进程执行了，这<strong>两个进程的共享代码段</strong>，将要执行的下一条语句都是if(pid == 0)。两个进程中，原来就存在的那个进程被称为”父进程”，新出现的那个进程被称为”子进程”，父子进程的区别在于进程标示符(PID)不同。</p>
 <ul>
 <li>示例：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	pid_t pid;</span><br><span class="line">	int count = 0;</span><br><span class="line">	pid = fork();</span><br><span class="line">	/*此时已经有两个进程了*/</span><br><span class="line">	count++;</span><br><span class="line">	printf(&quot;count = %d\n&quot;,count);</span><br><span class="line">	</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -218,7 +231,7 @@
 </ul>
 <p>说明：fork创建的子进程和父进程共享代码段。子进程会拷贝数据空间、堆栈空间。printf打印两次,count = 1。</p>
 <ul>
-<li>创建子进程:pid_t vfork(void)<br>区别：<br>fork:子进程拷贝父进程数据段<br>vfork:子进程共享父进程数据段</li>
+<li>创建子进程:<code>pid_t vfork(void);</code><br>区别：<br>fork:子进程拷贝父进程数据段<br>vfork:子进程共享父进程数据段</li>
 </ul>
 <p>fork:父子进程执行先后顺序次序不确定<br>vfork:子进程先运行，父进程后运行</p>
 <ul>
@@ -226,24 +239,26 @@
 
 </li>
 </ul>
-<h2 id="说明：fork创建的子进程和父进程共享数据段。printf打印两次-count-1，count-2。"><a href="#说明：fork创建的子进程和父进程共享数据段。printf打印两次-count-1，count-2。" class="headerlink" title="说明：fork创建的子进程和父进程共享数据段。printf打印两次,count = 1，count = 2。"></a>说明：fork创建的子进程和父进程共享数据段。printf打印两次,count = 1，count = 2。</h2><h1 id="1-3-exec函数族"><a href="#1-3-exec函数族" class="headerlink" title="1.3 exec函数族"></a>1.3 exec函数族</h1><ul>
+<p>说明：fork创建的子进程和父进程共享数据段。printf打印两次,count = 1，count = 2。</p>
+<hr>
+<h1 id="1-3-exec函数族"><a href="#1-3-exec函数族" class="headerlink" title="1.3 exec函数族"></a>1.3 exec函数族</h1><ul>
 <li><p>exec用被执行的程序替换调用它的程序。</p>
 </li>
 <li><p>与fork区别：<br>fork创建一个新进程，产生新的PID。<br>exec启动一个新程序。替换原有的进程，进程PID不会改变。</p>
 </li>
-<li><p>int execl(const char* path,const char * arg1,…)<br>path:被执行的程序名，包含完整路径。<br>arg1-argn:程序命令行参数</p>
+<li><p><code>int execl(const char* path,const char * arg1,...)</code><br>path:被执行的程序名，包含完整路径。<br>arg1-argn:程序命令行参数</p>
 </li>
 <li><p>示例：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	execl(&quot;/bin/ls&quot;,&quot;ls&quot;,&quot;-al&quot;,&quot;/etc/passwd&quot;,(char *)0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>int execlp(const char* path,const char * arg1,…)<br>path:不包含路径，将从path环境变量中查找该程序。</p>
+<li><p><code>int execlp(const char* path,const char * arg1,...)</code><br>path:不包含路径，将从path环境变量中查找该程序。</p>
 </li>
 <li><p>示例：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	execlp(&quot;ls&quot;,&quot;ls&quot;,&quot;-al&quot;,&quot;/etc/passwd&quot;,(char *)0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>int execlp(const char* path,char * const argv[])<br>path:程序名，包含完整路径。<br>argv[]:命令行参数数组</p>
+<li><p><code>int execlp(const char* path,char * const argv[])</code><br>path:程序名，包含完整路径。<br>argv[]:命令行参数数组</p>
 </li>
-<li><p>int system(const char * string);<br>调用fork产生子进程，由子进程执行/bin/sh -c string命令。</p>
+<li><p><code>int system(const char * string);</code><br>调用fork产生子进程，由子进程执行/bin/sh -c string命令。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">void main()</span><br><span class="line">&#123;</span><br><span class="line">	system(&quot;ls -al /etc/passwd&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 </li>
@@ -395,7 +410,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-1-基本概念"><span class="toc-number">1.</span> <span class="toc-text">1.1 基本概念</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-2-获取ID、进程创建"><span class="toc-number">2.</span> <span class="toc-text">1.2 获取ID、进程创建</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#说明：fork创建的子进程和父进程共享数据段。printf打印两次-count-1，count-2。"><span class="toc-number">2.1.</span> <span class="toc-text">说明：fork创建的子进程和父进程共享数据段。printf打印两次,count = 1，count = 2。</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-3-exec函数族"><span class="toc-number">3.</span> <span class="toc-text">1.3 exec函数族</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-4-进程等待"><span class="toc-number">4.</span> <span class="toc-text">1.4 进程等待</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-1-基本概念"><span class="toc-number">1.</span> <span class="toc-text">1.1 基本概念</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-2-获取ID、进程创建"><span class="toc-number">2.</span> <span class="toc-text">1.2 获取ID、进程创建</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-3-exec函数族"><span class="toc-number">3.</span> <span class="toc-text">1.3 exec函数族</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-4-进程等待"><span class="toc-number">4.</span> <span class="toc-text">1.4 进程等待</span></a></li></ol>
                     </div>
                 </span>
             </div>
