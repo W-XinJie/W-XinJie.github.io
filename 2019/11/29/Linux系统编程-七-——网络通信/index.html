@@ -6,19 +6,31 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>WangXJ&#39;s Blog</title>
+  <title>Linux系统编程(七)——网络通信 | WangXJ&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="记录学习、生活上的一些趣事。">
-<meta name="keywords" content="C++,Linux,图像处理">
-<meta property="og:type" content="website">
-<meta property="og:title" content="WangXJ&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/page/2/index.html">
+  <meta name="description" content="Linux为用户提供了强大完善的网络功能。">
+<meta name="keywords" content="Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux系统编程(七)——网络通信">
+<meta property="og:url" content="http://yoursite.com/2019/11/29/Linux系统编程-七-——网络通信/index.html">
 <meta property="og:site_name" content="WangXJ&#39;s Blog">
-<meta property="og:description" content="记录学习、生活上的一些趣事。">
+<meta property="og:description" content="Linux为用户提供了强大完善的网络功能。">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/2019/11/29/Linux系统编程-七-——网络通信/1.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/29/Linux系统编程-七-——网络通信/2.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/29/Linux系统编程-七-——网络通信/3.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/29/Linux系统编程-七-——网络通信/6.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/29/Linux系统编程-七-——网络通信/7.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/29/Linux系统编程-七-——网络通信/4.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/29/Linux系统编程-七-——网络通信/5.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/29/Linux系统编程-七-——网络通信/8.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/29/Linux系统编程-七-——网络通信/9.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/29/Linux系统编程-七-——网络通信/1.jpg">
+<meta property="og:updated_time" content="2019-12-01T02:15:32.089Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="WangXJ&#39;s Blog">
-<meta name="twitter:description" content="记录学习、生活上的一些趣事。">
+<meta name="twitter:title" content="Linux系统编程(七)——网络通信">
+<meta name="twitter:description" content="Linux为用户提供了强大完善的网络功能。">
+<meta name="twitter:image" content="http://yoursite.com/2019/11/29/Linux系统编程-七-——网络通信/1.png">
   
   
     <link rel="icon" href="/img/pic1.ico">
@@ -156,31 +168,198 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-C-高级编程-四-——STL之算法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-Linux系统编程-七-——网络通信" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/15/C-高级编程-四-——STL之算法/">C++高级编程(四)——STL之函数</a>
+    <h1 class="article-title" itemprop="name">
+      Linux系统编程(七)——网络通信
     </h1>
   
 
         
          
-<a href="/2019/09/15/C-高级编程-四-——STL之算法/" class="archive-article-date">
-  	<time datetime="2019-09-15T02:03:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-15</time>
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+<a href="/2019/11/29/Linux系统编程-七-——网络通信/" class="archive-article-date">
+  	<time datetime="2019-11-29T12:22:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-29</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>　　<code>&lt;algorithm&gt;</code>涉及到比较、交换、查找、遍历、复制、修改等。<br>　　<code>&lt;numeric&gt;</code>体积比较小,只包括几个在序列上进行简单数学运算的模板函数。<br>　　<code>functional</code>定义了一些模板类、用以声明函数对象。</p>
-        
+        <p>　　Linux为用户提供了强大完善的网络功能。</p>
+<a id="more"></a>
+
+<h1 id="1-1-OSI网络模型"><a href="#1-1-OSI网络模型" class="headerlink" title="1.1 OSI网络模型"></a>1.1 OSI网络模型</h1><p>模型及其释意如下图所示。</p>
+<div align="center"> 
+
+<p><img src="1.png" alt></p>
+<div align="left"> 
+
+<hr>
+<h1 id="1-2-TCP-IP模型"><a href="#1-2-TCP-IP模型" class="headerlink" title="1.2 TCP/IP模型"></a>1.2 TCP/IP模型</h1><p>TCP/IP与OSI模型对应关系如下图所示。</p>
+<div align="center"> 
+
+<p><img src="2.png" alt><br><img src="3.png" alt></p>
+<div align="left"> 
+
+<hr>
+<h1 id="1-3-网络层协议"><a href="#1-3-网络层协议" class="headerlink" title="1.3 网络层协议"></a>1.3 网络层协议</h1><ul>
+<li><p>主要包括<strong>IP协议</strong>、网际控制报文协议(ICMP)和地址解析协议(ARP)。</p>
+</li>
+<li><p>IP协议特性:<br>1、负责在源主机和目的主机之间传输数据块，提供非链接型传递服务。<br>2、在IP将数据递交给接收站点前不再传输站点和接收站点之间建立对话。<br>3、它只是封装和传递数据，不向发送者或者接受者报告包的状态，不处理所遇到的故障。</p>
+</li>
+<li><p>IP协议功能<br>1、数据传送<br>2、寻址<br>3、路由选择<br>4、数据报文分段</p>
+</li>
+<li><p>IP协议组成:由<strong>IP协议头</strong>、<strong>协议数据</strong>组成。</p>
+</li>
+</ul>
+<div align="center"> 
+
+<p><img src="6.png" alt></p>
+<div align="left"> 
+
+<hr>
+<h1 id="1-4-传输层协议"><a href="#1-4-传输层协议" class="headerlink" title="1.4 传输层协议"></a>1.4 传输层协议</h1><p>主要包括传输控制协议和用户数据的报文协议。</p>
+<ul>
+<li>传输层协议TCP(<strong>是一种有连接的传输层协议</strong>)<br>1、监听输入对话建立请求<br>2、请求另一个网络站点对话<br>3、可靠发送和接收数据</li>
+</ul>
+<div align="center"> 
+
+<p><img src="7.png" alt></p>
+<div align="left"> 
+
+
+<ul>
+<li>传输层协议UDP(<strong>不可靠的非连接型传输协议</strong>)</li>
+</ul>
+<hr>
+<h1 id="1-5-应用层协议"><a href="#1-5-应用层协议" class="headerlink" title="1.5 应用层协议"></a>1.5 应用层协议</h1><ul>
+<li>主要包括Telnet、文件传送协议(FTP、TFTP)、简单文件传送协议(SMTP)、域名服务协议(DNS)。</li>
+</ul>
+<hr>
+<h1 id="1-6-各层协议封装模式"><a href="#1-6-各层协议封装模式" class="headerlink" title="1.6 各层协议封装模式"></a>1.6 各层协议封装模式</h1><ul>
+<li>协议简单封装模式如下图所示。可以看出网络协议都是嵌套在上一层协议之下。</li>
+</ul>
+<div align="center"> 
+
+<p><img src="4.png" alt></p>
+<div align="left"> 
+
+
+<ul>
+<li>一个以太网包如下图所示。其中数据部分LLCData又包含网络层IP的协议。</li>
+</ul>
+<div align="center"> 
+
+<p><img src="5.png" alt></p>
+<div align="left"> 
+
+<hr>
+<h1 id="1-7-socket编程概念"><a href="#1-7-socket编程概念" class="headerlink" title="1.7 socket编程概念"></a>1.7 socket编程概念</h1><ul>
+<li><p>Linux中网络编程通过socket(套接字)实现，socket是一种文件描述符。</p>
+</li>
+<li><p>socket类型：<br>1、流式套接字(SOCK_STREAM)。提供可靠的、面向连接的通讯流，使用<strong>TCP</strong>协议。<br>2、数据报套接字(SOCK_DGRAM)。无连接的，数据独立的报文传输，无序，不保证可靠，使用的数据报协议为<strong>UDP</strong>。<br>3、原始套接字(SOCK_RAW)。允许使用IP协议，主要用于新协议<strong>测试</strong>。</p>
+</li>
+<li><p>网络地址(编程中一般使用形式二)。</p>
+</li>
+</ul>
+<p>形式一：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">sockaddr</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="comment">/*协议族，采用AF_xxx形式,如AF_INET(ip协议族)*/</span></span><br><span class="line">	u_short sa_family;  </span><br><span class="line">	</span><br><span class="line">	<span class="comment">/*特定协议地址*/</span></span><br><span class="line">	<span class="keyword">char</span> da_data[<span class="number">14</span>];</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>形式二：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">sockaddr_in</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="comment">/*协议族*/</span></span><br><span class="line">	<span class="keyword">short</span> <span class="keyword">int</span>  sin_family;  </span><br><span class="line">	</span><br><span class="line">	<span class="comment">/*端口号*/</span></span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">short</span> <span class="keyword">int</span> sin_port;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/*特定协议地址*/</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">in_addr</span> <span class="title">sin_addr</span>;</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">/*填0*/</span></span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">char</span> sin_zerr0[<span class="number">8</span>];</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>特定协议地址结构</li>
+</ul>
+<pre><code>typedef struct in_addr
+{
+    union
+    {
+        struct
+        {
+            unsigned char s_b1, s_b2, s_b3, s_b4;
+        }S_un_b;
+
+        struct
+        {
+            usnigned short s_w1, s_w2;
+        }S_un_w;
+
+        unsigned long S_addr;        
+    }S_un;
+}IN_ADDR;</code></pre><ul>
+<li><p>地址转换:通常ip以数字加点组成(192.168.0.1)表示，地址协议中以长整形表示，为此需要转换。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">inet_aton</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *cp, struct int_addr *inp)</span></span>;	<span class="comment">//将a.b.c.d转为整形IP存储在inp中</span></span><br><span class="line"><span class="function"><span class="keyword">char</span> *<span class="title">inet_ntoa</span><span class="params">(struct in_addr in)</span></span>;<span class="comment">//将整形ip转为a.b.c.d形式</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>字节顺序转换:不同CPU对字节存储顺序可能不同，有高位在前，有低位在前，网络传输需要统一成高位在前(big endian)</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">htons;		<span class="comment">//把unsigned short 类型从主机顺序转换为网络顺序</span></span><br><span class="line">htonl;		<span class="comment">//把unsigned long  类型从主机顺序转换为网络顺序</span></span><br><span class="line">ntohs;		<span class="comment">//把unsigned short 类型从网络顺序转为主机顺序</span></span><br><span class="line">ntohl;		<span class="comment">//把unsigned long  类型从网络顺序转为主机顺序</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>相关函数</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">socket;	<span class="comment">//创建一个套接字</span></span><br><span class="line">bind;		<span class="comment">//绑定IP地址和端口号到socket</span></span><br><span class="line">connect;	<span class="comment">//用于与服务器建立连接</span></span><br><span class="line">listen;	<span class="comment">//设置服务器能处理的最大连接数</span></span><br><span class="line">accept;	<span class="comment">//用来等待来自客户端的socket请求</span></span><br><span class="line">send;		<span class="comment">//发送数据</span></span><br><span class="line">recv;		<span class="comment">//接收数据</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<hr>
+<h1 id="1-8-TCP通讯模型"><a href="#1-8-TCP通讯模型" class="headerlink" title="1.8 TCP通讯模型"></a>1.8 TCP通讯模型</h1><p>模型如图所示。</p>
+<div align="center"> 
+
+<p><img src="8.png" alt></p>
+<div align="left"> 
+
+
+<ul>
+<li><p>示例TCP——服务器</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> portnum 3333	<span class="comment">//端口号</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> sockfd, new_fd;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">sockaddr_in</span> <span class="title">server_addr</span>;</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">sockaddr_in</span> <span class="title">client_addr</span>;</span>	</span><br><span class="line">	<span class="keyword">int</span> sin_size;</span><br><span class="line">	<span class="keyword">int</span> nbytes;</span><br><span class="line">	<span class="keyword">char</span> buffer[<span class="number">1024</span>];</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/*创建socket，AF_INET:IPV4，SOCKT_STREAM:TCP*/</span></span><br><span class="line">	<span class="keyword">if</span>((sockfd = socket(AF_INET, SOCKT_STREAM, <span class="number">0</span> )) == <span class="number">-1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">fprintf</span>(<span class="built_in">stderr</span>,<span class="string">"erro: %s\n"</span>,strerror(errno));</span><br><span class="line">		<span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	bzero(&amp;server_addr,sizefof(struct sockaddr_in));	<span class="comment">//初始化，置零</span></span><br><span class="line">	server_addr.sin_family = AF_INET;	<span class="comment">//IPV4</span></span><br><span class="line">	server_addr.sin_addr.s_addr = htonl(INADDR_ANY);	<span class="comment">//类型从主机顺序转换为网络顺序</span></span><br><span class="line">	server_addr.sin_port = htons(portnum);	<span class="comment">//本机short类型转换为网络顺序</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">/*绑定sockfd到IP*/</span></span><br><span class="line">	<span class="keyword">if</span>(bind(sockfd, (struct sockaddr *)(&amp;server_addr), sizef(struct sockaddr)) == <span class="number">-1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">fprintf</span>(<span class="built_in">stderr</span>,<span class="string">"erro: %s\n"</span>,strerror(errno));</span><br><span class="line">		<span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/*设置最大连接数为5*/</span></span><br><span class="line">	<span class="keyword">if</span>(listen(sockfd, <span class="number">5</span>) == <span class="number">-1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">fprintf</span>(<span class="built_in">stderr</span>,<span class="string">"erro: %s\n"</span>,strerror(errno));</span><br><span class="line">		<span class="built_in">exit</span>(<span class="number">1</span>);		</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		sin_size = <span class="keyword">sizeof</span>(struct sockaddr_in);</span><br><span class="line">		<span class="keyword">if</span>((new_fd = accept(sockfd, (struct sockaddr *)(&amp;client_addr), &amp;sin_size)) == <span class="number">-1</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">fprintf</span>(<span class="built_in">stderr</span>,<span class="string">"erro: %s\n"</span>,strerror(errno));</span><br><span class="line">			<span class="built_in">exit</span>(<span class="number">1</span>);		</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">fprintf</span>(<span class="built_in">stderr</span>,<span class="string">"get from: %s\n"</span>,inet_ntoa(client_addr.sinaddr));</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span>((nbytes = read(new_fd,buffer, <span class="number">1024</span>)) == <span class="number">-1</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">fprintf</span>(<span class="built_in">stderr</span>,<span class="string">"erro: %s\n"</span>,strerror(errno));</span><br><span class="line">			<span class="built_in">exit</span>(<span class="number">1</span>);					</span><br><span class="line">		&#125;</span><br><span class="line">		buffer[nbytes] = <span class="string">'\0'</span>;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"receive %s\n"</span>, buffer);</span><br><span class="line">		</span><br><span class="line">		<span class="comment">/*通讯结束*/</span></span><br><span class="line">		close(new_fd);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>示例TCP——客户端</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> portnum 3333	<span class="comment">//端口号</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> sockfd;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">sockaddr_in</span> <span class="title">server_addr</span>;</span></span><br><span class="line">	<span class="keyword">char</span> buffer[<span class="number">1024</span>];</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">hostent</span> *<span class="title">host</span>;</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span>(argc != <span class="number">2</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">fprintf</span>(<span class="built_in">stderr</span>,<span class="string">"erro: %s\n"</span>,strerror(errno));</span><br><span class="line">		<span class="built_in">exit</span>(<span class="number">1</span>);			</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>((host = gethostbyname(argv[<span class="number">1</span>])) == <span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">fprintf</span>(<span class="built_in">stderr</span>,<span class="string">"erro: %s\n"</span>,strerror(errno));</span><br><span class="line">		<span class="built_in">exit</span>(<span class="number">1</span>);			</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/*创建socket，AF_INET:IPV4，SOCKT_STREAM:TCP*/</span></span><br><span class="line">	<span class="keyword">if</span>((sockfd = socket(AF_INET, SOCKT_STREAM, <span class="number">0</span> )) == <span class="number">-1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">fprintf</span>(<span class="built_in">stderr</span>,<span class="string">"erro: %s\n"</span>,strerror(errno));</span><br><span class="line">		<span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">	&#125;	</span><br><span class="line">	</span><br><span class="line">	bzero(&amp;server_addr,sizefof(server_addr));	<span class="comment">//初始化，置零</span></span><br><span class="line">	server_addr.sin_family = AF_INET;	<span class="comment">//IPV4</span></span><br><span class="line">	server_addr.sin_port = htons(portnum);	<span class="comment">//本机short类型转换为网络顺序</span></span><br><span class="line">	server_addr.sin_addr = *((struct in_addr *)host -&gt; h_addr);	<span class="comment">//ip地址</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">/*客户端发起连接请求*/</span></span><br><span class="line">	<span class="keyword">if</span>(connect(sockfd, (struct sockaddr *)(&amp;server_addr),<span class="keyword">sizeof</span>(struct sockaddr)) == <span class="number">-1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">fprintf</span>(<span class="built_in">stderr</span>,<span class="string">"erro: %s\n"</span>,strerror(errno));</span><br><span class="line">		<span class="built_in">exit</span>(<span class="number">1</span>);	</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"input char\n"</span>);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/*发送数据*/</span></span><br><span class="line">	fget(buffer, <span class="number">1024</span> ,<span class="built_in">stdin</span>);</span><br><span class="line">	write(sockfd, buffer, <span class="built_in">strlen</span>(buffer));</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/*通讯结束*/</span></span><br><span class="line">	close(sockfd);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<hr>
+<h1 id="1-9-UDP通讯模型"><a href="#1-9-UDP通讯模型" class="headerlink" title="1.9 UDP通讯模型"></a>1.9 UDP通讯模型</h1><ul>
+<li>模型如图所示。</li>
+</ul>
+<div align="center"> 
+
+<p><img src="9.png" alt></p>
+<div align="left"> 
+
+<ul>
+<li>示例</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*服务器*/</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> SERVER_PORT 8888</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAX_MSG_SIZE 1024</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">udps_respon</span><span class="params">(<span class="keyword">int</span> sockfd)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">sockaddr_in</span> <span class="title">addr</span>;</span></span><br><span class="line">	<span class="keyword">int</span> addrlen,n;</span><br><span class="line">	<span class="keyword">char</span> msg[MAX_MSG_SIZE];</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		bzero(msg, <span class="keyword">sizeof</span>(msg));<span class="comment">//清零</span></span><br><span class="line">		addrlen = <span class="keyword">sizeof</span>(struct sockaddr);</span><br><span class="line">		n = recvfrom(sockfd, msg, MAX_MSG_SIZE, <span class="number">0</span>, (struct sockaddr*)&amp;addr, &amp;addrlen);<span class="comment">//从客户端读取数据</span></span><br><span class="line">		msg[n] = <span class="number">0</span>;</span><br><span class="line">		<span class="built_in">fprintf</span>(<span class="built_in">stdout</span>,<span class="string">"received %s:\n"</span>,msg);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> sockfd;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">sockaddr_in</span> <span class="title">addr</span>;</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">/*创建socket，AF_INET:IPV4，SOCKT_DGRAM:UDP*/</span></span><br><span class="line">	<span class="keyword">if</span>((sockfd = socket(AF_INET, SOCKT_DGRAM, <span class="number">0</span> )) &lt; <span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">fprintf</span>(<span class="built_in">stderr</span>,<span class="string">"erro: %s\n"</span>,strerror(errno));</span><br><span class="line">		<span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">	&#125;	</span><br><span class="line"></span><br><span class="line">	bzero(&amp;addr,<span class="keyword">sizeof</span>(struct sockaddr_in));	<span class="comment">//初始化，置零</span></span><br><span class="line">	server_addr.sin_family = AF_INET;	<span class="comment">//IPV4</span></span><br><span class="line">	server_addr.sin_addr.s_addr = htonl(INADDR_ANY);	<span class="comment">//类型从主机顺序转换为网络顺序</span></span><br><span class="line">	server_addr.sin_port = htons(SERVER_PORT);	<span class="comment">//本机short类型转换为网络顺序</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">/*绑定sockfd到IP*/</span></span><br><span class="line">	<span class="keyword">if</span>(bind(sockfd, (struct sockaddr *)&amp;addr, sizef(struct sockaddr)) &lt; <span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">fprintf</span>(<span class="built_in">stderr</span>,<span class="string">"erro: %s\n"</span>,strerror(errno));</span><br><span class="line">		<span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	udps_respon(sockfd);	<span class="comment">//进行读写操作</span></span><br><span class="line">	close(sockfd);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*客户端:*/</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> portnum 3333	<span class="comment">//端口号</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> SERVER_PORT 8888</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAX_MSG_SIZE 1024</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">udps_requ</span><span class="params">(<span class="keyword">int</span> sockfd, cosnt struct sockaddr_in *addr, <span class="keyword">int</span> len)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> buffer[MAX_MSG_SIZE];</span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"input char \n"</span>);</span><br><span class="line">		fgets(buffer,MAX_MSG_SIZE,<span class="built_in">stdin</span>);</span><br><span class="line">		sendto(sockfd, buffer, <span class="built_in">strlen</span>(buffer), <span class="number">0</span>, addr, len);</span><br><span class="line">		bzero(buffer,MAX_MSG_SIZE);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> sockfd;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">sockaddr_in</span> <span class="title">addr</span>;</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span>(argc != <span class="number">2</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">fprintf</span>(<span class="built_in">stderr</span>,<span class="string">"erro: %s\n"</span>,strerror(errno));</span><br><span class="line">		<span class="built_in">exit</span>(<span class="number">1</span>);			</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/*创建socket，AF_INET:IPV4，SOCKT_DGRAM:UDP*/</span></span><br><span class="line">	<span class="keyword">if</span>((sockfd = socket(AF_INET, SOCKT_DGRAM, <span class="number">0</span> )) &lt; <span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">fprintf</span>(<span class="built_in">stderr</span>,<span class="string">"erro: %s\n"</span>,strerror(errno));</span><br><span class="line">		<span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">	&#125;	</span><br><span class="line">	</span><br><span class="line">	bzero(&amp;addr,<span class="keyword">sizeof</span>(struct sockaddr_in));	<span class="comment">//初始化，置零</span></span><br><span class="line">	server_addr.sin_family = AF_INET;	<span class="comment">//IPV4</span></span><br><span class="line">	server_addr.sin_port = htons(SERVER_PORT);	<span class="comment">//本机short类型转换为网络顺序</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span>(inet_aton(argv[<span class="number">1</span>], &amp;addr.sin_addr) &lt;<span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">fprintf</span>(<span class="built_in">stderr</span>,<span class="string">"erro: %s\n"</span>,strerror(errno));</span><br><span class="line">		<span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	udps_requ(sockfd, &amp;addr, <span class="keyword">sizeof</span>(struct sockaddr_in));</span><br><span class="line">	close(sockfd);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="2-0-并发服务器"><a href="#2-0-并发服务器" class="headerlink" title="2.0 并发服务器"></a>2.0 并发服务器</h1><ul>
+<li><p>服务器模型：每一个客户端请求不由服务器直接处理，而是由服务器创建的一个子进程来处理。<br>1、循环服务器<br>2、并发服务器</p>
+</li>
+<li><p>TCP循环服务器一次只能处理一个客户端请求，因此TCP一般很少用作循环服务器。</p>
+</li>
+<li><p>TCP并发服务器</p>
+</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*TCP并发服务器编程思路*/</span></span><br><span class="line">	socket();</span><br><span class="line">	bind();</span><br><span class="line">	listen();</span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		accept();</span><br><span class="line">		<span class="keyword">if</span>(fork() == <span class="number">0</span>)<span class="comment">//子进程</span></span><br><span class="line">		&#123;</span><br><span class="line">			process9();</span><br><span class="line">			close();</span><br><span class="line">			<span class="built_in">exit</span>();</span><br><span class="line">		&#125;</span><br><span class="line">		close();</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>示例</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*服务器端:*/</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> portnum 3333	<span class="comment">//端口号</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> listen_fd, accept_fd;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">sockaddr_in</span> <span class="title">server_addr</span>;</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">sockaddr_in</span> <span class="title">client_addr</span>;</span>	</span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	<span class="keyword">int</span> nbytes;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/*创建socket，AF_INET:IPV4，SOCKT_STREAM:TCP*/</span></span><br><span class="line">	<span class="keyword">if</span>((listen_fd = socket(AF_INET, SOCKT_STREAM, <span class="number">0</span> )) == <span class="number">-1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">fprintf</span>(<span class="built_in">stderr</span>,<span class="string">"erro: %s\n"</span>,strerror(errno));</span><br><span class="line">		<span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	bzero(&amp;client_addr,sizefof(struct sockaddr_in));	<span class="comment">//初始化，置零</span></span><br><span class="line">	client_addr.sin_family = AF_INET;	<span class="comment">//IPV4</span></span><br><span class="line">	client_addr.sin_addr.s_addr = htonl(INADDR_ANY);	<span class="comment">//类型从主机顺序转换为网络顺序</span></span><br><span class="line">	client_addr.sin_port = htons(portnum);	<span class="comment">//本机short类型转换为网络顺序</span></span><br><span class="line">	n = <span class="number">1</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/*如果服务器终止后，服务器可以第二次快速启动而不用等待一段时间*/</span></span><br><span class="line">	setsockopt(listen_fd, SOL_SOCKET,SO_REUSREADDR,&amp;n,<span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/*绑定sockfd到IP*/</span></span><br><span class="line">	<span class="keyword">if</span>(bind(listen_fd, (struct sockaddr *)(&amp;client_addr), sizef(struct client_addr)) == <span class="number">-1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">fprintf</span>(<span class="built_in">stderr</span>,<span class="string">"erro: %s\n"</span>,strerror(errno));</span><br><span class="line">		<span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/*设置最大连接数为5*/</span></span><br><span class="line">	<span class="keyword">if</span>(listen(listen_fd, <span class="number">5</span>) == <span class="number">-1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">fprintf</span>(<span class="built_in">stderr</span>,<span class="string">"erro: %s\n"</span>,strerror(errno));</span><br><span class="line">		<span class="built_in">exit</span>(<span class="number">1</span>);		</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>((new_fd = accept(sockfd, (struct sockaddr *)(&amp;client_addr), &amp;sin_size)) == <span class="number">-1</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">fprintf</span>(<span class="built_in">stderr</span>,<span class="string">"erro: %s\n"</span>,strerror(errno));</span><br><span class="line">			<span class="built_in">exit</span>(<span class="number">1</span>);		</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">fprintf</span>(<span class="built_in">stderr</span>,<span class="string">"get from: %s\n"</span>,inet_ntoa(client_addr.sinaddr));</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span>((n = fork()) == <span class="number">0</span>) <span class="comment">//子进程处理</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">char</span> buffer[<span class="number">1024</span>];</span><br><span class="line">			<span class="keyword">if</span>((nbytes = read(acceft_fd,buffer, <span class="number">1024</span>)) == <span class="number">-1</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="built_in">fprintf</span>(<span class="built_in">stderr</span>,<span class="string">"erro: %s\n"</span>,strerror(errno));</span><br><span class="line">				<span class="built_in">exit</span>(<span class="number">1</span>);					</span><br><span class="line">			&#125;</span><br><span class="line">			buffer[nbytes] = <span class="string">'\0'</span>;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"receive %s\n"</span>, buffer);</span><br><span class="line">			</span><br><span class="line">			<span class="comment">/*通讯结束*/</span></span><br><span class="line">			close(listen_fd);		</span><br><span class="line">			clode(acceft_fd);</span><br><span class="line">			<span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			close(accept_fd);</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p><img src="1.jpg" alt></p>
+</div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div>
       
 
 
@@ -188,6 +367,27 @@
   <div class="declare" hidden="hidden"></div>
 
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -198,7 +398,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
         		</li>
       		
 		</ul>
@@ -207,16 +407,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/15/C-高级编程-四-——STL之算法/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/11/29/Linux系统编程-七-——网络通信/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2019/11/27/LinuxLinux驱动编程-一-——字符设备驱动/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Linux驱动编程(一)——字符设备驱动</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -231,788 +490,38 @@
         </div>
         
         
-    </div>
-</aside>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-C-高级编程-三-——string容器与vector容器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/10/C-高级编程-三-——string容器与vector容器/">C++高级编程(三)——STL之容器</a>
-    </h1>
-  
-
-        
-         
-<a href="/2019/09/10/C-高级编程-三-——string容器与vector容器/" class="archive-article-date">
-  	<time datetime="2019-09-10T08:13:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>　　C++除了<strong>面向对象编程</strong>思想还有<strong>泛型编程</strong>思想，其目的就是为了提升代码的复用性。</p>
-        
-      
-
-
-
-  <div class="declare" hidden="hidden"></div>
-
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/10/C-高级编程-三-——string容器与vector容器/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-1-OSI网络模型"><span class="toc-number">1.</span> <span class="toc-text">1.1 OSI网络模型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-2-TCP-IP模型"><span class="toc-number">2.</span> <span class="toc-text">1.2 TCP/IP模型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-3-网络层协议"><span class="toc-number">3.</span> <span class="toc-text">1.3 网络层协议</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-4-传输层协议"><span class="toc-number">4.</span> <span class="toc-text">1.4 传输层协议</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-5-应用层协议"><span class="toc-number">5.</span> <span class="toc-text">1.5 应用层协议</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-6-各层协议封装模式"><span class="toc-number">6.</span> <span class="toc-text">1.6 各层协议封装模式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-7-socket编程概念"><span class="toc-number">7.</span> <span class="toc-text">1.7 socket编程概念</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-8-TCP通讯模型"><span class="toc-number">8.</span> <span class="toc-text">1.8 TCP通讯模型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-9-UDP通讯模型"><span class="toc-number">9.</span> <span class="toc-text">1.9 UDP通讯模型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-0-并发服务器"><span class="toc-number">10.</span> <span class="toc-text">2.0 并发服务器</span></a></li></ol>
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
 
 
 
-
-
-
-
-
-
-  
-    <article id="post-C-高级编程-二-——模板案例" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/10/C-高级编程-二-——模板案例/">C++高级编程(二)——模板案例</a>
-    </h1>
-  
-
-        
-         
-<a href="/2019/09/10/C-高级编程-二-——模板案例/" class="archive-article-date">
-  	<time datetime="2019-09-10T01:20:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本案例实现一个通用的数组类。</p>
-        
-      
-
-
-
-  <div class="declare" hidden="hidden"></div>
-
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/10/C-高级编程-二-——模板案例/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-C-高级编程-一-——函数模板" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/08/C-高级编程-一-——函数模板/">C++高级编程(一)——模板</a>
-    </h1>
-  
-
-        
-         
-<a href="/2019/09/08/C-高级编程-一-——函数模板/" class="archive-article-date">
-  	<time datetime="2019-09-08T09:17:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>　　C++提供另一种编程思想称为泛型编程，主要利用的技术就是模板；C++提供两种模板机制函数模板和类模板。</p>
-        
-      
-
-
-
-  <div class="declare" hidden="hidden"></div>
-
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/08/C-高级编程-一-——函数模板/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-C-核心编程-十-——职工人员管理系统" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/08/C-核心编程-十-——职工人员管理系统/">C++核心编程(十)——职工人员管理系统</a>
-    </h1>
-  
-
-        
-         
-<a href="/2019/09/08/C-核心编程-十-——职工人员管理系统/" class="archive-article-date">
-  	<time datetime="2019-09-08T06:52:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>　　本篇利用C++实现一个基于多态的职工人员管理系统。</p>
-        
-      
-
-
-
-  <div class="declare" hidden="hidden"></div>
-
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/08/C-核心编程-十-——职工人员管理系统/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-C-核心编程—-—-九-——文件操作" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/05/C-核心编程—-—-九-——文件操作/">C++核心编程(九)——文件操作</a>
-    </h1>
-  
-
-        
-         
-<a href="/2019/09/05/C-核心编程—-—-九-——文件操作/" class="archive-article-date">
-  	<time datetime="2019-09-05T01:19:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>　　程序运行时产生的数据都属于临时数据，程序一旦运行结束都会被释放，通过文件可以将数据持久化。</p>
-        
-      
-
-
-
-  <div class="declare" hidden="hidden"></div>
-
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/05/C-核心编程—-—-九-——文件操作/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-C-核心编程八——多态" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/03/C-核心编程八——多态/">C++核心编程(八)——多态</a>
-    </h1>
-  
-
-        
-         
-<a href="/2019/09/03/C-核心编程八——多态/" class="archive-article-date">
-  	<time datetime="2019-09-03T01:22:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>　　接口的多种不同的实现方式即为多态，多态性是允许你将父对象设置成为一个或更多的他的子对象相等的技术，赋值之后，父对象就可以根据当前赋值给它的子对象的特性以不同的方式运作；简单的说，允许将子类类型的指针赋值给父类类型的指针。</p>
-        
-      
-
-
-
-  <div class="declare" hidden="hidden"></div>
-
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/03/C-核心编程八——多态/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-C-核心编程-七-——继承" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/02/C-核心编程-七-——继承/">C++核心编程(七)——继承</a>
-    </h1>
-  
-
-        
-         
-<a href="/2019/09/02/C-核心编程-七-——继承/" class="archive-article-date">
-  	<time datetime="2019-09-02T13:40:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>　　继承是面向对象三大特性之一。能大量减少重复代码。</p>
-        
-      
-
-
-
-  <div class="declare" hidden="hidden"></div>
-
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/02/C-核心编程-七-——继承/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-C-核心编程—-六-——运算符重载" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/02/C-核心编程—-六-——运算符重载/">C++核心编程(六)——运算符重载</a>
-    </h1>
-  
-
-        
-         
-<a href="/2019/09/02/C-核心编程—-六-——运算符重载/" class="archive-article-date">
-  	<time datetime="2019-09-02T08:52:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>　　对已有运算符重新进行定义，赋予其另一种功能，以适应不同的数据类型。</p>
-        
-      
-
-
-
-  <div class="declare" hidden="hidden"></div>
-
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/02/C-核心编程—-六-——运算符重载/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-C-核心编程-五-——对象模型和this指针" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/30/C-核心编程-五-——对象模型和this指针/">C++核心编程(五)——对象模型和this指针</a>
-    </h1>
-  
-
-        
-         
-<a href="/2019/08/30/C-核心编程-五-——对象模型和this指针/" class="archive-article-date">
-  	<time datetime="2019-08-30T09:23:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>　　在C++中，成员变量和成员函数是分开存储的；this指针指向被调用的成员函数所属的对象。</p>
-        
-      
-
-
-
-  <div class="declare" hidden="hidden"></div>
-
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/30/C-核心编程-五-——对象模型和this指针/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-
-
-
   
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
-    </nav>
   
+
+  
+
+  
+
+  
+
+
+
+
+
 
 
           </div>
@@ -1045,8 +554,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
